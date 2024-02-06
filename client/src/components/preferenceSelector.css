@@ -1,8 +1,11 @@
 .preferenceSelector {
     margin: 20px;
-    border: 2px solid #ff1a75;
+    border: 2px solid #F3E8EE;
     padding: 10px;
     border-radius: 5px;
+    font-family: "Varela Round", sans-serif;
+    font-weight: 600;
+    font-style: normal;
   }
   
   .preferenceSelector ul {
@@ -19,7 +22,7 @@
   
   .preferenceSelector li::before {
     content: '❤️';
-    color: #ff0033;
+    color: #729B79;
     font-size: 1em;
     position: absolute;
     left: 0;
@@ -29,9 +32,11 @@
   .listItem {
     cursor: pointer;
     margin: 5px 0;
+    font-family: "Varela Round", sans-serif;
+    font-weight: 400;
+    font-style: normal;
   }
   
   .listItem:hover {
-    color: #ff4d94; 
+    color: #BACDB0; 
   }
-  
