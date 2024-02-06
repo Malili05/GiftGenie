@@ -14,6 +14,7 @@ const Login = () => {
     setPassword(e.target.value);
     };
 
+    // This will be where we link to the create account component
     // const handleCreateAccountClick = () => {
     // // Logic to handle account creation
     // navigate('/create-account');
