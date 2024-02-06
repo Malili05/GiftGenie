@@ -1,4 +1,4 @@
 const User = require('./User');
-const Product = require('./Gift');
+const Gift = require('./Gift');
 
 module.exports = { User, Gift };
