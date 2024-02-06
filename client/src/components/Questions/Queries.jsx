@@ -1,5 +1,23 @@
+import React from 'react';
+
 import { questions } from './Question.js';
 
+
+function Queries() {
+    return (
+      <div>
+        <h1>Welcome to the Queries Page</h1>
+        <p>This is a basic React page for testing purposes.</p>
+      </div>
+    );
+  }
+  
+  export default Queries;
+
+
+
+
+/*
 // DOM elements
 const questionText = document.getElementById('question-text');
 const nextButton = document.getElementById('next-button');
@@ -25,4 +43,4 @@ function displayRandomQuestion() {
 nextButton.addEventListener('click', displayRandomQuestion);
 
 // Initial display of the first random question
-displayRandomQuestion();
+displayRandomQuestion();g
