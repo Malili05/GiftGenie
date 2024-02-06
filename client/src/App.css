@@ -23,12 +23,12 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Arial', sans-serif;
-  background-color: #ffe6e6;
+  background-color: #475B63;
 }
 
 .app {
   min-height: 100vh;
-  color: #ff0066; 
+  color: #729B79; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,3 +36,10 @@ body {
   text-align: center;
   text-align: center;
 }
+
+
+/* #2E2C2F
+#475B63
+#729B79
+#BACDB0
+##F3E8EE */

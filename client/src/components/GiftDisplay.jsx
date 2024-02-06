@@ -7,7 +7,7 @@ const GiftDisplay = ({ onBuy }) => {
 
 
   return (
-    <div className="giftDisplay">
+    <div className="giftDisplay varela-round-regular">
       <h2>HERE IS A GIFT FOR YOU!</h2>
       <img src={giftImageUrl} alt="Valentine's Day Gift" className="giftImage" />
       <button onClick={onBuy} className="buyButton">LINK TO BUY THIS</button>
