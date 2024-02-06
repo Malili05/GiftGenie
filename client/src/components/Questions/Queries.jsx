@@ -1,4 +1,3 @@
-// Import your question data from Question.js
 import { questions } from './Question.js';
 
 // DOM elements

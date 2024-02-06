@@ -6,6 +6,10 @@ const WelcomePage = () => {
   const navigate = useNavigate(); 
   // This will become goToQuestion
   const goToQuestion = () => {
+    navigate('/Queries');
+  };
+
+  const goToLogin = () => {
     navigate('/Login');
   };
 
@@ -19,7 +23,7 @@ const WelcomePage = () => {
         onClick={goToQuestion}
       />
       <button 
-      onClick={goToQuestion}
+      onClick={goToLogin}
       className="mt-4 px-6 py-2 bg-blue-900 text-white 
       font-bold rounded hover:bg-blue-800 focus:outline-none 
       focus:ring-2 focus:ring-opacity-50">
