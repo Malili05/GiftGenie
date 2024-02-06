@@ -16,7 +16,7 @@ None required. Navigate to app page and begin.
 Login to the site with email and password to save ideas and view profile
 
 ## Credits
-Joshua Slem, Jared Mcmahon, Malisa Litten, Landon Peterson, Sam Monson
+[Joshua Slem](https://github.com/SlemJosh), [Jared Mcmahon](https://github.com/ProgramerNinja), [Malisa Litten](https://github.com/Malili05), [Landon Peterson](https://github.com/LandoCodesRissian), Sam Monson
  
 ## License
 MIT
