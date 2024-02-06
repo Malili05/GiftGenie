@@ -1,4 +1,5 @@
 import React from 'react';
+import "./giftDisplay.css"
 // const giftImageUrl = '/path/to/your/image.png'; // Adjust the path as necessary
 
 const GiftDisplay = ({ onBuy }) => {
