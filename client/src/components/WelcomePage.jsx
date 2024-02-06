@@ -5,7 +5,7 @@ import lampImage from '/Lamp.webp';
 const WelcomePage = () => {
   const navigate = useNavigate(); 
   // This will become goToQuestion
-  const goToLogin = () => {
+  const goToQuestion = () => {
     navigate('/Login');
   };
 
@@ -16,8 +16,15 @@ const WelcomePage = () => {
         src={lampImage} 
         alt="Genie Lamp" 
         className="max-w-xs w-full h-auto mb-4 cursor-pointer"
-        onClick={goToLogin}
+        onClick={goToQuestion}
       />
+      <button 
+      onClick={goToQuestion}
+      className="mt-4 px-6 py-2 bg-blue-900 text-white 
+      font-bold rounded hover:bg-blue-800 focus:outline-none 
+      focus:ring-2 focus:ring-opacity-50">
+        Login
+      </button>
     </div>
   );
 };
