@@ -1,4 +1,4 @@
-[
+const questionsData =[
     {
         "id": 1,
         "question": "What is the occasion?",
@@ -112,4 +112,4 @@
         }
     }
 ]
-export default questions
+export default questionsData;
