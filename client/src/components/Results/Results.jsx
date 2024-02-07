@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import "./results.css";
 
 const Results = () => {
     const navigate = useNavigate();
@@ -8,26 +7,21 @@ const Results = () => {
     const { selectedAnswers } = location.state || {};
 
     const handleBackToQueries = () => {
-        navigate('/'); // Adjust the path as necessary
+        navigate('/');
     };
 
     return (
-        <div>
-            <div className="results-container">
-                {/* Displaying selected keywords */}
-                <div className="selected-keywords">
-                    <h2>Selected Keywords</h2>
-                    {selectedAnswers && Object.entries(selectedAnswers).map(([questionId, answer], index) => (
-                        <p key={questionId}>Keyword {index + 1}: {answer}</p>
-                    ))}
-                </div>
+        <div className="flex flex-col items-center justify-center h-screen text-center">
+            <div className="results-container bg-gray-100 p-5 rounded-lg shadow-md w-full max-w-md mx-auto">
+                <h2 className="text-lg font-semibold mb-4">Selected Keywords</h2>
+                {selectedAnswers && Object.entries(selectedAnswers).map(([questionId, answer], index) => (
+                    <p key={questionId} className="text-md font-medium">Keyword {index + 1}: {answer}</p>
+                ))}
 
-                {/* GiftDisplay component */}
                 <GiftDisplay onBuy={() => console.log('Buying the gift...')} />
             </div>
 
-            {/* Back to Queries button */}
-            <button onClick={handleBackToQueries} className="back-button">
+            <button onClick={handleBackToQueries} className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">
                 Start Over
             </button>
         </div>
@@ -38,13 +32,14 @@ const GiftDisplay = ({ onBuy }) => {
     const giftImageUrl = '/valentineBox.webp'; // Adjust the path as necessary
 
     return (
-        <div className="giftDisplay varela-round-regular">
-            <h2>HERE IS A GIFT FOR YOU!</h2>
-            <img src={giftImageUrl} alt="Valentine's Day Gift" className="giftImage" />
-            <button onClick={onBuy} className="buyButton">LINK TO BUY THIS</button>
+        <div className="giftDisplay my-4">
+            <h2 className="font-semibold mb-2">HERE IS A GIFT FOR YOU!</h2>
+            <img src={giftImageUrl} alt="Valentine's Day Gift" className="mx-auto w-1/2" />
+            <button onClick={onBuy} className="mt-2 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300">LINK TO BUY THIS</button>
         </div>
     );
 };
 
 export default Results;
+
 
