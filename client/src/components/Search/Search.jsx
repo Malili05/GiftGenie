@@ -35,6 +35,11 @@ function Search() {
     };
 
     const handleNextQuestion = () => {
+        if (!selectedAnswers[questions[currentIndex].id]) {
+            alert('Please select an answer before proceeding.');
+            return;
+        }
+
         if (currentIndex < 2) {
             setCurrentIndex(currentIndex + 1);
             setShowOtherInput(false);
@@ -55,6 +60,10 @@ function Search() {
         }
     };
 
+    const startOver = () => {
+        navigate('/'); // Navigate to the main page
+    };
+
     const currentQuestion = questions[currentIndex];
 
     return (
@@ -63,12 +72,12 @@ function Search() {
             {currentQuestion && (
                 <div className="question-box bg-gray-100 p-5 rounded-lg shadow-md w-full max-w-md mx-auto">
                     <h2 className="text-lg font-semibold text-blue-500">Question {currentIndex + 1}</h2>
-                    <p className="mb-3 text-green-300">{currentQuestion.question}</p>
+                    <p className="mb-3 text-gray-700">{currentQuestion.question}</p>
                     <div>
                         {currentQuestion.answers.map((answer, index) => (
                             <div 
                               key={index} 
-                              className={`p-2 my-2 cursor-pointer ${selectedAnswers[currentQuestion.id] === answer.keyword ? 'text-pink-500 text-lg' : 'text-gray-600'}`}
+                              className={`p-2 my-2 cursor-pointer hover:bg-yellow-200 ${selectedAnswers[currentQuestion.id] === answer.keyword ? 'text-pink-500 text-lg' : 'text-gray-600'}`}
                               onClick={() => selectAnswer(currentQuestion.id, answer.keyword)}
                             >
                                 {answer.displayText}
@@ -86,16 +95,22 @@ function Search() {
                     </div>
                     <div className="flex justify-center mt-4">
                         <button 
-                            onClick={handleNextQuestion} 
-                            className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300 mr-2"
+                            onClick={startOver} 
+                            className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-700 transition duration-300 mr-3"
                         >
-                            Next
+                            Start Over
                         </button>
                         <button 
                             onClick={swapQuestion} 
-                            className="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300"
+                            className="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300 mr-3"
                         >
                             Swap Question
+                        </button>
+                        <button 
+                            onClick={handleNextQuestion} 
+                            className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
+                        >
+                            Next
                         </button>
                     </div>
                 </div>
