@@ -6,7 +6,7 @@ const WelcomePage = () => {
   const navigate = useNavigate(); 
   // This will become goToQuestion
   const goToQuestion = () => {
-    navigate('/Queries');
+    navigate('/Search');
   };
 
   const goToLogin = () => {

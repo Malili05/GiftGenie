@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import './Queries.css';
-import questionsData from './Questions'; // Import questionsData from the other file
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import './Search.css';
+import questionsData from './Questions'; 
 
 function Queries() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showOtherInput, setShowOtherInput] = useState(false); // State to show/hide the "Other" input field
-  const [showKeywords, setShowKeywords] = useState(false); // State to show/hide selected keywords
+  const [showOtherInput, setShowOtherInput] = useState(false);
+
+  const navigate = useNavigate(); // Create navigate function for redirecting
 
   // Shuffle the questionsData array
   const shuffleArray = (array) => {
@@ -20,17 +22,12 @@ function Queries() {
   };
 
   useEffect(() => {
-    // Shuffle the questionsData array and take the first 3 questions
     const shuffledQuestions = shuffleArray(questionsData).slice(0, 3);
     setQuestions(shuffledQuestions);
   }, []);
 
   const handleAnswerSelection = (questionId, answer) => {
-    if (answer === 'Other') {
-      setShowOtherInput(true); // Show the "Other" input field when "Other" is selected
-    } else {
-      setShowOtherInput(false); // Hide the "Other" input field for other answers
-    }
+    setShowOtherInput(answer === 'Other');
     setSelectedAnswers({ ...selectedAnswers, [questionId]: answer });
   };
 
@@ -41,12 +38,10 @@ function Queries() {
   const handleNextQuestion = () => {
     if (currentIndex < 2) {
       setCurrentIndex(currentIndex + 1);
-      setShowOtherInput(false); // Hide the "Other" input field when moving to the next question
+      setShowOtherInput(false);
     } else {
-      // Handle completion or navigation to the next screen
       console.log('Selected Answers:', selectedAnswers);
-      // You can navigate to the next screen or perform any action here
-      setShowKeywords(true); // Show the selected keywords section
+      navigate('/results', { state: { selectedAnswers } }); // Redirect to the Results page with state
     }
   };
 
@@ -91,15 +86,6 @@ function Queries() {
             ))}
           </form>
           <button onClick={handleNextQuestion}>Next</button>
-        </div>
-      )}
-      {showKeywords && (
-        <div className="selected-keywords">
-          <h2>Selected Keywords</h2>
-          <p>Keyword 1: {selectedAnswers[questions[0].id]}</p>
-          <p>Keyword 2: {selectedAnswers[questions[1].id]}</p>
-          <p>Keyword 3: {selectedAnswers[questions[2].id]}</p>
-          {/* You can customize the display as needed */}
         </div>
       )}
     </div>
