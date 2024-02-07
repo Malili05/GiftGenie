@@ -1,95 +1,107 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
-import './Search.css';
-import questionsData from './Questions'; 
+import { useNavigate } from 'react-router-dom';
+import questionsData from './Questions';
 
 function Search() {
-  const [selectedAnswers, setSelectedAnswers] = useState({});
-  const [questions, setQuestions] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [showOtherInput, setShowOtherInput] = useState(false);
+    const [selectedAnswers, setSelectedAnswers] = useState({});
+    const [questions, setQuestions] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [showOtherInput, setShowOtherInput] = useState(false);
 
-  const navigate = useNavigate(); // Create navigate function for redirecting
+    const navigate = useNavigate();
 
-  // Shuffle the questionsData array
-  const shuffleArray = (array) => {
-    const shuffledArray = [...array];
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-    }
-    return shuffledArray;
-  };
+    const shuffleArray = (array) => {
+        const shuffledArray = [...array];
+        for (let i = shuffledArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+        }
+        return shuffledArray;
+    };
 
-  useEffect(() => {
-    const shuffledQuestions = shuffleArray(questionsData).slice(0, 3);
-    setQuestions(shuffledQuestions);
-  }, []);
+    useEffect(() => {
+        const shuffledQuestions = shuffleArray(questionsData).slice(0, 3);
+        setQuestions(shuffledQuestions);
+    }, []);
 
-  const handleAnswerSelection = (questionId, answer) => {
-    setShowOtherInput(answer === 'Other');
-    setSelectedAnswers({ ...selectedAnswers, [questionId]: answer });
-  };
+    const selectAnswer = (questionId, keyword) => {
+        const isOtherSelected = keyword === 'User-Defined';
+        setShowOtherInput(isOtherSelected);
+        setSelectedAnswers({ ...selectedAnswers, [questionId]: isOtherSelected ? '' : keyword });
+    };
 
-  const handleOtherInputChange = (event) => {
-    setSelectedAnswers({ ...selectedAnswers, [questions[currentIndex].id]: event.target.value });
-  };
+    const handleOtherInputChange = (event) => {
+        setSelectedAnswers({ ...selectedAnswers, [questions[currentIndex].id]: event.target.value });
+    };
 
-  const handleNextQuestion = () => {
-    if (currentIndex < 2) {
-      setCurrentIndex(currentIndex + 1);
-      setShowOtherInput(false);
-    } else {
-      console.log('Selected Answers:', selectedAnswers);
-      navigate('/results', { state: { selectedAnswers } }); // Redirect to the Results page with state
-    }
-  };
+    const handleNextQuestion = () => {
+        if (currentIndex < 2) {
+            setCurrentIndex(currentIndex + 1);
+            setShowOtherInput(false);
+        } else {
+            console.log('Selected Answers:', selectedAnswers);
+            navigate('/results', { state: { selectedAnswers } });
+        }
+    };
 
-  const currentQuestion = questions[currentIndex];
+    const swapQuestion = () => {
+        const remainingQuestions = questionsData.filter(q => 
+            !questions.some(presentQ => presentQ.id === q.id));
+        const newQuestion = shuffleArray(remainingQuestions).slice(0, 1)[0];
+        if (newQuestion) {
+            const updatedQuestions = [...questions];
+            updatedQuestions[currentIndex] = newQuestion;
+            setQuestions(updatedQuestions);
+        }
+    };
 
-  return (
-    <div className="search-container">
-      <h1>Welcome to the Search Page</h1>
-      {currentQuestion && (
-        <div className="question-box">
-          <h2>Question {currentIndex + 1}</h2>
-          <p>{currentQuestion.question}</p>
-          <form>
-            {Object.entries(currentQuestion.answers).map(([answerKey, answerText]) => (
-              <div key={answerKey}>
-                <input
-                  type="radio"
-                  id={`${answerKey}-${currentQuestion.id}`}
-                  name={`answer-${currentQuestion.id}`}
-                  value={answerKey}
-                  checked={selectedAnswers[currentQuestion.id] === answerKey}
-                  onChange={() => handleAnswerSelection(currentQuestion.id, answerKey)}
-                />
-                {answerKey === 'Other' && selectedAnswers[currentQuestion.id] === 'Other' && (
-                  <input
-                    type="text"
-                    placeholder="Enter one word"
-                    value={selectedAnswers[currentQuestion.id] || ''}
-                    onChange={handleOtherInputChange}
-                  />
-                )}
-                {answerKey === 'Other' && !showOtherInput && (
-                  <button
-                    onClick={() => handleAnswerSelection(currentQuestion.id, 'Other')}
-                    type="button"
-                  >
-                    Other
-                  </button>
-                )}
-                <label htmlFor={`${answerKey}-${currentQuestion.id}`}>{answerText}</label>
-              </div>
-            ))}
-          </form>
-          <button onClick={handleNextQuestion}>Next</button>
+    const currentQuestion = questions[currentIndex];
+
+    return (
+        <div className="search-container flex flex-col items-center justify-center h-screen text-center">
+            <h1 className="text-2xl font-bold mb-4 text-yellow-400">Answer for Me These Questions Three!</h1>
+            {currentQuestion && (
+                <div className="question-box bg-gray-100 p-5 rounded-lg shadow-md w-full max-w-md mx-auto">
+                    <h2 className="text-lg font-semibold text-blue-500">Question {currentIndex + 1}</h2>
+                    <p className="mb-3 text-green-300">{currentQuestion.question}</p>
+                    <div>
+                        {currentQuestion.answers.map((answer, index) => (
+                            <div 
+                              key={index} 
+                              className={`p-2 my-2 cursor-pointer ${selectedAnswers[currentQuestion.id] === answer.keyword ? 'text-pink-500 text-lg' : 'text-gray-600'}`}
+                              onClick={() => selectAnswer(currentQuestion.id, answer.keyword)}
+                            >
+                                {answer.displayText}
+                            </div>
+                        ))}
+                        {showOtherInput && (
+                            <input
+                                type="text"
+                                placeholder="Enter one keyword"
+                                value={selectedAnswers[currentQuestion.id] || ''}
+                                onChange={handleOtherInputChange}
+                                className="mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-full"
+                            />
+                        )}
+                    </div>
+                    <div className="flex justify-center mt-4">
+                        <button 
+                            onClick={handleNextQuestion} 
+                            className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300 mr-2"
+                        >
+                            Next
+                        </button>
+                        <button 
+                            onClick={swapQuestion} 
+                            className="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300"
+                        >
+                            Swap Question
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 }
 
 export default Search;

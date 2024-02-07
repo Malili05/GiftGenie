@@ -1,115 +1,116 @@
-const questionsData =[
+const questionsData = [
     {
         "id": 1,
         "question": "What is the occasion?",
-        "answers": {
-            "Birthday": "Birthday",
-            "Valentines": "Valentine",
-            "Easter": "Easter",
-            "Mothers Day": "Mother",
-            "Fathers Day": "Father",
-            "Christmas": "Christmas",
-            "Halloween": "Halloween",
-            "Other": "User-Defined"
-        }
+        "answers": [
+            { "displayText": "Birthday", "keyword": "Birthday" },
+            { "displayText": "Valentines", "keyword": "Valentine" },
+            { "displayText": "Easter", "keyword": "Easter" },
+            { "displayText": "Mothers Day", "keyword": "Mother" },
+            { "displayText": "Fathers Day", "keyword": "Father" },
+            { "displayText": "Christmas", "keyword": "Christmas" },
+            { "displayText": "Halloween", "keyword": "Halloween" },
+            { "displayText": "Other", "keyword": "User-Defined" }
+        ]
     },
     {
         "id": 2,
         "question": "What’s it for?",
-        "answers": {
-            "Wearing": "Apparel",
-            "Eating": "Gourmet",
-            "Playing With": "Toy",
-            "Watching": "Entertainment",
-            "Other": "User-Defined"
-        }
+        "answers": [
+            { "displayText": "Wearing", "keyword": "Apparel" },
+            { "displayText": "Eating", "keyword": "Gourmet" },
+            { "displayText": "Playing With", "keyword": "Toy" },
+            { "displayText": "Watching", "keyword": "Entertainment" },
+            { "displayText": "Other", "keyword": "User-Defined" }
+        ]
     },
     {
         "id": 3,
         "question": "Is this for a romantic partner?",
-        "answers": {
-            "Yes": "Romantic",
-            "No": "General"
-        }
+        "answers": [
+            { "displayText": "Yes", "keyword": "Romantic" },
+            { "displayText": "No", "keyword": "General" }
+        ]
     },
     {
         "id": 4,
         "question": "Is this for a child?",
-        "answers": {
-            "Yes": "Child",
-            "No": "Adult"
-        }
+        "answers": [
+            { "displayText": "Yes", "keyword": "Child" },
+            { "displayText": "No", "keyword": "Adult" }
+        ]
     },
     {
         "id": 5,
         "question": "What is the recipient's favorite color?",
-        "answers": {
-            "Blue": "Blue",
-            "Green": "Green",
-            "Purple": "Purple",
-            "Red": "Red",
-            "Orange": "Orange",
-            "Other": "User-Defined"
-        }
+        "answers": [
+            { "displayText": "Blue", "keyword": "Blue" },
+            { "displayText": "Green", "keyword": "Green" },
+            { "displayText": "Purple", "keyword": "Purple" },
+            { "displayText": "Red", "keyword": "Red" },
+            { "displayText": "Orange", "keyword": "Orange" },
+            { "displayText": "Other", "keyword": "User-Defined" }
+        ]
     },
     {
         "id": 6,
         "question": "What’s your price range for this gift?",
-        "answers": {
-            "High": "Luxury",
-            "Mid-range": "Midrange",
-            "Low": "Budget"
-        }
+        "answers": [
+            { "displayText": "High", "keyword": "Luxury" },
+            { "displayText": "Mid-range", "keyword": "Midrange" },
+            { "displayText": "Low", "keyword": "Budget" }
+        ]
     },
     {
         "id": 7,
         "question": "What room is this gift for?",
-        "answers": {
-            "Kitchen": "Kitchen",
-            "Bathroom": "Bathroom",
-            "Living/Family Room": "Living",
-            "Bedroom": "Bedroom",
-            "Garage": "Garage",
-            "Laundry Room": "Laundry",
-            "Other": "User-Defined"
-        }
+        "answers": [
+            { "displayText": "Kitchen", "keyword": "Kitchen" },
+            { "displayText": "Bathroom", "keyword": "Bathroom" },
+            { "displayText": "Living/Family Room", "keyword": "Living" },
+            { "displayText": "Bedroom", "keyword": "Bedroom" },
+            { "displayText": "Garage", "keyword": "Garage" },
+            { "displayText": "Laundry Room", "keyword": "Laundry" },
+            { "displayText": "Other", "keyword": "User-Defined" }
+        ]
     },
     {
         "id": 8,
         "question": "Does the recipient enjoy any of the following genres?",
-        "answers": {
-            "Fantasy": "Fantasy",
-            "Sci Fi": "SciFi",
-            "True Crime": "Crime",
-            "Mystery": "Mystery",
-            "Romance": "Romance",
-            "Historical Fiction": "Historical",
-            "Horror": "Horror",
-            "Thriller": "Thriller",
-            "Adventure": "Adventure",
-            "Biography": "Biography"
-        }
+        "answers": [
+            { "displayText": "Fantasy", "keyword": "Fantasy" },
+            { "displayText": "Sci Fi", "keyword": "SciFi" },
+            { "displayText": "True Crime", "keyword": "Crime" },
+            { "displayText": "Mystery", "keyword": "Mystery" },
+            { "displayText": "Romance", "keyword": "Romance" },
+            { "displayText": "Historical Fiction", "keyword": "Historical" },
+            { "displayText": "Horror", "keyword": "Horror" },
+            { "displayText": "Thriller", "keyword": "Thriller" },
+            { "displayText": "Adventure", "keyword": "Adventure" },
+            { "displayText": "Biography", "keyword": "Biography" }
+        ]
     },
     {
         "id": 9,
         "question": "Which of these hobbies or interests best describes the gift recipient?",
-        "answers": {
-            "Gardening": "Gardening",
-            "Technology": "Tech",
-            "Cooking": "Cooking",
-            "Sports": "Sports"
-        }
+        "answers": [
+            { "displayText": "Gardening", "keyword": "Gardening" },
+            { "displayText": "Technology", "keyword": "Tech" },
+            { "displayText": "Cooking", "keyword": "Cooking" },
+            { "displayText": "Sports", "keyword": "Sports" }
+        ]
     },
     {
         "id": 10,
         "question": "What type of entertainment does the gift recipient enjoy the most?",
-        "answers": {
-            "Music": "Music",
-            "Books": "Books",
-            "Movies": "Movies",
-            "TV Shows": "TV",
-            "Video Games": "Gaming"
-        }
+        "answers": [
+            { "displayText": "Music", "keyword": "Music" },
+            { "displayText": "Books", "keyword": "Books" },
+            { "displayText": "Movies", "keyword": "Movies" },
+            { "displayText": "TV Shows", "keyword": "TV" },
+            { "displayText": "Video Games", "keyword": "Gaming" }
+        ]
     }
-]
+];
+
 export default questionsData;
