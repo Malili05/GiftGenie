@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate for naviga
 import './Search.css';
 import questionsData from './Questions'; 
 
-function Queries() {
+function Search() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,8 +48,8 @@ function Queries() {
   const currentQuestion = questions[currentIndex];
 
   return (
-    <div className="queries-container">
-      <h1>Welcome to the Queries Page</h1>
+    <div className="search-container">
+      <h1>Welcome to the Search Page</h1>
       {currentQuestion && (
         <div className="question-box">
           <h2>Question {currentIndex + 1}</h2>
@@ -92,4 +92,4 @@ function Queries() {
   );
 }
 
-export default Queries;
+export default Search;
