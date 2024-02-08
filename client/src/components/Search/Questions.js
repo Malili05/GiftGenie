@@ -132,9 +132,17 @@ const questionsData = [
         "question": "Is the recipient interested in wellness or self-care products?",
         "answers": [
             { "displayText": "Yes", "keyword": "wellness" },
-            { "displayText": "No", "keyword": "general" } // Leaving the keyword blank for 'No' responses
+            { "displayText": "No", "keyword": "general" } 
         ]
     }
 ];
 
 export default questionsData;
+
+/* Keyword Master List
+'adult', 'adventure', 'affordable', 'anniversary', 'apparel', 'bathroom', 'bedroom', 'biography', 'birthday', 'blue', 'cheap', 'child', 
+'childrens', 'christmas', 'cooking', 'crime', 'easter', 'expensive', 'fantasy', 'father', 'gadget', 'gaming', 'garage', 'gardening', 'general', 
+'graduation', 'green', 'halloween', 'history', 'horror', 'housewarming', 'kitchen', 'laundry', 'living-room', 'mens', 'mother', 'movies', 'music', 
+'mystery', 'orange', 'purple', 'reading', 'red', 'romance', 'romantic', 'scifi', 'snacks', 'sports', 'tech', 'toy', 'tv', 'tv-shows', 'user-defined', 
+'valentine', 'wellness', 'womens'
+*/

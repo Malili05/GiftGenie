@@ -595,3 +595,11 @@ const initialGifts = [
 ];
 
 module.exports = initialGifts;
+
+/* Keyword Master List
+'adult', 'adventure', 'affordable', 'anniversary', 'apparel', 'bedroom', 'biography', 'birthday', 'black', 'book', 'candle', 'cheap', 
+'child', 'childrens', 'christmas', 'coat', 'crime', 'dining', 'easter', 'expensive', 'fantasy', 'father', 'food', 'gadget', 'gadgets', 
+'gaming', 'gardening', 'general', 'graduation', 'halloween', 'history', 'horror', 'housewarming', 'jewelry', 'kitchen', 'laundry', 'living-room', 
+'mens', 'mother', 'movies', 'music', 'mystery', 'pink', 'reading', 'romantic', 'sci-fi', 'shirt', 'shoes', 'snacks', 'sports', 'tech', 'toy', 'toys', 
+'tv', 'tv-shows', 'valentines', 'wellness', 'womens'
+ */
