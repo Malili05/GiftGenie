@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './index.css'
+import './App.css'
 
 import App from './App.jsx'
 import WelcomePage from './components/WelcomePage';
@@ -20,10 +20,10 @@ const router = createBrowserRouter([
         index: true,
         element: <WelcomePage />
       }, {
-        path: '/login',
+        path: '/Login',
         element: <Login />
       }, {
-        path: '/signup',
+        path: '/Signup',
         element: <Signup />
       }, {
         path: '/Profile',
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         path: 'Results',
         element: <Results />
       }, {
-        path: '/products/:id',
+        path: '/Search',
         element: <Search />
       }
     ]
