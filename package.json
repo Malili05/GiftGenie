@@ -6,7 +6,7 @@
   "scripts": {
     "install-all": "cd server && npm install && cd ../client && npm install",
     "start": "node server/server.js",
-    "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\"",
     "setup": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build",
     "watch": "nodemon server/server.js",

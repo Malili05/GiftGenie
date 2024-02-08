@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom'; 
 
 const Results = () => {
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Results = () => {
 };
 
 const GiftDisplay = ({ onBuy }) => {
-    const giftImageUrl = '/valentineBox.webp'; // Adjust the path as necessary
+    const giftImageUrl = '/valentineBox.webp'; 
 
     return (
         <div className="giftDisplay my-4">
@@ -41,5 +41,6 @@ const GiftDisplay = ({ onBuy }) => {
 };
 
 export default Results;
+
 
 
