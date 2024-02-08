@@ -27,7 +27,7 @@ const typeDefs = gql`
   type Query {
     user: User
     gift(_id: ID!): Gift
-    gifts: [Gift]  
+    gifts(keywords: [String]): [Gift]  
   }
 
   type Mutation {

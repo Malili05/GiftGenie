@@ -12,9 +12,12 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
-    gifts: async () => {
-      // This line will get all gifts from the database
-      return await Gift.find({});
+    gifts: async (_, { keywords }) => {
+      let query = {};
+      if (keywords && keywords.length > 0) {
+        query.keywords = { $in: keywords };
+      }
+      return await Gift.find(query);
     },
   },
   Mutation: {
