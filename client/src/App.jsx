@@ -1,32 +1,35 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { Outlet } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
-import WelcomePage from './components/WelcomePage';
-import Login from './components/Login';
-import Search from './components/Search/Search';
-import Signup from './components/SignUp';
-import Results from './components/Results/Results';
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql', 
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
 const App = () => {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<WelcomePage />} />
-          <Route path="/Search" element={<Search />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path='/Signup' element={<Signup />} />
-          <Route path='/Results' element={<Results />} />
-          {/* Define other routes as needed */}
-        </Routes>
-      </Router>
+          <Outlet />
     </ApolloProvider>
   );
 };
