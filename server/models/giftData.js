@@ -568,6 +568,30 @@ const initialGifts = [
     buyUrl: "https://www.amazon.com/Stargate-Collection-Three-Atlantis-Universe/dp/B08M6GT3VL/ref=sr_1_12_sspa?crid=1DSO4QL9Z8NQ2&keywords=sopranos+complete+series&qid=1707344455&sprefix=sopranos+complete+serie%2Caps%2C127&sr=8-12-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9tdGY&psc=1",
     keywords: ["tv-shows","sci-fi"],
   },
+  {
+    name: "Microwave Popcorn Popper with Temperature Safe Glass",
+    description: "This BPA-free gadget allows for easy and healthy popcorn preparation in the microwave, offering a quick, tasty, and mess-free snack for movie nights or anytime enjoyment.",
+    image: "https://m.media-amazon.com/images/W/MEDIAX_849526-T2/images/I/710PGXTh-4L._AC_SL1500_.jpg",
+    price: 16.35,
+    buyUrl: "https://www.amazon.com/Ecolution-Microwave-Micro-Pop-Borosilicate-Dishwasher/dp/B09CX95397/ref=sr_1_3?crid=165MOON0SD2K0&keywords=Ecolution+Patented+Micro-Pop+Microwave+Popcorn+Popper+with+Temperature+Safe+Glass%2C+3-in-1+Lid+Measures+Kernels+and+Melts+Butter%2C+Made+Without+BPA%2C+Dishwasher+Safe%2C+3-Quart%2C+Aqua&qid=1707361060&sprefix=ecolution+patented+micro-pop+microwave+popcorn+popper+with+temperature+safe+glass%2C+3-in-1+lid+measures+kernels+and+melts+butter%2C+made+without+bpa%2C+dishwasher+safe%2C+3-quart%2C+aqua%2Caps%2C335&sr=8-3",
+    keywords: ["dining","kitchen","food"],
+  },
+  {
+    name: "Miabella 18K Gold Over Sterling Silver Italian 5mm Mesh Link Chain Bracelet for Women",
+    description: "8K gold over sterling silver 5mm Mesh bracelet, featuring interlocking links for a modern and polished look",
+    image: "https://m.media-amazon.com/images/W/MEDIAX_849526-T2/images/I/71S2xqaxdWL._AC_SL1500_.jpg",
+    price: 22.50,
+    buyUrl: "https://www.amazon.com/dp/B07F42X2HP?th=1",
+    keywords: ["jewelry","womens","adult"],
+  },
+  {
+    name: "Birthdate Candles Zodiac Scented Candles",
+    description: "Candles Inspired by the Stars: Your Zodiac sign, emblematic tarot card, ruling number and ruling planet",
+    image: "https://m.media-amazon.com/images/W/MEDIAX_849526-T2/images/I/61E4LvPD7NL._SL1500_.jpg",
+    price: 42.49,
+    buyUrl: "https://www.amazon.com/dp/B09WJ6X7VV?th=1",
+    keywords: ["birthday","adult","candle"],
+  },
 ];
 
 module.exports = initialGifts;

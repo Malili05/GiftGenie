@@ -76,9 +76,9 @@ function Search() {
                     <div>
                         {currentQuestion.answers.map((answer, index) => (
                             <div 
-                              key={index} 
-                              className={`p-2 my-2 cursor-pointer hover:bg-yellow-200 ${selectedAnswers[currentQuestion.id] === answer.keyword ? 'text-pink-500 text-lg' : 'text-gray-600'}`}
-                              onClick={() => selectAnswer(currentQuestion.id, answer.keyword)}
+                                key={index} 
+                                className={`p-2 my-2 cursor-pointer hover:bg-yellow-200 ${selectedAnswers[currentQuestion.id] === answer.keyword ? 'text-pink-500 text-lg' : 'text-gray-600'}`}
+                                onClick={() => selectAnswer(currentQuestion.id, answer.keyword)}
                             >
                                 {answer.displayText}
                             </div>
