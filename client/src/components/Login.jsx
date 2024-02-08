@@ -52,10 +52,19 @@ const Login = () => {
                     <button
                         className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="button"
+                        onClick={Login}
+                    >
+                        Login
+                    </button>
+                    <div className="flex items-center justify-between mx-4">
+                    <button
+                        className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="button"
                         onClick={handleCreateAccountClick}
                     >
                         Make an Account
                     </button>
+                </div>
                 </div>
             </div>
             <p className='mt-4'>
