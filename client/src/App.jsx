@@ -26,6 +26,11 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const client = new ApolloClient({
+  uri: 'http://localhost:3001/graphql', 
+  cache: new InMemoryCache(),
+});
+
 const App = () => {
   return (
     <ApolloProvider client={client}>
