@@ -13,7 +13,7 @@ const questionsData = [
             { "displayText": "Anniversary", "keyword": "anniversary" },
             { "displayText": "Graduation", "keyword": "graduation" },
             { "displayText": "Housewarming", "keyword": "housewarming" },
-            { "displayText": "Other", "keyword": "user-defined" }
+            
         ]
     },
     {
@@ -27,7 +27,7 @@ const questionsData = [
             { "displayText": "Reading", "keyword": "reading" },
             { "displayText": "Cooking", "keyword": "kitchen" },
             { "displayText": "General Use", "keyword": "gadget" },
-            { "displayText": "Other", "keyword": "user-defined" }
+            
         ]
     },
     {
@@ -55,7 +55,7 @@ const questionsData = [
             { "displayText": "Purple", "keyword": "purple" },
             { "displayText": "Red", "keyword": "red" },
             { "displayText": "Orange", "keyword": "orange" },
-            { "displayText": "Other", "keyword": "user-defined" }
+            
         ]
     },
     {
@@ -77,7 +77,7 @@ const questionsData = [
             { "displayText": "Bedroom", "keyword": "bedroom" },
             { "displayText": "Garage", "keyword": "garage" },
             { "displayText": "Laundry Room", "keyword": "laundry" },
-            { "displayText": "Other", "keyword": "user-defined" }
+            
         ]
     },
     {
