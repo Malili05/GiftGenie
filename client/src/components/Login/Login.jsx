@@ -17,6 +17,10 @@ const Login = () => {
     const handleCreateAccountClick = () => {
         navigate('/SignUp');
     };
+    //TODO: Add login logic
+    const handleLogin = () => {
+        navigate('/Profile')
+    }
 
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-40">
@@ -52,7 +56,7 @@ const Login = () => {
                     <button
                         className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="button"
-                        onClick={Login}
+                        onClick={handleLogin}
                     >
                         Login
                     </button>
