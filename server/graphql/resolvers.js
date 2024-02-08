@@ -16,6 +16,12 @@ const resolvers = {
       // This line will get all gifts from the database
       return await Gift.find({});
     },
+    gift: async (parent, { id }) => {
+      Gift.findById(id)
+    },
+    gift: async (parent, { keyword }) => {
+      Gift.findById(keyword)
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {
