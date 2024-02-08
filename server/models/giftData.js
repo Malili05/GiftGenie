@@ -592,12 +592,20 @@ const initialGifts = [
     buyUrl: "https://www.amazon.com/dp/B09WJ6X7VV?th=1",
     keywords: ["birthday","adult","candle"],
   },
+  {
+    name: "Napoleon P665RSIBPSS Prestige RSIB Propane Gas Grill, 665 sq. in + Infrared Side and Rear Burner, Stainless Steel",
+    description: "The Napoleon Prestige 665 propane gas grill offers a complete outdoor kitchen experience with five main burners, an infrared rear and side burner, and iconic wave cooking grids, all housed in high-quality stainless steel for durability and enhanced cooking versatility.",
+    image: "https://m.media-amazon.com/images/I/71dLqflG1IL._AC_SX679_.jpg",
+    price: 1999.00,
+    buyUrl: "https://www.amazon.com/Napoleon-P665RSIBPSS-Prestige-Infrared-Stainless/dp/B07MLFR4KZ/ref=sr_1_1_sspa?crid=30N02NS6H367Z&keywords=barbecue&qid=1707410980&sprefix=barbecue%2Caps%2C132&sr=8-1-spons&ufe=app_do%3Aamzn1.fos.17f26c18-b61b-4ce9-8a28-de351f41cffb&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1",
+    keywords: ["barbecue","cooking","adult","expensive","food","appliance"],
+  },
 ];
 
 module.exports = initialGifts;
 
 /* Keyword Master List
-'adult', 'adventure', 'affordable', 'anniversary', 'apparel', 'bedroom', 'biography', 'birthday', 'black', 'book', 'candle', 'cheap', 
+'adult', 'adventure', 'affordable', 'anniversary', 'apparel', 'barbecue', 'bedroom', 'biography', 'birthday', 'black', 'book', 'candle', 'cheap', 
 'child', 'childrens', 'christmas', 'coat', 'crime', 'dining', 'easter', 'expensive', 'fantasy', 'father', 'food', 'gadget', 'gadgets', 
 'gaming', 'gardening', 'general', 'graduation', 'halloween', 'history', 'horror', 'housewarming', 'jewelry', 'kitchen', 'laundry', 'living-room', 
 'mens', 'mother', 'movies', 'music', 'mystery', 'pink', 'reading', 'romantic', 'sci-fi', 'shirt', 'shoes', 'snacks', 'sports', 'tech', 'toy', 'toys', 

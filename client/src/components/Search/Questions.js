@@ -18,7 +18,7 @@ const questionsData = [
     },
     {
         "id": 2,
-        "question": "What’s it for?",
+        "question": "What is it for?",
         "answers": [
             { "displayText": "Wearing", "keyword": "apparel" },
             { "displayText": "Eating", "keyword": "snacks" },
@@ -134,7 +134,23 @@ const questionsData = [
             { "displayText": "Yes", "keyword": "wellness" },
             { "displayText": "No", "keyword": "general" } 
         ]
-    }
+    },
+    {
+        "id": 13,
+        "question": "Would the recipient rather have an appliance or some jewelry?",
+        "answers": [
+            { "displayText": "Appliance", "keyword": "appliance" },
+            { "displayText": "Jewelry", "keyword": "jewelry" } 
+        ]
+    },
+    {
+        "id": 14,
+        "question": "Lets use fire to ...",
+        "answers": [
+            { "displayText": "Smell Nice Things!", "keyword": "candle" },
+            { "displayText": "Cook Something! ", "keyword": "barbecue" } 
+        ]
+    },
 ];
 
 export default questionsData;
