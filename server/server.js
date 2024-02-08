@@ -1,12 +1,13 @@
 const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
+const cors = require('cors');  
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 require('dotenv').config();
 
 const { typeDefs, resolvers } = require('./graphql');
-const connectDB = require('./config/connection'); // Updated import
+const connectDB = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -15,15 +16,17 @@ const server = new ApolloServer({
   resolvers,
 });
 
-// Create a new instance of an Apollo server with the GraphQL schema
+
 const startApolloServer = async () => {
   await server.start();
-  await connectDB(); // Establish database connection
+  await connectDB(); 
 
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
-  // Serve up static assets
+  app.use(cors());  
+
+  
   app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
 
   app.use('/graphql', expressMiddleware(server, {
@@ -44,5 +47,5 @@ const startApolloServer = async () => {
   });
 };
 
-// Call the async function to start the server
+
 startApolloServer();
