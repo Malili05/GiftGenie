@@ -1,0 +1,36 @@
+.giftDisplay {
+    text-align: center;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Varela Round", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .giftImage {
+    width: 200px;
+    height: 200px;
+    background-color: #729B79; 
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  .buyButton {
+    padding: 10px 20px;
+    background-color: #BACDB0; 
+    border: 2px solid #F3E8EE; 
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px;
+  }
+  
+  .buyButton:hover {
+    background-color: #729B79;
+    border-color: #ff66a5;
+  }
+  
