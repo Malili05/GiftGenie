@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
+import PropTypes from "prop-types"; // Import PropTypes
 
 const GET_GIFTS_QUERY = gql`
   query GetGifts($keywords: [String]) {
@@ -65,6 +66,18 @@ const GiftDisplay = ({ gift }) => {
             <a href={gift.buyUrl} target="_blank" rel="noopener noreferrer" className="block mt-4 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300">BUY THIS</a>
         </div>
     );
+};
+
+
+GiftDisplay.propTypes = {
+    gift: PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        buyUrl: PropTypes.string.isRequired,
+    }).isRequired,
 };
 
 export default Results;
