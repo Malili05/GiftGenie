@@ -5,7 +5,10 @@ import {
   ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
+
 import { setContext } from '@apollo/client/link/context';
+
+import { StoreProvider } from './utils/GlobalState';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -21,15 +24,23 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+// const client = new ApolloClient({
+//   link: authLink.concat(httpLink),
+//   cache: new InMemoryCache(),
+// });
+
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  uri: 'http://localhost:3001/graphql', 
   cache: new InMemoryCache(),
 });
+
 
 const App = () => {
   return (
     <ApolloProvider client={client}>
-          <Outlet />
+      <StoreProvider>
+        <Outlet />
+      </StoreProvider>
     </ApolloProvider>
   );
 };
