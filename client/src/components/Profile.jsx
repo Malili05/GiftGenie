@@ -10,11 +10,11 @@ const Profile = () => {
   // const [profileImageUrl, setProfileImageUrl] = useState('./profilepics/clippygenie3.webp'); 
   const randomImgUrl = ()=>{
     const images = [
-      '/profilepics/clippygenie.webp',
-      '/profilepics/clippygenie2.webp',
-      '/profilepics/clippygenie3.webp',
-      '/profilepics/clippygenie4.webp',
-      '/profilepics/clippygenie5.webp',
+      '/clippygenie1.webp',
+      '/clippygenie2.webp',
+      '/clippygenie3.webp',
+      '/clippygenie4.webp',
+      '/clippygenie5.webp',
     ];
     const randomIndex = Math.floor(Math.random() * images.length);
     return images [randomIndex];
