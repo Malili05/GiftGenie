@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import questionsData from "./Questions/Questions";
+import AuthService from '../utils/auth'; // Import AuthService
 
 function Search() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -14,10 +15,7 @@ function Search() {
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [
-        shuffledArray[j],
-        shuffledArray[i],
-      ];
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
     }
     return shuffledArray;
   };
@@ -72,6 +70,14 @@ function Search() {
 
   const startOver = () => {
     navigate("/"); // Navigate to the main page
+  };
+
+  const goToProfile = () => {
+    navigate('/Profile');
+  };
+
+  const goToLogin = () => {
+    navigate('/Login');
   };
 
   const currentQuestion = questions[currentIndex];
@@ -132,6 +138,21 @@ function Search() {
             </button>
           </div>
         </div>
+      )}
+      {AuthService.loggedIn() ? (
+        <button
+          onClick={goToProfile}
+          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+        >
+          Profile
+        </button>
+      ) : (
+        <button
+          onClick={goToLogin}
+          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+        >
+          Login
+        </button>
       )}
     </div>
   );

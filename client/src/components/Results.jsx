@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import PropTypes from "prop-types"; // Import PropTypes
+import PropTypes from "prop-types";
 import { GET_GIFTS_QUERY } from "../utils/queries";
+import AuthService from '../utils/auth'; // Import AuthService
 
 const Results = () => {
   const navigate = useNavigate();
@@ -15,15 +16,21 @@ const Results = () => {
     variables: { keywords },
     skip: !selectedAnswers,
   });
-  console.log(data);
 
-  const randomGift =
-    data && data.gifts.length > 0
+  const randomGift = data && data.gifts.length > 0
       ? data.gifts[Math.floor(Math.random() * data.gifts.length)]
       : null;
 
   const handleBackToQueries = () => {
     navigate("/");
+  };
+
+  const goToProfile = () => {
+    navigate('/Profile');
+  };
+
+  const goToLogin = () => {
+    navigate('/Login');
   };
 
   if (loading) return <p>Loading...</p>;
@@ -33,7 +40,6 @@ const Results = () => {
     <div className="flex flex-col items-center justify-center h-screen text-center">
       <div className="results-container bg-gray-100 p-5 rounded-lg shadow-md w-full max-w-md mx-auto">
         {randomGift && <GiftDisplay key={randomGift._id} gift={randomGift} />}
-        {console.log(randomGift)}
       </div>
 
       <button
@@ -42,6 +48,21 @@ const Results = () => {
       >
         Start Over
       </button>
+      {AuthService.loggedIn() ? (
+        <button
+          onClick={goToProfile}
+          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+        >
+          Profile
+        </button>
+      ) : (
+        <button
+          onClick={goToLogin}
+          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+        >
+          Login
+        </button>
+      )}
     </div>
   );
 };
