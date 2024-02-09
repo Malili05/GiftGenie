@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
 import AuthService from '../utils/auth';
+import { QUERY_USER } from '../utils/queries';
 
 const Profile = () => {
   const navigate = useNavigate();
+  const { data, loading, error } = useQuery(QUERY_USER);
 
-  // Example state for profile name, saved items, and profile image URL
-  const [profileName, setProfileName] = useState('John Doe');
-  const [savedItems, setSavedItems] = useState(['Item 1', 'Item 2', 'Item 3']); 
+  const [profileName, setProfileName] = useState('');
+  const [savedItems, setSavedItems] = useState(['Item 1', 'Item 2', 'Item 3']);
+
+  // Define randomImgUrl function before its usage
   const randomImgUrl = () => {
     const images = [
       '/clippygenie1.webp',
@@ -19,16 +23,29 @@ const Profile = () => {
     const randomIndex = Math.floor(Math.random() * images.length);
     return images[randomIndex];
   };
+
+  // Call the function after its definition
   const profileImageUrl = randomImgUrl();
+
+  useEffect(() => {
+    if (!AuthService.loggedIn()) {
+      navigate('/login');
+    } else if (data) {
+      setProfileName(data.user.username);
+    }
+  }, [navigate, data]);
 
   const goToWelcomePage = () => {
     navigate('/');
   };
 
   const logout = () => {
-    AuthService.logout(); 
+    AuthService.logout();
     navigate('/Login');
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-4">
