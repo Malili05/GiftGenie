@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-const Login = (props) => {
+const Login = () => {
   const navigate = useNavigate();
   const [formState, setFormState] = useState({ email: "", password: "" });
-  const [login, { error }] = useMutation(LOGIN);
+  const [login, { loading, error }] = useMutation(LOGIN);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -34,7 +34,7 @@ const Login = (props) => {
       Auth.login(token);
       navigate("/profile");
     } catch (e) {
-      console.log(e);
+      console.error("Login error:", e);
     }
   };
 
@@ -76,13 +76,17 @@ const Login = (props) => {
             onChange={handleChange}
           />
         </div>
+        {error && (
+          <p className="text-red-500 text-sm mb-4">Invalid email or password.</p>
+        )}
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
             onClick={handleLogin}
+            disabled={loading} // Disable button during login process
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
           <div className="flex items-center justify-between mx-4">
             <button
