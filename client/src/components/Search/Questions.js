@@ -13,12 +13,12 @@ const questionsData = [
             { "displayText": "Anniversary", "keyword": "anniversary" },
             { "displayText": "Graduation", "keyword": "graduation" },
             { "displayText": "Housewarming", "keyword": "housewarming" },
-            { "displayText": "Other", "keyword": "user-defined" }
+            
         ]
     },
     {
         "id": 2,
-        "question": "What’s it for?",
+        "question": "What is it for?",
         "answers": [
             { "displayText": "Wearing", "keyword": "apparel" },
             { "displayText": "Eating", "keyword": "snacks" },
@@ -27,7 +27,7 @@ const questionsData = [
             { "displayText": "Reading", "keyword": "reading" },
             { "displayText": "Cooking", "keyword": "kitchen" },
             { "displayText": "General Use", "keyword": "gadget" },
-            { "displayText": "Other", "keyword": "user-defined" }
+            
         ]
     },
     {
@@ -55,7 +55,7 @@ const questionsData = [
             { "displayText": "Purple", "keyword": "purple" },
             { "displayText": "Red", "keyword": "red" },
             { "displayText": "Orange", "keyword": "orange" },
-            { "displayText": "Other", "keyword": "user-defined" }
+            
         ]
     },
     {
@@ -77,7 +77,7 @@ const questionsData = [
             { "displayText": "Bedroom", "keyword": "bedroom" },
             { "displayText": "Garage", "keyword": "garage" },
             { "displayText": "Laundry Room", "keyword": "laundry" },
-            { "displayText": "Other", "keyword": "user-defined" }
+            
         ]
     },
     {
@@ -132,9 +132,33 @@ const questionsData = [
         "question": "Is the recipient interested in wellness or self-care products?",
         "answers": [
             { "displayText": "Yes", "keyword": "wellness" },
-            { "displayText": "No", "keyword": "general" } // Leaving the keyword blank for 'No' responses
+            { "displayText": "No", "keyword": "general" } 
         ]
-    }
+    },
+    {
+        "id": 13,
+        "question": "Would the recipient rather have an appliance or some jewelry?",
+        "answers": [
+            { "displayText": "Appliance", "keyword": "appliance" },
+            { "displayText": "Jewelry", "keyword": "jewelry" } 
+        ]
+    },
+    {
+        "id": 14,
+        "question": "Lets use fire to ...",
+        "answers": [
+            { "displayText": "Smell Nice Things!", "keyword": "candle" },
+            { "displayText": "Cook Something! ", "keyword": "barbecue" } 
+        ]
+    },
 ];
 
 export default questionsData;
+
+/* Keyword Master List
+'adult', 'adventure', 'affordable', 'anniversary', 'apparel', 'bathroom', 'bedroom', 'biography', 'birthday', 'blue', 'cheap', 'child', 
+'childrens', 'christmas', 'cooking', 'crime', 'easter', 'expensive', 'fantasy', 'father', 'gadget', 'gaming', 'garage', 'gardening', 'general', 
+'graduation', 'green', 'halloween', 'history', 'horror', 'housewarming', 'kitchen', 'laundry', 'living-room', 'mens', 'mother', 'movies', 'music', 
+'mystery', 'orange', 'purple', 'reading', 'red', 'romance', 'romantic', 'scifi', 'snacks', 'sports', 'tech', 'toy', 'tv', 'tv-shows', 'user-defined', 
+'valentine', 'wellness', 'womens'
+*/
