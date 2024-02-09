@@ -27,7 +27,7 @@ Login to the site with email and password to save ideas and view profile.
 * [Joshua Slem](https://github.com/SlemJosh)
 * [Jared Mcmahon](https://github.com/ProgramerNinja)
 * [Malisa Litten](https://github.com/Malili05)
- *[Landon Peterson](https://github.com/LandoCodesRissian)
+* [Landon Peterson](https://github.com/LandoCodesRissian)
 * [Sam Monson](https://github.com/monsosam)
  
 ## License
