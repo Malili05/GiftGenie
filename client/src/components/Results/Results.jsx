@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import PropTypes from "prop-types"; // Import PropTypes
 import { GET_GIFTS_QUERY } from '../../utils/queries';
 

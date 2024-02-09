@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ADD_USER } from '../../utils/mutations';
+import { ADD_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
-import Auth from '../../utils/auth';
+import Auth from '../utils/auth';
 
 const Signup = () => {
     const navigate = useNavigate();
     const [formState, setFormState] = useState({
-    name: '',
+    username: '',
     email: '',
     password: ''
     });
@@ -25,7 +25,7 @@ const Signup = () => {
         e.preventDefault();
         try {
           const mutationResponse = await addUser({
-            variables: { email: formState.email, password: formState.password },
+            variables: { username: formState.username, email: formState.email, password: formState.password },
           });
           const token = mutationResponse.data.login.token;
           Auth.login(token);
@@ -35,7 +35,7 @@ const Signup = () => {
     console.log(formState); // Just for demonstration, replace this with actual sign-up logic
 
     // After sign-up, redirect the user to the questions
-    navigate('/Queries');
+    navigate('/search');
     };
 
     return (
@@ -43,16 +43,15 @@ const Signup = () => {
         <h1 className="text-3xl font-bold text-blue-800 mb-6">Make an account!</h1>
         <form className="w-full max-w-xs" onSubmit={handleSubmit}>
         <div className="mb-4">
-            <label className="block text-blue-800 text-sm font-bold mb-2" htmlFor="name">
+            <label className="block text-blue-800 text-sm font-bold mb-2" htmlFor="username">
             Name
             </label>
             <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
+            id="username"
             type="text"
             placeholder="Your Name"
-            name="name"
-            value={formState.name}
+            name="username"
             onChange={handleChange}
             />
         </div>
@@ -66,7 +65,6 @@ const Signup = () => {
             type="email"
             placeholder="Email"
             name="email"
-            value={formState.email}
             onChange={handleChange}
             />
         </div>
@@ -80,13 +78,11 @@ const Signup = () => {
             type="password"
             placeholder="******************"
             name="password"
-            value={formState.password}
             onChange={handleChange}
             />
         </div>
         <div className="flex items-center justify-center">
             <button
-            onClick={() => navigate('/Login')}
             className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
             >
