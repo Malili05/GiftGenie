@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AuthService from '../utils/auth';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -7,8 +8,7 @@ const Profile = () => {
   // Example state for profile name, saved items, and profile image URL
   const [profileName, setProfileName] = useState('John Doe');
   const [savedItems, setSavedItems] = useState(['Item 1', 'Item 2', 'Item 3']); 
-  // const [profileImageUrl, setProfileImageUrl] = useState('./profilepics/clippygenie3.webp'); 
-  const randomImgUrl = ()=>{
+  const randomImgUrl = () => {
     const images = [
       '/clippygenie1.webp',
       '/clippygenie2.webp',
@@ -17,16 +17,18 @@ const Profile = () => {
       '/clippygenie5.webp',
     ];
     const randomIndex = Math.floor(Math.random() * images.length);
-    return images [randomIndex];
+    return images[randomIndex];
   };
   const profileImageUrl = randomImgUrl();
 
   const goToWelcomePage = () => {
     navigate('/');
   };
+
   const logout = () => {
-    navigate('/Login')
-  }
+    AuthService.logout(); // Call the logout method from AuthService
+    navigate('/Login');
+  };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-4">
@@ -40,22 +42,18 @@ const Profile = () => {
         ))}
       </ul>
       <div>
-      <button
-        onClick={goToWelcomePage}
-        className="px-6 py-2 bg-blue-900 text-white font-bold 
-        rounded hover:bg-blue-800 focus:outline-none 
-        focus:ring-2 focus:ring-blue-800 focus:ring-opacity-50 mx-4"
-      >
-        Back to Home
-      </button>
-      <button
-        onClick={logout}
-        className="px-6 py-2 bg-blue-900 text-white 
-        font-bold rounded hover:bg-blue-800 focus:outline-none 
-        focus:ring-2 focus:ring-blue-800 focus:ring-opacity-50"
-      >
-        Logout
-      </button>
+        <button
+          onClick={goToWelcomePage}
+          className="px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-50 mx-4"
+        >
+          Back to Home
+        </button>
+        <button
+          onClick={logout}
+          className="px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-50"
+        >
+          Logout
+        </button>
       </div>
     </div>
   );

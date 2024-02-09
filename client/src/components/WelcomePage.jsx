@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HiQuestionMarkCircle } from 'react-icons/hi';
 import lampImage from '/Lamp.webp';
+import AuthService from '../utils/auth'; // Import your AuthService
 
 const WelcomePage = () => {
   const navigate = useNavigate();
@@ -9,6 +10,10 @@ const WelcomePage = () => {
 
   const goToQuestion = () => {
     navigate('/Search');
+  };
+
+  const goToProfile = () => {
+    navigate('/Profile');
   };
 
   const goToLogin = () => {
@@ -45,18 +50,30 @@ const WelcomePage = () => {
               }} 
               className="bg-white p-4 rounded-lg shadow-lg flex items-center justify-center"
             >
-              <p>Click the Lamp to find a gift or click Login below to sign in to your account!</p>
+              {/* Conditionally render text based on authentication status */}
+              <p>
+                Click the Lamp to find a gift or {AuthService.loggedIn() ? 'click on the profile button to visit your profile' : 'click Login below to sign in to your account'}
+              </p>
             </div>
           )}
         </div>
       </div>
       <h1 className="text-4xl font-bold text-blue-800 mb-4">WELCOME TO GIFT GENIE</h1>
-      <button
-        onClick={goToLogin}
-        className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-      >
-        Login
-      </button>
+      {AuthService.loggedIn() ? (
+        <button
+          onClick={goToProfile}
+          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+        >
+          Profile
+        </button>
+      ) : (
+        <button
+          onClick={goToLogin}
+          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+        >
+          Login
+        </button>
+      )}
     </div>
   );
 };
