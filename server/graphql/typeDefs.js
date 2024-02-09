@@ -44,6 +44,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
+    saveGift(giftId: ID!):User
   }
 `;
 

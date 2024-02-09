@@ -29,3 +29,23 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const SAVE_GIFT = gql`
+  mutation SaveGift($giftId: ID!) {
+    saveGift(giftId: $giftId) {
+      _id
+      username
+      email
+      gifts {
+        _id
+        name
+        description
+        image
+        price
+        buyUrl
+      }
+    }
+  }
+`;
+
+

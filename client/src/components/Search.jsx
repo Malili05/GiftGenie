@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import questionsData from "./Questions/Questions";
-import AuthService from '../utils/auth'; // Import AuthService
+import AuthService from '../utils/auth'; 
 
 function Search() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -69,7 +69,7 @@ function Search() {
   };
 
   const startOver = () => {
-    navigate("/"); // Navigate to the main page
+    navigate("/"); 
   };
 
   const goToProfile = () => {

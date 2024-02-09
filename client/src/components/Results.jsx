@@ -1,60 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import PropTypes from "prop-types";
 import { GET_GIFTS_QUERY } from "../utils/queries";
-import AuthService from '../utils/auth'; // Import AuthService
+import { SAVE_GIFT } from "../utils/mutations";
+import AuthService from "../utils/auth";
 
 const Results = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { selectedAnswers } = location.state || {};
-
   const keywords = selectedAnswers ? Object.values(selectedAnswers) : [];
+
+  const [saveGift, { loading: saving, error: saveError }] = useMutation(SAVE_GIFT);
+  const [saveMessage, setSaveMessage] = useState("");
 
   const { loading, error, data } = useQuery(GET_GIFTS_QUERY, {
     variables: { keywords },
     skip: !selectedAnswers,
   });
 
-  const randomGift = data && data.gifts.length > 0
-      ? data.gifts[Math.floor(Math.random() * data.gifts.length)]
-      : null;
+  const randomGift = data && data.gifts.length > 0 ? data.gifts[Math.floor(Math.random() * data.gifts.length)] : null;
+
+  const handleSaveGift = async () => {
+    if (randomGift) {
+      try {
+        await saveGift({ variables: { giftId: randomGift._id } });
+        setSaveMessage("Your gift has been saved to your profile");
+      } catch (error) {
+        console.error("Error in saving gift:", error);
+      }
+    } else {
+      console.error('No gift to save or missing gift ID');
+    }
+  };
 
   const handleBackToQueries = () => {
     navigate("/");
   };
 
   const goToProfile = () => {
-    navigate('/Profile');
+    navigate("/Profile");
   };
 
   const goToLogin = () => {
-    navigate('/Login');
+    navigate("/Login");
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading || saving) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+  if (saveError) return <p>Error in saving: {saveError.message}</p>;
 
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center">
       <div className="results-container bg-gray-100 p-5 rounded-lg shadow-md w-full max-w-md mx-auto">
         {randomGift && <GiftDisplay key={randomGift._id} gift={randomGift} />}
       </div>
+      {saveMessage && <p className="text-green-600">{saveMessage}</p>}
 
-      <button
-        onClick={handleBackToQueries}
-        className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
-      >
-        Start Over
-      </button>
       {AuthService.loggedIn() ? (
-        <button
-          onClick={goToProfile}
-          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-        >
-          Profile
-        </button>
+        <>
+          <button
+            onClick={handleSaveGift}
+            className="mt-4 px-6 py-2 bg-green-500 text-white font-bold rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+          >
+            Save Gift
+          </button>
+          <button
+            onClick={goToProfile}
+            className="mt-4 ml-2 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+          >
+            Profile
+          </button>
+        </>
       ) : (
         <button
           onClick={goToLogin}
@@ -63,6 +81,12 @@ const Results = () => {
           Login
         </button>
       )}
+      <button
+        onClick={handleBackToQueries}
+        className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
+      >
+        Start Over
+      </button>
     </div>
   );
 };
