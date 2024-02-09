@@ -7,7 +7,19 @@ const Profile = () => {
   // Example state for profile name, saved items, and profile image URL
   const [profileName, setProfileName] = useState('John Doe');
   const [savedItems, setSavedItems] = useState(['Item 1', 'Item 2', 'Item 3']); 
-  const [profileImageUrl, setProfileImageUrl] = useState('/clippygenie3.webp'); 
+  // const [profileImageUrl, setProfileImageUrl] = useState('./profilepics/clippygenie3.webp'); 
+  const randomImgUrl = ()=>{
+    const images = [
+      '/profilepics/clippygenie.webp',
+      '/profilepics/clippygenie2.webp',
+      '/profilepics/clippygenie3.webp',
+      '/profilepics/clippygenie4.webp',
+      '/profilepics/clippygenie5.webp',
+    ];
+    const randomIndex = Math.floor(Math.random() * images.length);
+    return images [randomIndex];
+  };
+  const profileImageUrl = randomImgUrl();
 
   const goToWelcomePage = () => {
     navigate('/');
