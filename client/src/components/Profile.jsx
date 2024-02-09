@@ -26,7 +26,7 @@ const Profile = () => {
   };
 
   const logout = () => {
-    AuthService.logout(); // Call the logout method from AuthService
+    AuthService.logout(); 
     navigate('/Login');
   };
 

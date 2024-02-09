@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HiQuestionMarkCircle } from 'react-icons/hi';
 import lampImage from '/Lamp.webp';
-import AuthService from '../utils/auth'; // Import your AuthService
+import AuthService from '../utils/auth'; 
 
 const WelcomePage = () => {
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const WelcomePage = () => {
               }} 
               className="bg-white p-4 rounded-lg shadow-lg flex items-center justify-center"
             >
-              {/* Conditionally render text based on authentication status */}
+             
               <p>
                 Click the Lamp to find a gift or {AuthService.loggedIn() ? 'click on the profile button to visit your profile' : 'click Login below to sign in to your account'}
               </p>
