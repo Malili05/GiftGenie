@@ -1,26 +1,39 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
+import { LOGIN } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
-const Login = () => {
+const Login = (props) => {
     const navigate = useNavigate();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [login, { error }] = useMutation(LOGIN);
 
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
-    };
-
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormState({
+          ...formState,
+          [name]: value,
+        });
+      };
 
     const handleCreateAccountClick = () => {
         navigate('/SignUp');
     };
-    //TODO: Add login logic
-    const handleLogin = () => {
-        navigate('/Profile')
+
+const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      const mutationResponse = await login({
+        variables: { email: formState.email, password: formState.password },
+      });
+      const token = mutationResponse.data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
     }
+  };
+      
 
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-40">
@@ -34,9 +47,9 @@ const Login = () => {
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="username"
                         type="text"
+                        name="username"
                         placeholder="Username"
-                        value={username}
-                        onChange={handleUsernameChange}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="mb-6">
@@ -47,9 +60,9 @@ const Login = () => {
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                         id="password"
                         type="password"
+                        name="password"
                         placeholder="******************"
-                        value={password}
-                        onChange={handlePasswordChange}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="flex items-center justify-between">

@@ -18,13 +18,7 @@ const resolvers = {
         query.keywords = { $in: keywords };
       }
       return await Gift.find(query);
-    },
-    gift: async (parent, { id }) => {
-      Gift.findById(id)
-    },
-    gift: async (parent, { keyword }) => {
-      Gift.findById(keyword)
-    },
+    }
   },
   Mutation: {
     addUser: async (parent, args) => {
