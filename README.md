@@ -22,4 +22,7 @@ Login to the site with email and password to save ideas and view profile.
 MIT
 
 ## Screenshots
-![image](https://github.com/Malili05/GiftGenie/assets/141981157/117a1634-6361-4de7-83f5-d02076df9436)
+
+
+
+
