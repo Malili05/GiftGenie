@@ -7,7 +7,8 @@ Need help finding a gift? GiftGenie helps you find a gift for someone special. S
 ## Table of Contents  
 [Installation](##Installation)  
 [Features](##Features)
-[Usage](##Usage)  
+[Usage](##Usage)
+[Credits](##Credits)
 [License](##License)  
 
 ## Installation
@@ -23,11 +24,11 @@ None required. Navigate to app page and begin.
 Login to the site with email and password to save ideas and view profile.
 
 ## Credits
-*[Joshua Slem](https://github.com/SlemJosh)
-*[Jared Mcmahon](https://github.com/ProgramerNinja)
-*[Malisa Litten](https://github.com/Malili05)
-*[Landon Peterson](https://github.com/LandoCodesRissian)
-*[Sam Monson](https://github.com/monsosam)
+* [Joshua Slem](https://github.com/SlemJosh)
+* [Jared Mcmahon](https://github.com/ProgramerNinja)
+* [Malisa Litten](https://github.com/Malili05)
+ *[Landon Peterson](https://github.com/LandoCodesRissian)
+* [Sam Monson](https://github.com/monsosam)
  
 ## License
 MIT
