@@ -6,6 +6,7 @@ import App from './App.jsx'
 import WelcomePage from './components/WelcomePage';
 import Login from './components//Login/Login';
 import Search from './components/Search/Search';
+import NoMatch from './components/NoMatch';
 import Signup from './components/SignUp';
 import Results from './components/Results/Results';
 import Profile from './components/Profile/Profile';
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    // errorElement: <NoMatch />,
+    errorElement: <NoMatch />,
     children: [
       {
         index: true,

@@ -2,24 +2,15 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import PropTypes from "prop-types"; // Import PropTypes
+import { GET_GIFTS_QUERY } from '../../utils/queries';
 
-const GET_GIFTS_QUERY = gql`
-  query GetGifts($keywords: [String]) {
-    gifts(keywords: $keywords) {
-      _id
-      name
-      description
-      image
-      price
-      buyUrl
-    }
-  }
-`;
+
 
 const Results = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { selectedAnswers } = location.state || {};
+
 
   const keywords = selectedAnswers ? Object.values(selectedAnswers) : [];
 
@@ -27,6 +18,7 @@ const Results = () => {
     variables: { keywords },
     skip: !selectedAnswers,
   });
+  console.log(data)
 
   const randomGift =
     data && data.gifts.length > 0
@@ -44,6 +36,7 @@ const Results = () => {
     <div className="flex flex-col items-center justify-center h-screen text-center">
       <div className="results-container bg-gray-100 p-5 rounded-lg shadow-md w-full max-w-md mx-auto">
         {randomGift && <GiftDisplay key={randomGift._id} gift={randomGift} />}
+        {console.log(randomGift)}
       </div>
 
       <button
