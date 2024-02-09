@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const Gift = require('./Gift');
 
 const userSchema = new Schema({
-  name: {
+  username: {
     type: String,
     required: true,
     trim: true
