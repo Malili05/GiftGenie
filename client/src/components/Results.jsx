@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import PropTypes from "prop-types";
 import { GET_GIFTS_QUERY } from "../utils/queries";
-import { SAVE_GIFT } from "../utils/mutations";
 import AuthService from "../utils/auth";
 
 const Results = () => {
@@ -17,28 +16,9 @@ const Results = () => {
     skip: !selectedAnswers,
   });
 
-  const [saveGift, { loading: saving, error: saveError }] = useMutation(SAVE_GIFT);
-
   const randomGift = data && data.gifts.length > 0 
     ? data.gifts[Math.floor(Math.random() * data.gifts.length)] 
     : null;
-
-  const [saveConfirmation, setSaveConfirmation] = useState("");
-
-  const handleSaveGift = async (event) => {
-    event.preventDefault();
-    if (randomGift) {
-      try {
-        await saveGift({ variables: { giftId: randomGift._id } });
-        setSaveConfirmation("Gift saved successfully!");
-      } catch (error) {
-        console.error("Error in saving gift:", error);
-        setSaveConfirmation("Error saving gift.");
-      }
-    } else {
-      console.error('No gift to save or missing gift ID');
-    }
-  };
 
   const handleBackToQueries = () => {
     navigate("/");
@@ -56,9 +36,8 @@ const Results = () => {
     alert("Hi");
   };
 
-  if (loading || saving) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-  if (saveError) return <p>Error in saving: {saveError.message}</p>;
 
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center">
@@ -67,8 +46,6 @@ const Results = () => {
           <GiftDisplay
             key={randomGift._id}
             gift={randomGift}
-            onSaveGift={handleSaveGift}
-            saveConfirmation={saveConfirmation}
           />
         )}
       </div>
@@ -109,7 +86,7 @@ const Results = () => {
   );
 };
 
-const GiftDisplay = ({ gift, onSaveGift, saveConfirmation }) => (
+const GiftDisplay = ({ gift }) => (
   <div className="giftDisplay my-8">
     <h2 className="font-semibold text-xl mb-4">{gift.name}</h2>
     <img src={gift.image} alt={gift.name} className="mx-auto mb-4 w-1/2" />
@@ -123,16 +100,6 @@ const GiftDisplay = ({ gift, onSaveGift, saveConfirmation }) => (
     >
       BUY THIS
     </a>
-    {AuthService.loggedIn() && (
-      <button
-        type="button"
-        onClick={(e) => onSaveGift(e)}
-        className="mt-4 px-6 py-2 bg-red-500 text-white font-bold rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-      >
-        Save Gift
-      </button>
-    )}
-    {saveConfirmation && <p className="text-green-500 mt-2">{saveConfirmation}</p>}
   </div>
 );
 
@@ -145,8 +112,6 @@ GiftDisplay.propTypes = {
     price: PropTypes.number.isRequired,
     buyUrl: PropTypes.string.isRequired,
   }).isRequired,
-  onSaveGift: PropTypes.func.isRequired,
-  saveConfirmation: PropTypes.string,
 };
 
 export default Results;

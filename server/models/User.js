@@ -20,8 +20,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  gifts: [Gift.schema]
+  savedGifts: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Gift'
+  }]
 });
+
 
 // set up pre-save middleware to create password
 userSchema.pre('save', async function(next) {

@@ -6,7 +6,7 @@ const resolvers = {
     user: async (parent, args, context) => {
       if (context.user) {
         // Fetch the user by ID and populate the gifts
-        const user = await User.findById(context.user._id).populate("gifts");
+        const user = await User.findById(context.user._id).populate("savedGifts");
         return user;
       }
       // If the user is not logged in, throw an authentication error
@@ -52,26 +52,6 @@ const resolvers = {
       // Sign a token for the logged-in user
       const token = signToken(user);
       return { token, user };
-    },
-    saveGift: async (parent, { giftId }, context) => {
-      if (!context.user) {
-        // Throw an authentication error if the user is not logged in
-        throw new AuthenticationError("Not logged in");
-      }
-      // Find the gift by its ID
-      const gift = await Gift.findById(giftId);
-      if (!gift) {
-        // Throw an error if the gift is not found
-        throw new Error("Gift not found");
-      }
-      // Add the gift to the user's profile, avoiding duplicates
-      const user = await User.findByIdAndUpdate(
-        context.user._id,
-        { $addToSet: { gifts: gift._id } },
-        { new: true }
-      ).populate("gifts");
-      // Return the updated user with the new gift
-      return user;
     },
   },
 };

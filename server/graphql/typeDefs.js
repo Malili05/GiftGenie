@@ -5,7 +5,7 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    gifts: [Gift]
+    savedGifts: [Gift]
   }
 
   type Gift {
@@ -44,9 +44,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    saveGift(giftId: ID!):User
   }
 `;
 
 module.exports = typeDefs;
-

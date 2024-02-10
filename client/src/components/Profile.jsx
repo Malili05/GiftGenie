@@ -9,7 +9,7 @@ const Profile = () => {
   const { data, loading, error } = useQuery(QUERY_USER);
 
   const [profileName, setProfileName] = useState('');
-  const [savedItems, setSavedItems] = useState(['Item 1', 'Item 2', 'Item 3']);
+ 
 
   // Define randomImgUrl function before its usage
   const randomImgUrl = () => {
@@ -45,7 +45,7 @@ const Profile = () => {
   };
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-4">
@@ -53,11 +53,6 @@ const Profile = () => {
         <img src={profileImageUrl} alt="Profile" className="w-full h-full object-cover" />
       </div>
       <h1 className="text-4xl font-bold text-blue-800 mb-4">{profileName}'s Profile</h1>
-      <ul className="list-disc text-left mb-4">
-        {savedItems.map((item, index) => (
-          <li key={index} className="text-blue-800">{item}</li>
-        ))}
-      </ul>
       <div>
         <button
           onClick={goToWelcomePage}
@@ -77,3 +72,4 @@ const Profile = () => {
 };
 
 export default Profile;
+
