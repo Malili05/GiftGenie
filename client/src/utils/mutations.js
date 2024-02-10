@@ -36,14 +36,6 @@ export const SAVE_GIFT = gql`
       _id
       username
       email
-      gifts {
-        _id
-        name
-        description
-        image
-        price
-        buyUrl
-      }
     }
   }
 `;

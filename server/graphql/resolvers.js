@@ -53,6 +53,29 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    saveGift: async (parent, { giftId }, context) => {
+      if (context.user) {
+        try {
+          // Logic to save the gift here
+          // Example: Retrieve the user and add the gift to their savedGifts
+          const user = await User.findById(context.user._id);
+          user.savedGifts.push(giftId);
+          await user.save();
+    
+          // Log the successful saving of the gift
+          console.log(`Gift with ID ${giftId} saved successfully for user ${context.user._id}`);
+    
+          return user;
+        } catch (error) {
+          // Log any errors that occur during the saving process
+          console.error("Error saving gift:", error.message);
+          throw new Error("Failed to save gift");
+        }
+      }
+      // Throw an authentication error if the user is not logged in
+      throw new AuthenticationError("Not logged in");
+    },
+    
   },
 };
 
