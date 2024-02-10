@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import PropTypes from "prop-types";
 import { GET_GIFTS_QUERY } from "../utils/queries";
 import AuthService from "../utils/auth";
+import { SAVE_GIFT } from "../utils/mutations"; 
 
 const Results = () => {
   const navigate = useNavigate();
@@ -16,9 +17,18 @@ const Results = () => {
     skip: !selectedAnswers,
   });
 
-  const randomGift = data && data.gifts.length > 0 
-    ? data.gifts[Math.floor(Math.random() * data.gifts.length)] 
-    : null;
+  const [displayedGift, setDisplayedGift] = useState(null); // Initialize state for displayed gift
+
+  useEffect(() => {
+    if (!loading && !error && data && data.gifts.length > 0) {
+      // Set the displayed gift when data is loaded
+      const randomGift = data.gifts[Math.floor(Math.random() * data.gifts.length)];
+      setDisplayedGift(randomGift);
+    }
+  }, [loading, error, data]);
+
+  const [isSaved, setIsSaved] = useState(false);
+  const [saveGift, { error: saveError }] = useMutation(SAVE_GIFT);
 
   const handleBackToQueries = () => {
     navigate("/");
@@ -32,8 +42,17 @@ const Results = () => {
     navigate("/Login");
   };
 
-  const handleTestButton = () => {
-    alert("Hi");
+  const handleSaveGift = (giftId) => {
+    console.log("Saving gift with ID:", giftId); // Log the giftId
+    console.log("Gift to be saved:", displayedGift); // Log all the gift
+    saveGift({ variables: { giftId } })
+      .then(() => {
+        setIsSaved(true);
+      })
+      .catch((error) => {
+        console.error("Error saving gift:", error);
+        setIsSaved(false);
+      });
   };
 
   if (loading) return <p>Loading...</p>;
@@ -42,10 +61,13 @@ const Results = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center">
       <div className="results-container bg-gray-100 p-5 rounded-lg shadow-md w-full max-w-md mx-auto">
-        {randomGift && (
+        {displayedGift && (
           <GiftDisplay
-            key={randomGift._id}
-            gift={randomGift}
+            key={displayedGift._id}
+            gift={displayedGift}
+            handleSaveGift={() => handleSaveGift(displayedGift._id)}
+            isSaved={isSaved}
+            saveError={saveError}
           />
         )}
       </div>
@@ -74,34 +96,44 @@ const Results = () => {
       >
         Start Over
       </button>
-      {AuthService.loggedIn() && (
-        <button
-          onClick={handleTestButton}
-          className="mt-4 px-4 py-2 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-700 transition duration-300"
-        >
-          Test Button
-        </button>
-      )}
     </div>
   );
 };
 
-const GiftDisplay = ({ gift }) => (
-  <div className="giftDisplay my-8">
-    <h2 className="font-semibold text-xl mb-4">{gift.name}</h2>
-    <img src={gift.image} alt={gift.name} className="mx-auto mb-4 w-1/2" />
-    <p className="text-sm mb-2">{gift.description}</p>
-    <p className="text-base font-semibold mb-2">Price: ${gift.price}</p>
-    <a
-      href={gift.buyUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block mt-4 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300"
-    >
-      BUY THIS
-    </a>
-  </div>
-);
+const GiftDisplay = ({ gift, handleSaveGift, isSaved, saveError }) => {
+  return (
+    <div className="giftDisplay my-8">
+      <h2 className="font-semibold text-xl mb-4">{gift.name}</h2>
+      <img src={gift.image} alt={gift.name} className="mx-auto mb-4 w-1/2" />
+      <p className="text-sm mb-2">{gift.description}</p>
+      <p className="text-base font-semibold mb-2">Price: ${gift.price}</p>
+      <a
+        href={gift.buyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block mt-4 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300"
+      >
+        BUY THIS
+      </a>
+      {AuthService.loggedIn() && (
+        <>
+          <button
+            onClick={handleSaveGift}
+            className="block mt-4 mx-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
+          >
+            SAVE THIS GIFT
+          </button>
+          {isSaved && (
+            <p className="text-green-500 mt-2">Gift saved successfully!</p>
+          )}
+          {saveError && (
+            <p className="text-red-500 mt-2">Failed to save the gift. Please try again later.</p>
+          )}
+        </>
+      )}
+    </div>
+  );
+};
 
 GiftDisplay.propTypes = {
   gift: PropTypes.shape({
@@ -112,6 +144,9 @@ GiftDisplay.propTypes = {
     price: PropTypes.number.isRequired,
     buyUrl: PropTypes.string.isRequired,
   }).isRequired,
+  handleSaveGift: PropTypes.func.isRequired,
+  isSaved: PropTypes.bool.isRequired,
+  saveError: PropTypes.object,
 };
 
 export default Results;
