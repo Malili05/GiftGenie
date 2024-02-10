@@ -10,8 +10,10 @@ const Signup = () => {
     username: "",
     email: "",
     password: "",
+    confirmPassword: "", 
   });
   const [addUser, { loading, error }] = useMutation(ADD_USER);
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -19,13 +21,26 @@ const Signup = () => {
       ...formState,
       [name]: value,
     });
+
+    
+    if (name === "confirmPassword") {
+      if (formState.password !== value) {
+        setPasswordsMatch(false);
+      } else {
+        setPasswordsMatch(true);
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (!formState.username || !formState.email || !formState.password) {
+      if (!formState.username || !formState.email || !formState.password || !formState.confirmPassword) {
         throw new Error("All fields are required.");
+      }
+      
+      if (formState.password !== formState.confirmPassword) {
+        throw new Error("Passwords do not match.");
       }
 
       const mutationResponse = await addUser({
@@ -44,10 +59,10 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-40">
+    <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-10"> 
       <h1 className="text-3xl font-bold text-blue-800 mb-6">Make an account!</h1>
-      <form className="w-full max-w-xs" onSubmit={handleSubmit}>
-        <div className="mb-4">
+      <form className="w-full max-w-md" onSubmit={handleSubmit}> 
+        <div className="mb-2">
           <label className="block text-blue-800 text-sm font-bold mb-2" htmlFor="username">
             Name
           </label>
@@ -65,7 +80,7 @@ const Signup = () => {
             <p className="text-red-500 text-sm">Username is required.</p>
           )}
         </div>
-        <div className="mb-4">
+        <div className="mb-2">
           <label className="block text-blue-800 text-sm font-bold mb-2" htmlFor="email">
             Email
           </label>
@@ -86,7 +101,7 @@ const Signup = () => {
             <p className="text-red-500 text-sm">Email is already registered.</p>
           )}
         </div>
-        <div className="mb-6">
+        <div className="mb-0"> 
           <label className="block text-blue-800 text-sm font-bold mb-2" htmlFor="password">
             Password
           </label>
@@ -105,6 +120,30 @@ const Signup = () => {
           )}
           {error && error.message.includes("password") && (
             <p className="text-red-500 text-sm">Password must be at least 6 characters long.</p>
+          )}
+        </div>
+        <div className="mb-2"> 
+          <label className="block text-blue-800 text-sm font-bold mb-2" htmlFor="confirmPassword">
+            Confirm Password
+          </label>
+          <input
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none ${
+              (!formState.confirmPassword || !passwordsMatch) && error ? "border-red-500" : "" 
+            }`}
+            id="confirmPassword"
+            type="password"
+            placeholder="******************"
+            name="confirmPassword"
+            onChange={handleChange}
+          />
+          {!passwordsMatch && (
+            <p className="text-red-500 text-sm">Passwords do not match.</p> 
+          )}
+          {error && !formState.confirmPassword && (
+            <p className="text-red-500 text-sm">Please confirm your password.</p>
+          )}
+          {error && error.message.includes("password") && (
+            <p className="text-red-500 text-sm">Passwords must match.</p> 
           )}
         </div>
         {error && !error.message.includes("duplicate key error") && (

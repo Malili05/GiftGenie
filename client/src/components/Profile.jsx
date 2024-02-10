@@ -45,7 +45,7 @@ const Profile = () => {
   };
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Error :</p>;
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-4">
