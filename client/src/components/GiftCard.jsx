@@ -4,6 +4,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useMutation } from '@apollo/client';
 import { DELETE_GIFT, UPDATE_GIFT_PRIORITY } from '../utils/mutations'; 
 import { QUERY_USER } from '../utils/queries';
+import { useState } from 'react';
 
 const GiftCard = ({ gift }) => {
   const [deleteGift] = useMutation(DELETE_GIFT, {
@@ -14,18 +15,26 @@ const GiftCard = ({ gift }) => {
   });
 
   const [updatePriority] = useMutation(UPDATE_GIFT_PRIORITY); 
+  const [isChecked, setIsChecked] = useState(!!gift.priority);
 
   const handleDelete = () => {
     deleteGift();
   };
 
   const handlePriorityChange = (event) => {
-    const newPriority = event.target.checked; 
-    updatePriority({ variables: { giftId: gift._id, priority: newPriority } }); 
+    event.preventDefault(); // Prevent the default behavior
+    const newPriority = event.target.checked;
+    updatePriority({ variables: { giftId: gift._id, priority: newPriority } });
+    setIsChecked(newPriority);
+  };
+
+  const cardStyle = {
+    backgroundColor: isChecked ? 'purple' : 'white',
+    boxShadow: isChecked ? '0 0 10px purple' : 'none'
   };
 
   return (
-    <div className="gift-card flex flex-col items-center justify-center border border-gray-300 rounded p-4 mb-4 transition-transform duration-300 hover:scale-105 bg-white">
+    <div className="gift-card flex flex-col items-center justify-center border border-gray-300 rounded p-4 mb-4 transition-transform duration-300 hover:scale-105 bg-white" style={cardStyle}>
       <div className="image-container w-40 h-40 mb-2">
         <img src={gift.image} alt={gift.name} className="gift-image object-contain h-full w-full" />
       </div>
@@ -34,15 +43,18 @@ const GiftCard = ({ gift }) => {
           <p className="price">${gift.price}</p>
         </div>
         <div className="flex justify-between items-center px-4">
-          <button onClick={handleDelete} className="delete-button border border-gray-300 rounded p-2">
+          <button onClick={handleDelete} className="delete-button border border-gray-300 rounded p-2 mr-">
             <FontAwesomeIcon icon={faTrash} className="text-red-600" />
           </button>
-          <input
-            type="checkbox"
-            checked={gift.priority} 
-            onChange={handlePriorityChange} 
-          />
-          <label>Priority</label>
+          <div className="flex flex-col items-center">
+            <input
+              id={`priority-checkbox-${gift._id}`}
+              type="checkbox"
+              checked={isChecked} 
+              onChange={handlePriorityChange} 
+            />
+            <label htmlFor={`priority-checkbox-${gift._id}`} className="mb-2">Must Have</label>
+          </div>
           <a href={gift.buyUrl} target="_blank" rel="noopener noreferrer" className="buy-button text-blue-600 font-bold py-2 px-4 border border-blue-600 rounded">Buy</a>
         </div>
       </div>

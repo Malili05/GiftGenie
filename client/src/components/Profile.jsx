@@ -7,7 +7,7 @@ import GiftCard from './GiftCard';
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { data, loading, error, refetch } = useQuery(QUERY_USER);
+  const { data, refetch } = useQuery(QUERY_USER);
 
   const [profileName, setProfileName] = useState('');
 
@@ -50,14 +50,16 @@ const Profile = () => {
       <h1 className="text-4xl font-bold text-blue-800 mb-4">{profileName}&rsquo;s Profile</h1>
 
       <h2 className="text-2xl font-bold text-blue-800 mb-4">Saved Gifts</h2>
-      <div className="max-w-full overflow-auto border-2 border-gray-800 rounded-lg shadow-lg p-4" style={{ maxHeight: '400px' }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      <div className="max-w-[800px] w-full h-auto max-h-[400px] mx-auto overflow-hidden border-2 border-gray-800 rounded-lg shadow-lg p-4">
+        <div className={`grid grid-cols-1 sm:grid-cols-${Math.min(savedGifts?.length || 1, 2)} md:grid-cols-${Math.min(savedGifts?.length || 1, 3)} lg:grid-cols-${Math.min(savedGifts?.length || 1, 4)} xl:grid-cols-${Math.min(savedGifts?.length || 1, 5)} gap-4`}>
           {savedGifts && savedGifts.length > 0 ? (
             savedGifts.map((savedGift) => (
               <GiftCard key={savedGift.gift._id} gift={savedGift.gift} />
             ))
           ) : (
-            <p className="text-lg text-gray-700 text-center">You don&rsquo;t have any saved gifts yet.</p>
+            <div className="flex justify-center items-center h-full">
+              <p className="text-lg text-gray-700">You don&rsquo;t have any saved gifts yet.</p>
+            </div>
           )}
         </div>
       </div>
@@ -65,7 +67,7 @@ const Profile = () => {
       <div className="text-center mt-4">
         <button onClick={goToSearchPage} className="px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-400">Search for More Gifts</button>
       </div>
-      <div className="mt-8">
+      <div className="mt-8 flex justify-center">
         <button onClick={goToWelcomePage} className="px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-50 mx-4">Back to Home</button>
         <button onClick={logout} className="px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-50">Logout</button>
       </div>
