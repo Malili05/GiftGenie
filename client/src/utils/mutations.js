@@ -12,16 +12,8 @@ export const LOGIN = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser(
-    $username: String!
-    $email: String!
-    $password: String!
-  ) {
-    addUser(
-      username: $username
-      email: $email
-      password: $password
-    ) {
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
       token
       user {
         _id
@@ -31,13 +23,37 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_GIFT = gql`
-  mutation SaveGift($giftId: ID!) {
+  mutation saveGift($giftId: ID!) {
     saveGift(giftId: $giftId) {
       _id
       username
       email
+      savedGifts {
+        _id
+        gift {
+          _id
+          name
+        }
+        priority
+      }
     }
   }
 `;
 
-
+export const DELETE_GIFT = gql`
+  mutation deleteGift($giftId: ID!) {
+    deleteGift(giftId: $giftId) {
+      _id
+      username
+      email
+      savedGifts {
+        _id
+        gift {
+          _id
+          name
+        }
+        priority
+      }
+    }
+  }
+`;

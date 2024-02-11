@@ -5,7 +5,7 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    savedGifts: [Gift]
+    savedGifts: [SavedGift]
   }
 
   type Gift {
@@ -18,6 +18,12 @@ const typeDefs = gql`
     keywords: [String]
   }
 
+  type SavedGift {
+    _id: ID
+    gift: Gift
+    priority: Boolean
+  }
+
   type Auth {
     token: ID
     user: User
@@ -26,27 +32,15 @@ const typeDefs = gql`
   type Query {
     user: User
     gift(_id: ID!): Gift
-    gifts(keywords: [String]): [Gift]  # Define the "gifts" field here
+    gifts(keywords: [String]): [Gift]
   }
 
   type Mutation {
-    addUser(
-      username: String!
-      email: String!
-      password: String!
-    ): Auth
-    updateUser(
-      username: String
-      email: String
-      password: String
-    ): User
-    login(
-      email: String!
-      password: String!
-    ): Auth
-    saveGift(
-      giftId: ID!
-    ): User
+    addUser(username: String!, email: String!, password: String!): Auth
+    updateUser(username: String, email: String, password: String): User
+    login(email: String!, password: String!): Auth
+    saveGift(giftId: ID!): User
+    deleteGift(giftId: ID!): User
   }
 `;
 
