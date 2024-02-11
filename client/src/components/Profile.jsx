@@ -52,12 +52,15 @@ const Profile = () => {
       </div>
       <h1 className="text-4xl font-bold text-blue-800 mb-4">{profileName}'s Profile</h1>
       <h2 className="text-2xl font-bold text-blue-800 mb-4">Saved Gifts</h2>
-      <div className="grid grid-cols-5 gap-4"> 
-        {data.user.savedGifts.map((gift, index) => (
-          <div key={gift._id || index} className="bg-white border border-gray-200 rounded-lg shadow-sm transition-transform duration-300 transform hover:scale-105 w-40"> 
-            <GiftCard gift={gift} />
-          </div>
-        ))}
+      <div className="gifts-container overflow-auto h-80 border-2 border-gray-800 rounded-lg shadow-lg p-4">
+        <div className="grid grid-cols-5 gap-4"> 
+          {data.user.savedGifts.map((gift, index) => (
+            <div key={gift._id || index} className="bg-white border border-gray-200 rounded-lg shadow-sm transition-transform duration-300 transform hover:scale-105 w-40"> 
+              <GiftCard gift={gift} />
+            </div>
+          ))}
+        </div>
+        <p className="text-gray-500 text-sm mt-2">Scroll down to view more gifts</p>
       </div>
       <div className="mt-8"> 
         <button
