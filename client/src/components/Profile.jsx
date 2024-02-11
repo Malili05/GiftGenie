@@ -51,25 +51,24 @@ const Profile = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   const hasSavedGifts = data && data.user.savedGifts && data.user.savedGifts.length > 0;
-  const giftCardSize = 300; 
-  const numberOfGifts = data?.user?.savedGifts?.length || 0;
-  const numberOfRows = Math.ceil(numberOfGifts / 5);
-  const numberOfColumns = Math.min(numberOfGifts, 5);
-  const containerHeight = Math.min(Math.max((numberOfRows * giftCardSize), 300), window.innerHeight * 0.6); 
-  const containerWidth = Math.max(numberOfColumns * giftCardSize, 300);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-4">
-      <div className="inline-block rounded-full overflow-hidden w-40 h-40 border-4 border-blue-900 mb-4">
-        <img src={profileImageUrl} alt="Profile" className="w-full h-full object-cover" />
+    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100 px-4">
+      {/* Profile Image */}
+      <div className="w-40 h-40 relative rounded-full overflow-hidden mb-4 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80">
+        <img src={profileImageUrl} alt="Profile" className="object-cover w-full h-full" />
       </div>
+
+      {/* Profile Name */}
       <h1 className="text-4xl font-bold text-blue-800 mb-4">{profileName}&rsquo;s Profile</h1>
+
+      {/* Saved Gifts */}
       <h2 className="text-2xl font-bold text-blue-800 mb-4">Saved Gifts</h2>
-      <div className={`gifts-container overflow-auto border-2 border-gray-800 rounded-lg shadow-lg p-4`} style={{ height: `${containerHeight}px`, maxWidth: `${containerWidth}px`, display: 'flex', justifyContent: 'center', margin: '0 auto' }}>
-        <div className={`grid grid-cols-${numberOfColumns} gap-4`}>
+      <div className="max-w-full overflow-auto border-2 border-gray-800 rounded-lg shadow-lg p-4" style={{ maxHeight: '400px' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {hasSavedGifts ? (
             data.user.savedGifts.map((gift, index) => (
-              <div key={gift._id || index} className="bg-white border border-gray-200 rounded-lg shadow-sm transition-transform duration-300 transform hover:scale-105 w-40"> 
+              <div key={gift._id || index} className="bg-white border border-gray-200 rounded-lg shadow-sm transition-transform duration-300 transform hover:scale-105">
                 <GiftCard gift={gift} />
               </div>
             ))
@@ -78,6 +77,8 @@ const Profile = () => {
           )}
         </div>
       </div>
+
+      {/* Navigation Buttons */}
       <div className="text-center mt-4">
         <button
           onClick={goToSearchPage}
