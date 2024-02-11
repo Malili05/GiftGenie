@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import AuthService from '../utils/auth';
@@ -63,7 +63,7 @@ const Profile = () => {
       <div className="inline-block rounded-full overflow-hidden w-40 h-40 border-4 border-blue-900 mb-4">
         <img src={profileImageUrl} alt="Profile" className="w-full h-full object-cover" />
       </div>
-      <h1 className="text-4xl font-bold text-blue-800 mb-4">{profileName}'s Profile</h1>
+      <h1 className="text-4xl font-bold text-blue-800 mb-4">{profileName}&rsquo;s Profile</h1>
       <h2 className="text-2xl font-bold text-blue-800 mb-4">Saved Gifts</h2>
       <div className={`gifts-container overflow-auto border-2 border-gray-800 rounded-lg shadow-lg p-4`} style={{ height: `${containerHeight}px`, maxWidth: `${containerWidth}px`, display: 'flex', justifyContent: 'center', margin: '0 auto' }}>
         <div className={`grid grid-cols-${numberOfColumns} gap-4`}>
@@ -74,7 +74,7 @@ const Profile = () => {
               </div>
             ))
           ) : (
-            <p className="text-lg text-gray-700 text-center">You don't have any saved gifts yet.</p>
+            <p className="text-lg text-gray-700 text-center">You don&rsquo;t have any saved gifts yet.</p>
           )}
         </div>
       </div>
