@@ -22,7 +22,7 @@ const GiftCard = ({ gift }) => {
   };
 
   const handlePriorityChange = (event) => {
-    event.preventDefault(); // Prevent the default behavior
+    event.preventDefault(); 
     const newPriority = event.target.checked;
     updatePriority({ variables: { giftId: gift._id, priority: newPriority } });
     setIsChecked(newPriority);
