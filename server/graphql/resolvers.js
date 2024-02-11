@@ -77,7 +77,29 @@ const resolvers = {
       await user.save();
       return user;
     },
-  }
+    updateGiftPriority: async (_, { giftId, priority }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError("Not logged in");
+      }
+      
+      const user = await User.findById(context.user._id);
+      
+      // Find the saved gift object
+      const savedGift = user.savedGifts.find(savedGift => savedGift.gift.toString() === giftId);
+      
+      if (!savedGift) {
+        throw new Error("Gift not found in saved gifts");
+      }
+
+      // Update the priority of the gift
+      savedGift.priority = priority;
+
+      await user.save();
+      
+      return user;
+    },
+  },
 };
+
 
 module.exports = resolvers;

@@ -57,3 +57,20 @@ export const DELETE_GIFT = gql`
     }
   }
 `;
+
+
+export const UPDATE_GIFT_PRIORITY = gql`
+  mutation updateGiftPriority($giftId: ID!, $priority: Boolean!) {
+    updateGiftPriority(giftId: $giftId, priority: $priority) {
+      _id
+      savedGifts {
+        _id
+        gift {
+          _id
+          name
+        }
+        priority
+      }
+    }
+  }
+`;

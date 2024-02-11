@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useMutation } from '@apollo/client';
-import { DELETE_GIFT } from '../utils/mutations';
+import { DELETE_GIFT, UPDATE_GIFT_PRIORITY } from '../utils/mutations'; 
 import { QUERY_USER } from '../utils/queries';
 
 const GiftCard = ({ gift }) => {
@@ -13,8 +13,15 @@ const GiftCard = ({ gift }) => {
     onError: (error) => console.error(`Error deleting gift: ${error.message}`)
   });
 
+  const [updatePriority] = useMutation(UPDATE_GIFT_PRIORITY); 
+
   const handleDelete = () => {
     deleteGift();
+  };
+
+  const handlePriorityChange = (event) => {
+    const newPriority = event.target.checked; 
+    updatePriority({ variables: { giftId: gift._id, priority: newPriority } }); 
   };
 
   return (
@@ -30,6 +37,12 @@ const GiftCard = ({ gift }) => {
           <button onClick={handleDelete} className="delete-button border border-gray-300 rounded p-2">
             <FontAwesomeIcon icon={faTrash} className="text-red-600" />
           </button>
+          <input
+            type="checkbox"
+            checked={gift.priority} 
+            onChange={handlePriorityChange} 
+          />
+          <label>Priority</label>
           <a href={gift.buyUrl} target="_blank" rel="noopener noreferrer" className="buy-button text-blue-600 font-bold py-2 px-4 border border-blue-600 rounded">Buy</a>
         </div>
       </div>
@@ -44,6 +57,7 @@ GiftCard.propTypes = {
     name: PropTypes.string,
     price: PropTypes.number,
     buyUrl: PropTypes.string,
+    priority: PropTypes.bool 
   }).isRequired,
 };
 

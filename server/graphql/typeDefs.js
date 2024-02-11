@@ -36,11 +36,12 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth  # Keep addUser mutation
     updateUser(username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
     saveGift(giftId: ID!): User
     deleteGift(giftId: ID!): User
+    updateGiftPriority(giftId: ID!, priority: Boolean!): User
   }
 `;
 
