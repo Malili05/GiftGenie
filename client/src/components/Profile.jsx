@@ -50,8 +50,8 @@ const Profile = () => {
       <h1 className="text-4xl font-bold text-blue-800 mb-4">{profileName}&rsquo;s Profile</h1>
 
       <h2 className="text-2xl font-bold text-blue-800 mb-4">Saved Gifts</h2>
-      <div className="max-w-[800px] w-full h-auto max-h-[400px] mx-auto overflow-hidden border-2 border-gray-800 rounded-lg shadow-lg p-4">
-        <div className={`grid grid-cols-1 sm:grid-cols-${Math.min(savedGifts?.length || 1, 2)} md:grid-cols-${Math.min(savedGifts?.length || 1, 3)} lg:grid-cols-${Math.min(savedGifts?.length || 1, 4)} xl:grid-cols-${Math.min(savedGifts?.length || 1, 5)} gap-4`}>
+      <div className="max-w-[800px] w-full mx-auto border-2 border-gray-800 rounded-lg shadow-lg p-4 overflow-y-auto" style={{ maxHeight: "calc(1.5 * (300px + 1rem))" }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {savedGifts && savedGifts.length > 0 ? (
             savedGifts.map((savedGift) => (
               <GiftCard key={savedGift.gift._id} gift={savedGift.gift} />
