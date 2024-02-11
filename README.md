@@ -19,7 +19,6 @@ Need help finding a gift? GiftGenie helps you find a gift for someone special. S
 ![React Badge](https://img.shields.io/badge/-React-blue?style=flat-square&logo=react)
 ![Node.js Badge](https://img.shields.io/badge/-Node.js-green?style=flat-square&logo=node.js)
 ![MongoDB Badge](https://img.shields.io/badge/-MongoDB-brightgreen?style=flat-square&logo=mongodb)
-![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
 
 
