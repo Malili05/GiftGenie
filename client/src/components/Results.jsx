@@ -64,15 +64,17 @@ const Results = () => {
         {displayedGift && <GiftDisplay gift={displayedGift} handleSaveGift={() => handleSaveGift(displayedGift._id)} isSaved={isSaved} saveError={saveError} />}
       </div>
 
-      {AuthService.loggedIn() && (
-        <button onClick={goToProfile} className="mt-4 ml-2 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50">Profile</button>
-      )}
+      <div className="flex mt-4 space-x-4">
+        {AuthService.loggedIn() && (
+          <button onClick={goToProfile} className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Profile</button>
+        )}
 
-      {!AuthService.loggedIn() && (
-        <button onClick={goToLogin} className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50">Login</button>
-      )}
+        {!AuthService.loggedIn() && (
+          <button onClick={goToLogin} className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Login</button>
+        )}
 
-      <button onClick={handleBackToQueries} className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Start Over</button>
+        <button onClick={handleBackToQueries} className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Start Over</button>
+      </div>
     </div>
   );
 };
