@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import AuthService from '../utils/auth';
 import { QUERY_USER } from '../utils/queries';
-import GiftCard from './GiftCard'; // Import the GiftCard component
+import GiftCard from './GiftCard'; 
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -52,14 +52,14 @@ const Profile = () => {
       </div>
       <h1 className="text-4xl font-bold text-blue-800 mb-4">{profileName}'s Profile</h1>
       <h2 className="text-2xl font-bold text-blue-800 mb-4">Saved Gifts</h2>
-      <div className="grid grid-cols-5 gap-4"> {/* Adjusted to 5 columns */}
+      <div className="grid grid-cols-5 gap-4"> 
         {data.user.savedGifts.map((gift, index) => (
-          <div key={gift._id || index} className="bg-white border border-gray-200 rounded-lg shadow-sm transition-transform duration-300 transform hover:scale-105 w-40"> {/* Added fixed size */}
+          <div key={gift._id || index} className="bg-white border border-gray-200 rounded-lg shadow-sm transition-transform duration-300 transform hover:scale-105 w-40"> 
             <GiftCard gift={gift} />
           </div>
         ))}
       </div>
-      <div className="mt-8"> {/* Add margin top to create space */}
+      <div className="mt-8"> 
         <button
           onClick={goToWelcomePage}
           className="px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-50 mx-4"
