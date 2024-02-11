@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import AuthService from '../utils/auth';
@@ -55,7 +55,7 @@ const Profile = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100 px-4">
       {/* Profile Image */}
-      <div className="w-40 h-40 relative rounded-full overflow-hidden mb-4 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80">
+      <div className="w-32 h-32 relative rounded-full overflow-hidden mb-4 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64">
         <img src={profileImageUrl} alt="Profile" className="object-cover w-full h-full" />
       </div>
 
