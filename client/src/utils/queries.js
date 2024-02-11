@@ -7,11 +7,15 @@ export const QUERY_USER = gql`
       username
       savedGifts {
         _id
-        name
-        description
-        image
-        price
-        buyUrl
+        gift {
+          _id
+          name
+          description
+          image
+          price
+          buyUrl
+        }
+        priority
       }
     }
   }
