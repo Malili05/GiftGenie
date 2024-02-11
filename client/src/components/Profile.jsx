@@ -45,10 +45,6 @@ const Profile = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  // Calculate the number of columns based on the number of items
-  const numItems = data.user.savedGifts.length;
-  const numCols = numItems > 5 ? 5 : numItems;
-
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-4">
       <div className="inline-block rounded-full overflow-hidden w-40 h-40 border-4 border-blue-900 mb-4">
@@ -56,10 +52,10 @@ const Profile = () => {
       </div>
       <h1 className="text-4xl font-bold text-blue-800 mb-4">{profileName}'s Profile</h1>
       <h2 className="text-2xl font-bold text-blue-800 mb-4">Saved Gifts</h2>
-      <div className={`grid grid-cols-${numCols} gap-4`}> {/* Adjusted to dynamic number of columns */}
+      <div className="grid grid-cols-5 gap-4"> {/* Adjusted to 5 columns */}
         {data.user.savedGifts.map((gift, index) => (
-          <div key={gift._id || index} className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm transition-transform duration-300 transform hover:scale-105 w-40"> {/* Added fixed size */}
-            <GiftCard gift={gift} index={index} />
+          <div key={gift._id || index} className="bg-white border border-gray-200 rounded-lg shadow-sm transition-transform duration-300 transform hover:scale-105 w-40"> {/* Added fixed size */}
+            <GiftCard gift={gift} />
           </div>
         ))}
       </div>
