@@ -78,21 +78,29 @@ const Results = () => {
 };
 
 const GiftDisplay = ({ gift, handleSaveGift, isSaved, saveError }) => (
-  <div className="giftDisplay my-8">
+  <div className="giftDisplay my-8 w-full max-w-md">
     <h2 className="font-semibold text-xl mb-4">{gift.name}</h2>
-    <img src={gift.image} alt={gift.name} className="mx-auto mb-4 w-1/2" />
-    <p className="text-sm mb-2">{gift.description}</p>
-    <p className="text-base font-semibold mb-2">Price: ${gift.price}</p>
-    <a href={gift.buyUrl} target="_blank" rel="noopener noreferrer" className="block mt-4 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300">BUY THIS</a>
-    {AuthService.loggedIn() && (
-      <>
-        <button onClick={handleSaveGift} className="block mt-4 mx-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">SAVE THIS GIFT</button>
-        {isSaved && <p className="text-green-500 mt-2">Gift saved successfully!</p>}
-        {saveError && <p className="text-red-500 mt-2">Failed to save the gift. Please try again later.</p>}
-      </>
-    )}
+    <div className="image-container w-full h-60 mb-4">
+      <img src={gift.image} alt={gift.name} className="mx-auto h-full w-full object-contain" />
+    </div>
+    <div className="text-container">
+      <p className="text-sm mb-2">{gift.description}</p>
+      <p className="text-base font-semibold mb-2">Price: ${gift.price}</p>
+    </div>
+    <div className="button-container">
+      <a href={gift.buyUrl} target="_blank" rel="noopener noreferrer" className="block mt-4 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300">BUY THIS</a>
+      {AuthService.loggedIn() && (
+        <>
+          <button onClick={handleSaveGift} className="block mt-4 mx-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">SAVE THIS GIFT</button>
+          {isSaved && <p className="text-green-500 mt-2">Gift saved successfully!</p>}
+          {saveError && <p className="text-red-500 mt-2">Failed to save the gift. Please try again later.</p>}
+        </>
+      )}
+    </div>
   </div>
 );
+
+
 
 GiftDisplay.propTypes = {
   gift: PropTypes.shape({
