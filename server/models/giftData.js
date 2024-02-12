@@ -617,11 +617,11 @@ const initialGifts = [
     keywords: ""
   },
   { 
-    name: "",
-    description: "",
-    image: "",
-    price: "",
-    buyUrl: "",
+    name: "PAPERAGE Lined Journal Notebooks, 10 Pack, (Rainbow), 160 Pages, Medium 5.7 inches x 8 inches - 100 gsm Thick Paper, Hardcover",
+    description: "BEST-SELLING HARDCOVER JOURNAL: This medium 5.7 in by 8 in lined notebook features durable and water-resistant vegan leather cover, rounded corners, 160 pages, inner expandable pocket, sticker labels, ribbon bookmark & elastic closure band.",
+    image: "https://m.media-amazon.com/images/I/81KZ3puYxwL._AC_SX425_.jpg",
+    price: "$62.95",
+    buyUrl: "https://www.amazon.com/PAPERAGE-Journal-Notebooks-Rainbow-Medium/dp/B0BC2DFCJF/ref=sxin_14_pa_sp_search_thematic?content-id=amzn1.sym.5268d850-b53a-4d2b-93db-c4d525be24eb%3Aamzn1.sym.5268d850-b53a-4d2b-93db-c4d525be24eb&crid=2LDMNILFHIZB4&cv_ct_cx=notebook&keywords=notebook&pd_rd_i=B0BC2DFCJF&pd_rd_r=a0bb8c2d-7f5f-4468-869c-ddcc842148e3&pd_rd_w=pTZbd&pd_rd_wg=Q0BPx&pf_rd_p=5268d850-b53a-4d2b-93db-c4d525be24eb&pf_rd_r=SSQ1Z45E8K5D0DRA28K6&qid=1707778323&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=not%2Caps%2C273&sr=1-4-e7845da7-4b73-4873-b4b5-aec156390e83-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&th=1",
     keywords: ""
   },
   { 
