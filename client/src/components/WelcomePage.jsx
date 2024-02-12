@@ -32,18 +32,27 @@ const WelcomePage = () => {
             <h2 className="text-3xl font-bold text-blue-800 mb-2">
               Welcome To
             </h2>
-            <h1 className="text-6xl font-bold text-blue-800 mb-4" style={{ textShadow: "0 0 5px black", color: "#F7D56A", marginBottom: "5px", marginTop: "35px" }}>
+            <h1
+              className="text-6xl font-bold text-blue-800 mb-4"
+              style={{
+                textShadow: "0 0 5px black",
+                color: "#F7D56A",
+                marginBottom: "5px",
+                marginTop: "35px",
+              }}
+            >
               Gift Genie
             </h1>
           </header>
           <div className="text-center mb-8">
             <p className="text-lg text-gray-800 mb-4">
-              Click on the lamp to begin
-              <br />
-              the search for the perfect gift.
+              Click on the lamp to begin the search for the perfect gift.
             </p>
           </div>
-          <div className="relative animate-bounce" style={{ animationDuration: "2s" }}>
+          <div
+            className="relative animate-bounce"
+            style={{ animationDuration: "2s" }}
+          >
             <img
               src={lampImage}
               alt="Genie Lamp"
@@ -59,34 +68,34 @@ const WelcomePage = () => {
             <div className="text-center mt-4">
               <button
                 onClick={goToProfile}
-                className="px-6 py-2 bg-blue-800 text-white font-bold rounded-full hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+                className="px-6 py-2 bg-blue-800 text-white font-bold rounded-full hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition duration-200 transform hover:scale-105 active:scale-95" // Added Tailwind classes for hover and click effects
                 style={{
                   borderRadius: "20px",
                   lineHeight: "1.5",
                   marginTop: "5px",
+                  letterSpacing: "1px",
                 }}
               >
-                Profile
+                PROFILE
               </button>
-              <p className="text-lg text-gray-600 mt-6">
-                Check your saved gifts
-              </p>
             </div>
           ) : (
             <div className="text-center mt-4">
               <button
                 onClick={goToLogin}
-                className="px-6 py-2 bg-blue-900 text-white font-bold rounded-full hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+                className="px-6 py-2 bg-blue-900 text-white font-bold rounded-full hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition duration-200 transform hover:scale-105 active:scale-95" // Added Tailwind classes for hover and click effects
                 style={{
                   borderRadius: "20px",
                   lineHeight: "1.5",
                   marginTop: "5px",
+                  letterSpacing: "2px",
                 }}
               >
-                Login
+                <span style={{ position: "relative", top: "5px" }}>LOGIN</span>
               </button>
+
               <p className="text-lg text-gray-600 mt-6">
-                By logging <br /> in you can save gifts to your profile.
+                Log in to save gifts.
               </p>
             </div>
           )}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import questionsData from "./Questions/Questions";
-import AuthService from '../utils/auth'; 
+import Navbar from './Navbar'; // Adjust the path as necessary
 
 function Search() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -69,87 +69,76 @@ function Search() {
   };
 
   const startOver = () => {
-    navigate("/"); 
-  };
-
-  const goToProfile = () => {
-    navigate('/Profile');
-  };
-
-  const goToLogin = () => {
-    navigate('/Login');
+    setCurrentIndex(0);
+    setShowOtherInput(false);
+    setQuestions(shuffleArray(questionsData).slice(0, 3));
+    setSelectedAnswers({});
   };
 
   const currentQuestion = questions[currentIndex];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100" style={{ fontFamily: "Lakki Reddy, sans-serif" }}>
-      <h1 className="text-2xl font-bold mb-4 text-yellow-400">Answer for Me These Questions Three!</h1>
-      {currentQuestion && (
-        <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
-          <h2 className="text-lg font-semibold text-blue-500">Question {currentIndex + 1}</h2>
-          <p className="mb-3 text-gray-700">{currentQuestion.question}</p>
-          <div className="flex flex-col items-center w-full">
-            {currentQuestion.answers.map((answer, index) => (
-              <div
-                key={index}
-                className={`p-2 my-2 cursor-pointer hover:bg-yellow-200 ${
-                  selectedAnswers[currentQuestion.id] === answer.keyword
-                    ? "text-pink-500 text-lg"
-                    : "text-gray-600"
-                }`}
-                onClick={() => selectAnswer(currentQuestion.id, answer.keyword)}
-              >
-                {answer.displayText}
-              </div>
-            ))}
-            {showOtherInput && (
-              <input
-                type="text"
-                placeholder="Enter one keyword"
-                value={selectedAnswers[currentQuestion.id] || ""}
-                onChange={handleOtherInputChange}
-                className="mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-full"
-              />
-            )}
+    <div>
+      {/* Main Content */}
+      <div className="relative flex flex-col items-center justify-center py-10 px-4 bg-blue-100 rounded-lg shadow-lg" style={{ fontFamily: "Lakki Reddy, sans-serif", margin: "auto", minWidth: "80%", maxHeight: "600px" }}>
+        {/* Navbar */}
+        <Navbar />
+        {/* Header */}
+        <h1 className="text-2xl font-bold mb-4 text-yellow-400">Answer for Me These Questions Three!</h1>
+        {/* Question Container */}
+        {currentQuestion && (
+          <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md max-w-md mx-auto" 
+          style={{ overflowY: "auto", minWidth: "300px", minHeight: "400px", maxWidth: "80%", maxHeight: "80%", }}>
+            <h2 className="text-lg font-semibold text-blue-500">Question {currentIndex + 1}</h2>
+            <p className="mb-3 text-gray-700">{currentQuestion.question}</p>
+            <div className="flex flex-col items-center w-full">
+              {currentQuestion.answers.map((answer, index) => (
+                <div
+                  key={index}
+                  className={`p-2 my-2 cursor-pointer hover:bg-yellow-200 ${
+                    selectedAnswers[currentQuestion.id] === answer.keyword
+                      ? "text-pink-500 text-lg"
+                      : "text-gray-600"
+                  }`}
+                  onClick={() => selectAnswer(currentQuestion.id, answer.keyword)}
+                >
+                  {answer.displayText}
+                </div>
+              ))}
+              {showOtherInput && (
+                <input
+                  type="text"
+                  placeholder="Enter one keyword"
+                  value={selectedAnswers[currentQuestion.id] || ""}
+                  onChange={handleOtherInputChange}
+                  className="mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-full"
+                />
+              )}
+            </div>
           </div>
-          <div className="flex justify-center mt-4">
-            <button
-              onClick={startOver}
-              className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-700 transition duration-300 mr-3"
-            >
-              Start Over
-            </button>
-            <button
-              onClick={swapQuestion}
-              className="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300 mr-3"
-            >
-              Swap Question
-            </button>
-            <button
-              onClick={handleNextQuestion}
-              className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
-            >
-              Next
-            </button>
-          </div>
+        )}
+        {/* Action Buttons */}
+        <div className="flex justify-center mt-4">
+          <button
+            onClick={startOver}
+            className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-700 transition duration-300 mr-3"
+          >
+            Start Over
+          </button>
+          <button
+            onClick={swapQuestion}
+            className="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300 mr-3"
+          >
+            Swap Question
+          </button>
+          <button
+            onClick={handleNextQuestion}
+            className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
+          >
+            Next
+          </button>
         </div>
-      )}
-      {AuthService.loggedIn() ? (
-        <button
-          onClick={goToProfile}
-          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-        >
-          Profile
-        </button>
-      ) : (
-        <button
-          onClick={goToLogin}
-          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-        >
-          Login
-        </button>
-      )}
+      </div>
     </div>
   );
 }
