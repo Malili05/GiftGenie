@@ -601,19 +601,19 @@ const initialGifts = [
     keywords: ["barbecue","cooking","adult","expensive","food","appliance"],
   },
   { 
-    name: "",
-    description: "",
+    name: "oridom Preserved Flower Gift, Light Up Rose in Glass Dome, Eternal Forever Rose Flower Gifts for Her, Grandma, Mother’s Day, Valentine’s Day, Anniversary, Birthday, Christmas Decorations, Rose Pink",
+    description: "Never Faded Rose: This forever rose in glass dome with soft and warm light is a symbol of eternal love and hope in the darkness, so is also a simple but meaningful gift for women, mother, grandma, wife, girlfriend on Mother’s Day and Valentine’s Day. We sincerely hope our glass rose flower gift can deliver love and good wishes, bring happiness and good luck to your loved ones especially those in difficult days.",
     image: "https://m.media-amazon.com/images/I/71aYSS-SNdL._AC_SX679_.jpg",
     price: "$18.99",
     buyUrl: "https://www.amazon.com/oridom-Preserved-Valentines-Anniversary-Decorations/dp/B0B3DSHSDH/ref=sr_1_6?crid=CT7YLEOLWKFD&keywords=flower&qid=1707777767&sprefix=flower%2Caps%2C165&sr=8-6&th=1",
     keywords: ""
   },
   { 
-    name: "",
-    description: "",
-    image: "",
-    price: "",
-    buyUrl: "",
+    name: "roliys Preserved Real Roses with Colorful Mood Light Wishing Bottle, Eternal Rose，Never Withered Flowers, Table Decor,Christmas Anniversary Valentine's, Blue 4.3inch, 1pcs",
+    description: "Preserved flower, also named ‘never withered flower’ and ‘eternal flower’ etc, it’s preserved with high quality flowers.",
+    image: "https://m.media-amazon.com/images/I/71MjVmCeCxL._AC_SX679_.jpg",
+    price: "$32.99",
+    buyUrl: "https://www.amazon.com/Preserved-Roses-Wishing-Rose%EF%BC%8CNever-Decorations/dp/B07DT2GBT2/ref=sr_1_25?crid=CT7YLEOLWKFD&keywords=flower&qid=1707778079&sprefix=flower%2Caps%2C165&sr=8-25&th=1",
     keywords: ""
   },
   { 
