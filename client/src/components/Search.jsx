@@ -105,75 +105,96 @@ function Search() {
         >
           Question {currentIndex + 1}
         </h2>
-        <p className="text-xl font-semibold text-blue-800 mb-4">
-          {currentQuestion.question}
-        </p>
         {currentQuestion && (
-          <div
-            className={`bg-white p-6 rounded-lg shadow-md max-w-md mx-auto ${
-              currentQuestion.answers.length <= 3 ? "flex justify-center items-center" : ""
-            }`}
-            style={{
-              overflowY: "auto",
-              minWidth: "300px",
-              minHeight: "200px", // Adjust the minimum height here
-              maxWidth: "80%",
-              maxHeight: "80%",
-            }}
-          >
+          <>
+            <p className="text-xl font-semibold text-purple-600 mb-4">
+              {currentQuestion.question}
+            </p>
             <div
-              className={`${
-                currentQuestion.answers.length >= 4 ? "grid grid-cols-2 gap-4" : "flex flex-col items-center"
-              } w-full`}
+              className={`bg-white p-6 rounded-lg shadow-md max-w-md mx-auto ${
+                currentQuestion.answers.length <= 3
+                  ? "flex justify-center items-center"
+                  : ""
+              }`}
+              style={{
+                overflowY: "auto",
+                minWidth: "300px",
+                minHeight: "200px", // Adjust the minimum height here
+                maxWidth: "80%",
+                maxHeight: "80%",
+              }}
             >
-              {currentQuestion.answers.map((answer, index) => (
-                <div
-                  key={index}
-                  className={`p-2 my-2 cursor-pointer hover:bg-yellow-200 ${
-                    selectedAnswers[currentQuestion.id] === answer.keyword
-                      ? "text-pink-500 text-lg"
-                      : "text-gray-600"
-                  }`}
-                  onClick={() =>
-                    selectAnswer(currentQuestion.id, answer.keyword)
-                  }
-                >
-                  {answer.displayText}
-                </div>
-              ))}
-              {showOtherInput && (
-                <input
-                  type="text"
-                  placeholder="Enter one keyword"
-                  value={selectedAnswers[currentQuestion.id] || ""}
-                  onChange={handleOtherInputChange}
-                  className="mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-full"
-                />
-              )}
+              <div
+                className={`${
+                  currentQuestion.answers.length >= 4
+                    ? "grid grid-cols-2 gap-4"
+                    : "flex flex-col items-center"
+                } w-full`}
+              >
+                {currentQuestion.answers.map((answer, index) => (
+                  <div
+                    key={index}
+                    className={`p-2 my-2 cursor-pointer ${
+                      selectedAnswers[currentQuestion.id] === answer.keyword
+                        ? "text-pink-500 text-lg transform hover:scale-110"
+                        : "text-gray-600 transform hover:scale-110"
+                    }`}
+                    onClick={() =>
+                      selectAnswer(currentQuestion.id, answer.keyword)
+                    }
+                    style={{
+                      transition: "transform 0.3s", // Added transition for transform
+                    }}
+                  >
+                    <span
+                      style={{
+                        borderRadius: "20px",
+                        lineHeight: "1.5",
+                        marginTop: "5px",
+                        letterSpacing: "2px",
+                      }}
+                    >
+                      {answer.displayText}
+                    </span>
+                  </div>
+                ))}
+                {showOtherInput && (
+                  <input
+                    type="text"
+                    placeholder="Enter one keyword"
+                    value={selectedAnswers[currentQuestion.id] || ""}
+                    onChange={handleOtherInputChange}
+                    className="mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-full transform hover:scale-110"
+                  />
+                )}
+              </div>
             </div>
-          </div>
+          </>
         )}
         {/* Action Buttons */}
         <div className="flex justify-center mt-4">
           <button
             onClick={swapQuestion}
-            className="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300 mr-3"
+            className="px-4 py-2 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-700 transition duration-300 mr-3 transform hover:scale-110"
+            style={{
+              marginTop: "10px", // Adjust the marginTop as needed
+            }}
           >
-            Swap Question
+            <span>Swap Question</span>
           </button>
           <button
             onClick={handleNextQuestion}
-            className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
+            className="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300 transform hover:scale-110"
+            style={{
+              marginTop: "10px", // Adjust the marginTop as needed
+            }}
           >
-            Next
+            <span>Next</span>
           </button>
         </div>
       </div>
     </div>
   );
-  
-  
-  
 }
 
 export default Search;
