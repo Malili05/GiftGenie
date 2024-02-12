@@ -633,11 +633,11 @@ const initialGifts = [
     keywords: ""
   },
   { 
-    name: "",
-    description: "",
-    image: "",
-    price: "",
-    buyUrl: "",
+    name: "Shuttle Art Wood-Cased #2 HB Pencils, 350 Pack Sharpened Yellow Pencils with Erasers, Bulk Pack Graphite Pencils for School and Teacher Supplies, Writing, Drawing and Sketching",
+    description: "350 COUNT VALUE PACK: Shuttle Art 350 Pack #2 HB wood-cased yellow pencils in bulk are ideal choice for school, office and home to maintain daily pencil consumption. They are widely used in daily writhing, sketching, examination, marking, and more, especially for kids and teen writing in classroom and home.",
+    image: "https://m.media-amazon.com/images/I/71IupKUoXzL._AC_SX425_.jpg",
+    price: "	$27.99",
+    buyUrl: "https://www.amazon.com/Wood-Cased-Shuttle-Art-Sharpened-Sketching/dp/B0891SSBJT/ref=sr_1_3?crid=1RK3PGGTDCMFU&keywords=pencils&qid=1707778649&s=office-products&sprefix=pencils%2Coffice-products%2C184&sr=1-3-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1",
     keywords: ""
   },
   { 
