@@ -673,11 +673,11 @@ const initialGifts = [
     keywords: ""
   },
   { 
-    name: "",
-    description: "",
-    image: "",
-    price: "",
-    buyUrl: "",
+    name: "Hooyman Digging Shovel with Heavy Duty Carbon Steel Head Construction, Ergonomic No-Slip H-Grip, Oversized Steps, and Serrated Blades for Gardening, Land Management, Yard Work, Farming and Outdoors",
+    description: "DIMENSIONS: 60.25 inches L x 9 inches W x 3 inches D and weighs 4.5 lbs",
+    image: "https://m.media-amazon.com/images/I/51mngaaUKHL._AC_SY879_.jpg",
+    price: "$29.99",
+    buyUrl: "https://www.amazon.com/Hooyman-Construction-Ergonomic-Oversized-Management/dp/B082BX3N97/ref=sr_1_6?crid=MU7YN14YFQVK&keywords=shovel&qid=1707779732&sprefix=shovel%2Caps%2C234&sr=8-6&th=1",
     keywords: ""
   },
 ];
