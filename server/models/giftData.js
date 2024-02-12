@@ -657,11 +657,11 @@ const initialGifts = [
     keywords: ""
   },
   { 
-    name: "",
-    description: "",
-    image: "",
-    price: "",
-    buyUrl: "",
+    name: "Amazon Fire TV 32 inch 2-Series HD smart TV with Fire TV Alexa Voice Remote, stream live TV without cable",
+    description: "High definition TV - Bring movies and shows to life in HD 720p resolution, with support for HDR 10, HLG, and Dolby Digital Audio.",
+    image: "https://m.media-amazon.com/images/I/61CO+jrHHjL._AC_SX425_.jpg",
+    price: "$119.99",
+    buyUrl: "https://www.amazon.com/introducing-amazon-fire-tv-32-inch-2-series-hd-smart-tv/dp/B09N6F9NV3/ref=sr_1_4?crid=22Y9FSH7RAUBY&keywords=Television&qid=1707779324&sprefix=television%2Caps%2C187&sr=8-4",
     keywords: ""
   },
   { 
