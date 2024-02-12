@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import questionsData from "./Questions/Questions";
-import Navbar from "./Navbar"; // Adjust the path as necessary
+import Navbar from "./Navbar"; 
 
 function Search() {
   const [selectedAnswers, setSelectedAnswers] = useState({});

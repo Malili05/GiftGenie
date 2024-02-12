@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ADD_USER } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
-import Navbar from "./Navbar"; // Import the Navbar component
+import Navbar from "./Navbar"; 
 
 const Signup = () => {
   const navigate = useNavigate();
