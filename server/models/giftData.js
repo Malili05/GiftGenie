@@ -600,6 +600,86 @@ const initialGifts = [
     buyUrl: "https://www.amazon.com/Napoleon-P665RSIBPSS-Prestige-Infrared-Stainless/dp/B07MLFR4KZ/ref=sr_1_1_sspa?crid=30N02NS6H367Z&keywords=barbecue&qid=1707410980&sprefix=barbecue%2Caps%2C132&sr=8-1-spons&ufe=app_do%3Aamzn1.fos.17f26c18-b61b-4ce9-8a28-de351f41cffb&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1",
     keywords: ["barbecue","cooking","adult","expensive","food","appliance"],
   },
+  { 
+    name: "oridom Preserved Flower Gift, Light Up Rose in Glass Dome, Eternal Forever Rose Flower Gifts for Her, Grandma, Mother’s Day, Valentine’s Day, Anniversary, Birthday, Christmas Decorations, Rose Pink",
+    description: "Never Faded Rose: This forever rose in glass dome with soft and warm light is a symbol of eternal love and hope in the darkness, so is also a simple but meaningful gift for women, mother, grandma, wife, girlfriend on Mother’s Day and Valentine’s Day. We sincerely hope our glass rose flower gift can deliver love and good wishes, bring happiness and good luck to your loved ones especially those in difficult days.",
+    image: "https://m.media-amazon.com/images/I/71aYSS-SNdL._AC_SX679_.jpg",
+    price: "$18.99",
+    buyUrl: "https://www.amazon.com/oridom-Preserved-Valentines-Anniversary-Decorations/dp/B0B3DSHSDH/ref=sr_1_6?crid=CT7YLEOLWKFD&keywords=flower&qid=1707777767&sprefix=flower%2Caps%2C165&sr=8-6&th=1",
+    keywords: ""
+  },
+  { 
+    name: "roliys Preserved Real Roses with Colorful Mood Light Wishing Bottle, Eternal Rose，Never Withered Flowers, Table Decor,Christmas Anniversary Valentine's, Blue 4.3inch, 1pcs",
+    description: "Preserved flower, also named ‘never withered flower’ and ‘eternal flower’ etc, it’s preserved with high quality flowers.",
+    image: "https://m.media-amazon.com/images/I/71MjVmCeCxL._AC_SX679_.jpg",
+    price: "$32.99",
+    buyUrl: "https://www.amazon.com/Preserved-Roses-Wishing-Rose%EF%BC%8CNever-Decorations/dp/B07DT2GBT2/ref=sr_1_25?crid=CT7YLEOLWKFD&keywords=flower&qid=1707778079&sprefix=flower%2Caps%2C165&sr=8-25&th=1",
+    keywords: ""
+  },
+  { 
+    name: "PAPERAGE Lined Journal Notebooks, 10 Pack, (Rainbow), 160 Pages, Medium 5.7 inches x 8 inches - 100 gsm Thick Paper, Hardcover",
+    description: "BEST-SELLING HARDCOVER JOURNAL: This medium 5.7 in by 8 in lined notebook features durable and water-resistant vegan leather cover, rounded corners, 160 pages, inner expandable pocket, sticker labels, ribbon bookmark & elastic closure band.",
+    image: "https://m.media-amazon.com/images/I/81KZ3puYxwL._AC_SX425_.jpg",
+    price: "$62.95",
+    buyUrl: "https://www.amazon.com/PAPERAGE-Journal-Notebooks-Rainbow-Medium/dp/B0BC2DFCJF/ref=sxin_14_pa_sp_search_thematic?content-id=amzn1.sym.5268d850-b53a-4d2b-93db-c4d525be24eb%3Aamzn1.sym.5268d850-b53a-4d2b-93db-c4d525be24eb&crid=2LDMNILFHIZB4&cv_ct_cx=notebook&keywords=notebook&pd_rd_i=B0BC2DFCJF&pd_rd_r=a0bb8c2d-7f5f-4468-869c-ddcc842148e3&pd_rd_w=pTZbd&pd_rd_wg=Q0BPx&pf_rd_p=5268d850-b53a-4d2b-93db-c4d525be24eb&pf_rd_r=SSQ1Z45E8K5D0DRA28K6&qid=1707778323&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=not%2Caps%2C273&sr=1-4-e7845da7-4b73-4873-b4b5-aec156390e83-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&th=1",
+    keywords: ""
+  },
+  { 
+    name: "Scriveiner Silver Chrome Rollerball Pen - Stunning Luxury Pen with 24K Gold Finish, Schmidt Ink Refill, Best Roller Ball Pen Gift Set for Men & Women, Professional, Executive Office, Nice, Fancy Pens",
+    description: "ENJOY THE FEEL OF A TRUE LUXURY PEN IN YOUR HAND – Brass with silver chrome finished in 24 karat gold. Premium quality and understated luxury from a boutique British brand.",
+    image: "https://m.media-amazon.com/images/I/71Y2swR8sUL._AC_SX425_.jpg",
+    price: "$32.99",
+    buyUrl: "https://www.amazon.com/Luxury-Pen-Scriveiner-London-Professional/dp/B07YV85NNB/ref=pd_ci_mcx_pspc_dp_d_2_i_4?pd_rd_w=IjNkp&content-id=amzn1.sym.568f3b6b-5aad-4bfd-98ee-d827f03151e4&pf_rd_p=568f3b6b-5aad-4bfd-98ee-d827f03151e4&pf_rd_r=FF49D0RZCK7EE2SB0JJR&pd_rd_wg=S31eG&pd_rd_r=aa3084e3-d69e-4776-abe6-2d6e57990132&pd_rd_i=B07YV85NNB&th=1",
+    keywords: ""
+  },
+  { 
+    name: "Shuttle Art Wood-Cased #2 HB Pencils, 350 Pack Sharpened Yellow Pencils with Erasers, Bulk Pack Graphite Pencils for School and Teacher Supplies, Writing, Drawing and Sketching",
+    description: "350 COUNT VALUE PACK: Shuttle Art 350 Pack #2 HB wood-cased yellow pencils in bulk are ideal choice for school, office and home to maintain daily pencil consumption. They are widely used in daily writhing, sketching, examination, marking, and more, especially for kids and teen writing in classroom and home.",
+    image: "https://m.media-amazon.com/images/I/71IupKUoXzL._AC_SX425_.jpg",
+    price: "	$27.99",
+    buyUrl: "https://www.amazon.com/Wood-Cased-Shuttle-Art-Sharpened-Sketching/dp/B0891SSBJT/ref=sr_1_3?crid=1RK3PGGTDCMFU&keywords=pencils&qid=1707778649&s=office-products&sprefix=pencils%2Coffice-products%2C184&sr=1-3-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1",
+    keywords: ""
+  },
+  { 
+    name: "FUNLAVIE Colored Pencils 72 Coloring Pencils Premium Professional Art Drawing Pencil for Adults Coloring Book",
+    description: "Our Professional oil based colored pencils are made of high quality pencil lead which have strong tips,they don't break easily.Vibrant color goes on smooth and it blends easily,durable for your art creation.",
+    image: "https://m.media-amazon.com/images/I/81IVfRGqfoL._AC_SX425_.jpg",
+    price: "$14.99",
+    buyUrl: "https://www.amazon.com/FUNLAVIE-Colored-Pencils-Coloring-Premium/dp/B0BJKGL4XY/ref=sr_1_14?crid=1DY8H5G4GV57M&keywords=colored%2Bpencils&qid=1707778882&s=office-products&sprefix=colored%2Bpencils%2Coffice-products%2C171&sr=1-14-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9tdGY&th=1",
+    keywords: ""
+  },
+  { 
+    name: "NAWOD Watercolor Paint Set, 50 Vivid Colors in Portable Box, Including Metallic and Fluorescent Colors, Watercolor Paper, Brushes. Ideal for Kids, Adults, Artists and Hobbyists, Perfect Starter Kit",
+    description: "Amazing Quality for the Money: NAWOD watercolor paint set includes everything to start painting right away - 40 Basic colors, 5 Fluorescent colors and 5 Metallic Colors, 10 sheets of 300g Watercolor Paper, Metal Box, 6 Water Brush Pens, 10 Paint Brushes, Swatch Sheet, Sponge, Metal lid has 3 partitions and can be used as a mixing palette for easy blending of watercolors. The brushes and paper are individually wrapped, the solid pigments come in a sturdy metal box to prevent shipping or trip damage.",
+    image: "https://m.media-amazon.com/images/I/81TAFeC+-RL._AC_SX569_.jpg",
+    price: "$20.99",
+    buyUrl: "https://www.amazon.com/Watercolor-Portable-Including-Fluorescent-Hobbyists/dp/B0CBGY6TCZ/ref=sxin_14_pa_sp_search_thematic?content-id=amzn1.sym.8a078810-42a9-4fda-b501-66b7ad65fd2c%3Aamzn1.sym.8a078810-42a9-4fda-b501-66b7ad65fd2c&crid=2WMY5ULF14CM9&cv_ct_cx=watercolor&keywords=watercolor&pd_rd_i=B0CBGY6TCZ&pd_rd_r=a9610b18-2d2a-4323-88ae-d1c7308ff36a&pd_rd_w=shmhI&pd_rd_wg=2E5MS&pf_rd_p=8a078810-42a9-4fda-b501-66b7ad65fd2c&pf_rd_r=DJ0654Z4CXDG9WJV60NS&qid=1707779079&s=office-products&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=watercolor%2Coffice-products%2C166&sr=1-4-d6c5bb1a-8f1a-4ada-8d3a-c85bd898008d-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&psc=1",
+    keywords: ""
+  },
+  { 
+    name: "Amazon Fire TV 32 inch 2-Series HD smart TV with Fire TV Alexa Voice Remote, stream live TV without cable",
+    description: "High definition TV - Bring movies and shows to life in HD 720p resolution, with support for HDR 10, HLG, and Dolby Digital Audio.",
+    image: "https://m.media-amazon.com/images/I/61CO+jrHHjL._AC_SX425_.jpg",
+    price: "$119.99",
+    buyUrl: "https://www.amazon.com/introducing-amazon-fire-tv-32-inch-2-series-hd-smart-tv/dp/B09N6F9NV3/ref=sr_1_4?crid=22Y9FSH7RAUBY&keywords=Television&qid=1707779324&sprefix=television%2Caps%2C187&sr=8-4",
+    keywords: ""
+  },
+  { 
+    name: "JBL FLIP 5, Waterproof Portable Bluetooth Speaker, Black, Small",
+    description: "Pair multiple speakers with party boost",
+    image: "https://m.media-amazon.com/images/I/61ZquNpiFcL._AC_SX425_.jpg",
+    price: "$79.95",
+    buyUrl: "https://www.amazon.com/JBL-Waterproof-Portable-Bluetooth-Speaker/dp/B07QK2SPP7/ref=sr_1_4?crid=CBOAGSO31Y7G&keywords=Speaker&qid=1707779526&sprefix=speaker%2Caps%2C209&sr=8-4&th=1",
+    keywords: ""
+  },
+  { 
+    name: "Hooyman Digging Shovel with Heavy Duty Carbon Steel Head Construction, Ergonomic No-Slip H-Grip, Oversized Steps, and Serrated Blades for Gardening, Land Management, Yard Work, Farming and Outdoors",
+    description: "DIMENSIONS: 60.25 inches L x 9 inches W x 3 inches D and weighs 4.5 lbs",
+    image: "https://m.media-amazon.com/images/I/51mngaaUKHL._AC_SY879_.jpg",
+    price: "$29.99",
+    buyUrl: "https://www.amazon.com/Hooyman-Construction-Ergonomic-Oversized-Management/dp/B082BX3N97/ref=sr_1_6?crid=MU7YN14YFQVK&keywords=shovel&qid=1707779732&sprefix=shovel%2Caps%2C234&sr=8-6&th=1",
+    keywords: ""
+  },
 ];
 
 module.exports = initialGifts;
