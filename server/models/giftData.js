@@ -665,11 +665,11 @@ const initialGifts = [
     keywords: ""
   },
   { 
-    name: "",
-    description: "",
-    image: "",
-    price: "",
-    buyUrl: "",
+    name: "JBL FLIP 5, Waterproof Portable Bluetooth Speaker, Black, Small",
+    description: "Pair multiple speakers with party boost",
+    image: "https://m.media-amazon.com/images/I/61ZquNpiFcL._AC_SX425_.jpg",
+    price: "$79.95",
+    buyUrl: "https://www.amazon.com/JBL-Waterproof-Portable-Bluetooth-Speaker/dp/B07QK2SPP7/ref=sr_1_4?crid=CBOAGSO31Y7G&keywords=Speaker&qid=1707779526&sprefix=speaker%2Caps%2C209&sr=8-4&th=1",
     keywords: ""
   },
   { 
