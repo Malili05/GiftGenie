@@ -24,7 +24,6 @@ const WelcomePage = () => {
         <div
           className="bg-blue-100 py-8 px-4 rounded-lg shadow-lg flex flex-col items-center justify-center"
           style={{
-            fontFamily: "Lakki Reddy, sans-serif",
             borderColor: "#F7F56A",
           }}
         >

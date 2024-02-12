@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import questionsData from "./Questions/Questions";
-import Navbar from './Navbar'; // Adjust the path as necessary
+import Navbar from "./Navbar"; // Adjust the path as necessary
 
 function Search() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -15,7 +15,10 @@ function Search() {
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
     }
     return shuffledArray;
   };
@@ -80,18 +83,49 @@ function Search() {
   return (
     <div>
       {/* Main Content */}
-      <div className="relative flex flex-col items-center justify-center py-10 px-4 bg-blue-100 rounded-lg shadow-lg" style={{ fontFamily: "Lakki Reddy, sans-serif", margin: "auto", minWidth: "80%", maxHeight: "600px" }}>
+      <div
+        className="relative flex flex-col items-center justify-center py-6 px-4 bg-blue-100 rounded-lg shadow-lg"
+        style={{ margin: "auto", minWidth: "80%", maxHeight: "600px" }}
+      >
         {/* Navbar */}
         <Navbar />
         {/* Header */}
-        <h1 className="text-2xl font-bold mb-4 text-yellow-400">Answer for Me These Questions Three!</h1>
+        <h1 className="text-3xl font-bold text-blue-800 mb-0">
+          Answer for Me These Questions Three!
+        </h1>
         {/* Question Container */}
+        <h2
+          className="text-2xl font-bold text-blue-800 mb-4"
+          style={{
+            textShadow: "0 0 5px black",
+            color: "#F7D56A",
+            marginBottom: "5px",
+            marginTop: "35px",
+          }}
+        >
+          Question {currentIndex + 1}
+        </h2>
+        <p className="text-xl font-semibold text-blue-800 mb-4">
+          {currentQuestion.question}
+        </p>
         {currentQuestion && (
-          <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md max-w-md mx-auto" 
-          style={{ overflowY: "auto", minWidth: "300px", minHeight: "400px", maxWidth: "80%", maxHeight: "80%", }}>
-            <h2 className="text-lg font-semibold text-blue-500">Question {currentIndex + 1}</h2>
-            <p className="mb-3 text-gray-700">{currentQuestion.question}</p>
-            <div className="flex flex-col items-center w-full">
+          <div
+            className={`bg-white p-6 rounded-lg shadow-md max-w-md mx-auto ${
+              currentQuestion.answers.length <= 3 ? "flex justify-center items-center" : ""
+            }`}
+            style={{
+              overflowY: "auto",
+              minWidth: "300px",
+              minHeight: "200px", // Adjust the minimum height here
+              maxWidth: "80%",
+              maxHeight: "80%",
+            }}
+          >
+            <div
+              className={`${
+                currentQuestion.answers.length >= 4 ? "grid grid-cols-2 gap-4" : "flex flex-col items-center"
+              } w-full`}
+            >
               {currentQuestion.answers.map((answer, index) => (
                 <div
                   key={index}
@@ -100,7 +134,9 @@ function Search() {
                       ? "text-pink-500 text-lg"
                       : "text-gray-600"
                   }`}
-                  onClick={() => selectAnswer(currentQuestion.id, answer.keyword)}
+                  onClick={() =>
+                    selectAnswer(currentQuestion.id, answer.keyword)
+                  }
                 >
                   {answer.displayText}
                 </div>
@@ -120,12 +156,6 @@ function Search() {
         {/* Action Buttons */}
         <div className="flex justify-center mt-4">
           <button
-            onClick={startOver}
-            className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-700 transition duration-300 mr-3"
-          >
-            Start Over
-          </button>
-          <button
             onClick={swapQuestion}
             className="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300 mr-3"
           >
@@ -141,6 +171,9 @@ function Search() {
       </div>
     </div>
   );
+  
+  
+  
 }
 
 export default Search;
