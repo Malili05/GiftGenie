@@ -1,12 +1,14 @@
-import { useState } from "react";
-import { useMutation } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
-import { LOGIN } from "../utils/mutations";
-import Auth from "../utils/auth";
+import React from 'react';
+import { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
+import { LOGIN } from '../utils/mutations';
+import Auth from '../utils/auth';
+import Navbar from './Navbar'; // Import the Navbar component
 
 const Login = () => {
   const navigate = useNavigate();
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { loading, error }] = useMutation(LOGIN);
 
   const handleChange = (event) => {
@@ -18,7 +20,7 @@ const Login = () => {
   };
 
   const handleCreateAccountClick = () => {
-    navigate("/SignUp");
+    navigate('/SignUp');
   };
 
   const handleLogin = async (event) => {
@@ -32,82 +34,73 @@ const Login = () => {
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
-      navigate("/profile");
+      navigate('/profile');
     } catch (e) {
-      console.error("Login error:", e);
+      console.error('Login error:', e);
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-40">
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
-        <h1 className="mb-8 text-3xl text-center text-blue-800 font-bold">
-          Log in
-        </h1>
-        <div className="mb-4">
-          <label
-            className="block text-blue-800 text-sm font-bold mb-2"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="email"
-            type="text"
-            name="email"
-            placeholder="blank@blank"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            className="block text-blue-800 text-sm font-bold mb-2"
-            htmlFor="password"
-          >
-            Password
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            id="password"
-            type="password"
-            name="password"
-            placeholder="******************"
-            onChange={handleChange}
-          />
-        </div>
-        {error && (
-          <p className="text-red-500 text-sm mb-4">Invalid email or password.</p>
-        )}
-        <div className="flex items-center justify-between">
+    <div className="container mx-auto flex items-center justify-center min-h-screen">
+      <div className="relative">    
+        <div className="bg-blue-100 py-8 px-4 rounded-lg shadow-lg flex flex-col items-center justify-center">
+        <Navbar showLoginButton={false} />
+          <h1 className="text-4xl font-bold text-blue-800 mb-8">Log in</h1>
+          <div className="mb-4 w-full max-w-xs">
+            <label className="block text-blue-800 text-lg font-bold mb-2" htmlFor="email">
+              Email
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="email"
+              type="text"
+              name="email"
+              placeholder="blank@blank"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-6 w-full max-w-xs">
+            <label className="block text-blue-800 text-lg font-bold mb-2" htmlFor="password">
+              Password
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              id="password"
+              type="password"
+              name="password"
+              placeholder="******************"
+              onChange={handleChange}
+            />
+          </div>
+
+          {error && <p className="text-red-500 text-sm mb-4">Invalid email or password.</p>}
           <button
-            className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="text-purple-800 hover:text-yellow-500 font-bold py-4 px-8 rounded focus:outline-none focus:shadow-outline transition duration-200 text-3xl" // Increased padding
             type="button"
             onClick={handleLogin}
-            disabled={loading} 
+            disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? 'Logging in...' : 'Submit'}
           </button>
-          <div className="flex items-center justify-between mx-4">
+          <div className="mt-4">
             <button
-              className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+              className="text-blue-800 hover:text-yellow-500 font-bold pl-2"
               onClick={handleCreateAccountClick}
             >
               Make an Account
             </button>
           </div>
+          <p className="mt-4">
+            Want to try it before you make an account?
+            <button
+              onClick={() => navigate('/')}
+              className="text-blue-800 hover:text-yellow-500 font-bold pl-2"
+            >
+              Back to home
+            </button>
+          </p>
         </div>
       </div>
-      <p className="mt-4">
-        Want to try it before you make an account?
-        <button
-          onClick={() => navigate("/")}
-          className="text-blue-800 hover:text-blue-600 underline pl-2"
-        >
-          Back to home
-        </button>
-      </p>
     </div>
   );
 };

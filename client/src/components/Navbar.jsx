@@ -1,9 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import AuthService from '../utils/auth';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const goToProfile = () => {
     navigate('/Profile');
@@ -15,6 +16,12 @@ const Navbar = () => {
 
   const goToHome = () => {
     navigate('/');
+  };
+
+  // Function to determine whether to show login/profile buttons based on current route
+  const shouldShowButtons = () => {
+    // Check if the current path is not '/Login' or '/SignUp'
+    return location.pathname !== '/Login' && location.pathname !== '/SignUp';
   };
 
   return (
@@ -40,7 +47,7 @@ const Navbar = () => {
       >
         Gift Genie
       </h1>
-      {AuthService.loggedIn() ? (
+      {AuthService.loggedIn() && shouldShowButtons() && (
         <button
           onClick={goToProfile}
           className="px-4 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105" // Removed background and added text color
@@ -48,13 +55,14 @@ const Navbar = () => {
         >
           <span style={{ lineHeight: "1.5", letterSpacing: "1px", position: "relative"}}>PROFILE</span>
         </button>
-      ) : (
+      )}
+      {!AuthService.loggedIn() && shouldShowButtons() && (
         <button
           onClick={goToLogin}
           className="px-5 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105" // Removed background and added text color
           style={{ borderRadius: "20px", marginTop: "-5px" }}
         >
-          <span style={{ lineHeight: "1.5", letterSpacing: "1px", position: "relative"}}>LOGIN</span>
+          <span style={{ lineHeight: "1.5", letterSpacing: "1px", position: "relative"}}>LOG IN</span>
         </button>
       )}
     </div>

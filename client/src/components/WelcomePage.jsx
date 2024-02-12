@@ -87,7 +87,7 @@ const WelcomePage = () => {
                   letterSpacing: "2px",
                 }}
               >
-                <span style={{ position: "relative", top: "5px" }}>LOGIN</span>
+                <span style={{ position: "relative", top: "5px" }}>LOG IN</span>
               </button>
 
               <p className="text-lg text-gray-600 mt-6">

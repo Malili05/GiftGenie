@@ -119,7 +119,7 @@ function Search() {
               style={{
                 overflowY: "auto",
                 minWidth: "300px",
-                minHeight: "200px", 
+                minHeight: "200px",
                 maxWidth: "80%",
                 maxHeight: "80%",
               }}
@@ -134,12 +134,16 @@ function Search() {
                 {currentQuestion.answers.map((answer, index) => (
                   <div
                     key={index}
-                    className={`p-2 my-2 cursor-pointer text-blue-600 hover:text-yellow-500 transition-colors duration-300 transform hover:scale-110`}
+                    className={`p-2 my-2 cursor-pointer ${
+                      selectedAnswers[currentQuestion.id] === answer.keyword
+                        ? "text-pink-600"
+                        : "text-blue-600"
+                    } hover:text-yellow-500 transition-colors duration-300 transform hover:scale-110`}
                     onClick={() =>
                       selectAnswer(currentQuestion.id, answer.keyword)
                     }
                     style={{
-                      transition: "transform 0.3s", 
+                      transition: "transform 0.3s",
                     }}
                   >
                     <span
@@ -154,6 +158,7 @@ function Search() {
                     </span>
                   </div>
                 ))}
+
                 {showOtherInput && (
                   <input
                     type="text"
@@ -173,7 +178,7 @@ function Search() {
             onClick={swapQuestion}
             className="px-4 py-2 text-purple-500 font-semibold rounded-lg cursor-pointer hover:text-purple-700 transition duration-300 mr-3 transform hover:scale-110"
             style={{
-              marginTop: "5px", 
+              marginTop: "5px",
             }}
           >
             <span>Swap Question</span>
@@ -182,7 +187,7 @@ function Search() {
             onClick={handleNextQuestion}
             className="px-4 py-2 text-green-500 font-semibold rounded-lg cursor-pointer hover:text-green-700 transition duration-300 transform hover:scale-110"
             style={{
-              marginTop: "5px", 
+              marginTop: "5px",
             }}
           >
             <span>Next</span>
