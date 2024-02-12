@@ -600,6 +600,86 @@ const initialGifts = [
     buyUrl: "https://www.amazon.com/Napoleon-P665RSIBPSS-Prestige-Infrared-Stainless/dp/B07MLFR4KZ/ref=sr_1_1_sspa?crid=30N02NS6H367Z&keywords=barbecue&qid=1707410980&sprefix=barbecue%2Caps%2C132&sr=8-1-spons&ufe=app_do%3Aamzn1.fos.17f26c18-b61b-4ce9-8a28-de351f41cffb&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1",
     keywords: ["barbecue","cooking","adult","expensive","food","appliance"],
   },
+  { 
+    name: "",
+    description: "",
+    image: "https://m.media-amazon.com/images/I/71aYSS-SNdL._AC_SX679_.jpg",
+    price: "$18.99",
+    buyUrl: "https://www.amazon.com/oridom-Preserved-Valentines-Anniversary-Decorations/dp/B0B3DSHSDH/ref=sr_1_6?crid=CT7YLEOLWKFD&keywords=flower&qid=1707777767&sprefix=flower%2Caps%2C165&sr=8-6&th=1",
+    keywords: ""
+  },
+  { 
+    name: "",
+    description: "",
+    image: "",
+    price: "",
+    buyUrl: "",
+    keywords: ""
+  },
+  { 
+    name: "",
+    description: "",
+    image: "",
+    price: "",
+    buyUrl: "",
+    keywords: ""
+  },
+  { 
+    name: "",
+    description: "",
+    image: "",
+    price: "",
+    buyUrl: "",
+    keywords: ""
+  },
+  { 
+    name: "",
+    description: "",
+    image: "",
+    price: "",
+    buyUrl: "",
+    keywords: ""
+  },
+  { 
+    name: "",
+    description: "",
+    image: "",
+    price: "",
+    buyUrl: "",
+    keywords: ""
+  },
+  { 
+    name: "",
+    description: "",
+    image: "",
+    price: "",
+    buyUrl: "",
+    keywords: ""
+  },
+  { 
+    name: "",
+    description: "",
+    image: "",
+    price: "",
+    buyUrl: "",
+    keywords: ""
+  },
+  { 
+    name: "",
+    description: "",
+    image: "",
+    price: "",
+    buyUrl: "",
+    keywords: ""
+  },
+  { 
+    name: "",
+    description: "",
+    image: "",
+    price: "",
+    buyUrl: "",
+    keywords: ""
+  },
 ];
 
 module.exports = initialGifts;
