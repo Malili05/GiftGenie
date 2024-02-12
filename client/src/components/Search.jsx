@@ -83,17 +83,13 @@ function Search() {
   const currentQuestion = questions[currentIndex];
 
   return (
-    <div className="search-container flex flex-col items-center justify-center h-screen text-center">
-      <h1 className="text-2xl font-bold mb-4 text-yellow-400">
-        Answer for Me These Questions Three!
-      </h1>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100" style={{ fontFamily: "Lakki Reddy, sans-serif" }}>
+      <h1 className="text-2xl font-bold mb-4 text-yellow-400">Answer for Me These Questions Three!</h1>
       {currentQuestion && (
-        <div className="question-box bg-gray-100 p-5 rounded-lg shadow-md w-full max-w-md mx-auto">
-          <h2 className="text-lg font-semibold text-blue-500">
-            Question {currentIndex + 1}
-          </h2>
+        <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
+          <h2 className="text-lg font-semibold text-blue-500">Question {currentIndex + 1}</h2>
           <p className="mb-3 text-gray-700">{currentQuestion.question}</p>
-          <div>
+          <div className="flex flex-col items-center w-full">
             {currentQuestion.answers.map((answer, index) => (
               <div
                 key={index}
