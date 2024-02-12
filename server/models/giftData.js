@@ -649,11 +649,11 @@ const initialGifts = [
     keywords: ""
   },
   { 
-    name: "",
-    description: "",
-    image: "",
-    price: "",
-    buyUrl: "",
+    name: "NAWOD Watercolor Paint Set, 50 Vivid Colors in Portable Box, Including Metallic and Fluorescent Colors, Watercolor Paper, Brushes. Ideal for Kids, Adults, Artists and Hobbyists, Perfect Starter Kit",
+    description: "Amazing Quality for the Money: NAWOD watercolor paint set includes everything to start painting right away - 40 Basic colors, 5 Fluorescent colors and 5 Metallic Colors, 10 sheets of 300g Watercolor Paper, Metal Box, 6 Water Brush Pens, 10 Paint Brushes, Swatch Sheet, Sponge, Metal lid has 3 partitions and can be used as a mixing palette for easy blending of watercolors. The brushes and paper are individually wrapped, the solid pigments come in a sturdy metal box to prevent shipping or trip damage.",
+    image: "https://m.media-amazon.com/images/I/81TAFeC+-RL._AC_SX569_.jpg",
+    price: "$20.99",
+    buyUrl: "https://www.amazon.com/Watercolor-Portable-Including-Fluorescent-Hobbyists/dp/B0CBGY6TCZ/ref=sxin_14_pa_sp_search_thematic?content-id=amzn1.sym.8a078810-42a9-4fda-b501-66b7ad65fd2c%3Aamzn1.sym.8a078810-42a9-4fda-b501-66b7ad65fd2c&crid=2WMY5ULF14CM9&cv_ct_cx=watercolor&keywords=watercolor&pd_rd_i=B0CBGY6TCZ&pd_rd_r=a9610b18-2d2a-4323-88ae-d1c7308ff36a&pd_rd_w=shmhI&pd_rd_wg=2E5MS&pf_rd_p=8a078810-42a9-4fda-b501-66b7ad65fd2c&pf_rd_r=DJ0654Z4CXDG9WJV60NS&qid=1707779079&s=office-products&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=watercolor%2Coffice-products%2C166&sr=1-4-d6c5bb1a-8f1a-4ada-8d3a-c85bd898008d-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&psc=1",
     keywords: ""
   },
   { 
