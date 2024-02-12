@@ -23,8 +23,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Lakki Reddy', sans-serif; /* Font family for the entire application */
+  font-family: 'Lakki Reddy', sans-serif; 
   background-color: #475B63;
+}
+
+
+body {
+  text-shadow: 0 0 0px black; 
+
 }
 
 .app {

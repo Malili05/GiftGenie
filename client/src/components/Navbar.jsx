@@ -43,18 +43,18 @@ const Navbar = () => {
       {AuthService.loggedIn() ? (
         <button
           onClick={goToProfile}
-          className="px-4 py-2 rounded bg-blue-900 text-white transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:bg-blue-800 transform hover:scale-105" // Added hover effect and transition
+          className="px-4 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105" // Removed background and added text color
           style={{ borderRadius: "20px", marginTop: "-5px" }}
         >
-          <span style={{ lineHeight: "1.5", letterSpacing: "2px", position: "relative", top: "5px" }}>PROFILE</span>
+          <span style={{ lineHeight: "1.5", letterSpacing: "1px", position: "relative"}}>PROFILE</span>
         </button>
       ) : (
         <button
           onClick={goToLogin}
-          className="px-5 py-2 rounded bg-blue-900 text-white transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:bg-blue-800 transform hover:scale-105" // Added hover effect and transition
+          className="px-5 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105" // Removed background and added text color
           style={{ borderRadius: "20px", marginTop: "-5px" }}
         >
-          <span style={{ lineHeight: "1.5", letterSpacing: "2px", position: "relative", top: "5px" }}>LOGIN</span>
+          <span style={{ lineHeight: "1.5", letterSpacing: "1px", position: "relative"}}>LOGIN</span>
         </button>
       )}
     </div>

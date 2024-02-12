@@ -24,6 +24,7 @@ const WelcomePage = () => {
         <div
           className="bg-blue-100 py-8 px-4 rounded-lg shadow-lg flex flex-col items-center justify-center"
           style={{
+            fontFamily: "Lakki Reddy, sans-serif",
             borderColor: "#F7F56A",
           }}
         >
@@ -67,10 +68,8 @@ const WelcomePage = () => {
             <div className="text-center mt-4">
               <button
                 onClick={goToProfile}
-                className="px-6 py-2 bg-blue-800 text-white font-bold rounded-full hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition duration-200 transform hover:scale-105 active:scale-95" // Added Tailwind classes for hover and click effects
+                className="px-6 py-2 text-blue-800 font-bold rounded-full hover:text-yellow-500 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition duration-200 transform hover:scale-105 active:scale-95" 
                 style={{
-                  borderRadius: "20px",
-                  lineHeight: "1.5",
                   marginTop: "5px",
                   letterSpacing: "1px",
                 }}
@@ -82,10 +81,8 @@ const WelcomePage = () => {
             <div className="text-center mt-4">
               <button
                 onClick={goToLogin}
-                className="px-6 py-2 bg-blue-900 text-white font-bold rounded-full hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition duration-200 transform hover:scale-105 active:scale-95" // Added Tailwind classes for hover and click effects
+                className="px-6 py-2 text-blue-800 font-bold rounded-full hover:text-yellow-500 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition duration-200 transform hover:scale-105 active:scale-95" 
                 style={{
-                  borderRadius: "20px",
-                  lineHeight: "1.5",
                   marginTop: "5px",
                   letterSpacing: "2px",
                 }}

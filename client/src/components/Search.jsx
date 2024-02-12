@@ -119,7 +119,7 @@ function Search() {
               style={{
                 overflowY: "auto",
                 minWidth: "300px",
-                minHeight: "200px", // Adjust the minimum height here
+                minHeight: "200px", 
                 maxWidth: "80%",
                 maxHeight: "80%",
               }}
@@ -134,16 +134,12 @@ function Search() {
                 {currentQuestion.answers.map((answer, index) => (
                   <div
                     key={index}
-                    className={`p-2 my-2 cursor-pointer ${
-                      selectedAnswers[currentQuestion.id] === answer.keyword
-                        ? "text-pink-500 text-lg transform hover:scale-110"
-                        : "text-gray-600 transform hover:scale-110"
-                    }`}
+                    className={`p-2 my-2 cursor-pointer text-blue-600 hover:text-yellow-500 transition-colors duration-300 transform hover:scale-110`}
                     onClick={() =>
                       selectAnswer(currentQuestion.id, answer.keyword)
                     }
                     style={{
-                      transition: "transform 0.3s", // Added transition for transform
+                      transition: "transform 0.3s", 
                     }}
                   >
                     <span
@@ -173,24 +169,24 @@ function Search() {
         )}
         {/* Action Buttons */}
         <div className="flex justify-center mt-4">
-          <button
+          <div
             onClick={swapQuestion}
-            className="px-4 py-2 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-700 transition duration-300 mr-3 transform hover:scale-110"
+            className="px-4 py-2 text-purple-500 font-semibold rounded-lg cursor-pointer hover:text-purple-700 transition duration-300 mr-3 transform hover:scale-110"
             style={{
-              marginTop: "10px", // Adjust the marginTop as needed
+              marginTop: "5px", 
             }}
           >
             <span>Swap Question</span>
-          </button>
-          <button
+          </div>
+          <div
             onClick={handleNextQuestion}
-            className="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300 transform hover:scale-110"
+            className="px-4 py-2 text-green-500 font-semibold rounded-lg cursor-pointer hover:text-green-700 transition duration-300 transform hover:scale-110"
             style={{
-              marginTop: "10px", // Adjust the marginTop as needed
+              marginTop: "5px", 
             }}
           >
             <span>Next</span>
-          </button>
+          </div>
         </div>
       </div>
     </div>
