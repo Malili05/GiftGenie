@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { HiQuestionMarkCircle } from "react-icons/hi";
 import lampImage from "/Lamp.webp";
 import AuthService from "../utils/auth";
 
 const WelcomePage = () => {
   const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false);
 
   const goToQuestion = () => {
     navigate("/Search");
@@ -21,63 +19,79 @@ const WelcomePage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-4">
+    <div className="flex items-center justify-center min-h-screen">
       <div className="relative">
-        <img
-          src={lampImage}
-          alt="Genie Lamp"
-          className="max-w-xs w-full h-auto mb-4 cursor-pointer"
-          onClick={goToQuestion}
-        />
-        <div className="absolute top-0 right-0 m-4">
-          <HiQuestionMarkCircle
-            className="text-4xl cursor-pointer"
-            color="#1E40AF"
-            onMouseEnter={() => setShowModal(true)}
-            onMouseLeave={() => setShowModal(false)}
-          />
-          {showModal && (
-            <div
+        <div
+          className="bg-blue-100 py-8 px-4 rounded-lg shadow-lg flex flex-col items-center justify-center"
+          style={{
+            fontFamily: "Lakki Reddy, sans-serif",
+            borderColor: "#F7F56A",
+          }}
+        >
+          <header className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-blue-800 mb-2">
+              Welcome To
+            </h2>
+            <h1 className="text-6xl font-bold text-blue-800 mb-4" style={{ textShadow: "0 0 5px black", color: "#F7D56A", marginBottom: "5px", marginTop: "35px" }}>
+              Gift Genie
+            </h1>
+          </header>
+          <div className="text-center mb-8">
+            <p className="text-lg text-gray-800 mb-4">
+              Click on the lamp to begin
+              <br />
+              the search for the perfect gift.
+            </p>
+          </div>
+          <div className="relative animate-bounce" style={{ animationDuration: "2s" }}>
+            <img
+              src={lampImage}
+              alt="Genie Lamp"
+              title="Rub Me"
+              className="max-w-xs w-full h-auto mb-4 cursor-pointer"
+              onClick={goToQuestion}
               style={{
-                position: "absolute",
-                top: "50px",
-                right: "0",
-                transition: "opacity 300ms ease-in-out",
-                opacity: 1,
-                zIndex: 10,
-                width: "200px",
-                height: "200px",
+                cursor: "pointer",
               }}
-              className="bg-white p-4 rounded-lg shadow-lg flex items-center justify-center"
-            >
-              <p>
-                Click the Lamp to find a gift or{" "}
-                {AuthService.loggedIn()
-                  ? "click Profile button to visit your profile"
-                  : "click Login below to sign in to your account"}
+            />
+          </div>
+          {AuthService.loggedIn() ? (
+            <div className="text-center mt-4">
+              <button
+                onClick={goToProfile}
+                className="px-6 py-2 bg-blue-800 text-white font-bold rounded-full hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+                style={{
+                  borderRadius: "20px",
+                  lineHeight: "1.5",
+                  marginTop: "5px",
+                }}
+              >
+                Profile
+              </button>
+              <p className="text-lg text-gray-600 mt-6">
+                Check your saved gifts
+              </p>
+            </div>
+          ) : (
+            <div className="text-center mt-4">
+              <button
+                onClick={goToLogin}
+                className="px-6 py-2 bg-blue-900 text-white font-bold rounded-full hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+                style={{
+                  borderRadius: "20px",
+                  lineHeight: "1.5",
+                  marginTop: "5px",
+                }}
+              >
+                Login
+              </button>
+              <p className="text-lg text-gray-600 mt-6">
+                By logging <br /> in you can save gifts to your profile.
               </p>
             </div>
           )}
         </div>
       </div>
-      <h1 className="text-4xl font-bold text-blue-800 mb-4">
-        WELCOME TO GIFT GENIE
-      </h1>
-      {AuthService.loggedIn() ? (
-        <button
-          onClick={goToProfile}
-          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-        >
-          Profile
-        </button>
-      ) : (
-        <button
-          onClick={goToLogin}
-          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-        >
-          Login
-        </button>
-      )}
     </div>
   );
 };
