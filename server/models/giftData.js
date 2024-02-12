@@ -641,11 +641,11 @@ const initialGifts = [
     keywords: ""
   },
   { 
-    name: "",
-    description: "",
-    image: "",
-    price: "",
-    buyUrl: "",
+    name: "FUNLAVIE Colored Pencils 72 Coloring Pencils Premium Professional Art Drawing Pencil for Adults Coloring Book",
+    description: "Our Professional oil based colored pencils are made of high quality pencil lead which have strong tips,they don't break easily.Vibrant color goes on smooth and it blends easily,durable for your art creation.",
+    image: "https://m.media-amazon.com/images/I/81IVfRGqfoL._AC_SX425_.jpg",
+    price: "$14.99",
+    buyUrl: "https://www.amazon.com/FUNLAVIE-Colored-Pencils-Coloring-Premium/dp/B0BJKGL4XY/ref=sr_1_14?crid=1DY8H5G4GV57M&keywords=colored%2Bpencils&qid=1707778882&s=office-products&sprefix=colored%2Bpencils%2Coffice-products%2C171&sr=1-14-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9tdGY&th=1",
     keywords: ""
   },
   { 
