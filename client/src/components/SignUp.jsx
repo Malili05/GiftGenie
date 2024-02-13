@@ -183,7 +183,7 @@ const Signup = () => {
             )}
             <div className="flex items-center justify-center">
               <button
-                className="text-purple-800 hover:text-yellow-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200 transform hover:scale-110 text-3xl"
+                className="text-green-800 hover:text-yellow-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200 transform hover:scale-110 text-3xl"
                 type="submit"
                 disabled={loading}
               >

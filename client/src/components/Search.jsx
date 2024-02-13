@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import questionsData from "./Questions/Questions";
-import Navbar from "./Navbar"; 
+import Navbar from "./Navbar";
 
 function Search() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -85,7 +85,7 @@ function Search() {
       {/* Main Content */}
       <div
         className="relative flex flex-col items-center justify-center py-6 px-4 bg-blue-100 rounded-lg shadow-lg"
-        style={{ margin: "auto", minWidth: "80%", maxHeight: "600px" }}
+        style={{ margin: "auto", minWidth: "80%" }}
       >
         {/* Navbar */}
         <Navbar />
@@ -117,11 +117,8 @@ function Search() {
                   : ""
               }`}
               style={{
-                overflowY: "auto",
                 minWidth: "300px",
-                minHeight: "200px",
                 maxWidth: "80%",
-                maxHeight: "80%",
               }}
             >
               <div
@@ -134,7 +131,7 @@ function Search() {
                 {currentQuestion.answers.map((answer, index) => (
                   <div
                     key={index}
-                    className={`p-2 my-2 cursor-pointer ${
+                    className={`p-2 my-2 cursor-pointer text-center ${
                       selectedAnswers[currentQuestion.id] === answer.keyword
                         ? "text-pink-600"
                         : "text-blue-600"

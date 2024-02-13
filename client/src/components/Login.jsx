@@ -75,7 +75,7 @@ const Login = () => {
 
           {error && <p className="text-red-500 text-sm mb-4">Invalid email or password.</p>}
           <button
-            className="text-purple-800 hover:text-yellow-500 font-bold py-4 px-8 rounded focus:outline-none focus:shadow-outline transition duration-200 text-3xl" 
+            className="text-green-800 hover:text-yellow-500 font-bold py-4 px-8 rounded focus:outline-none focus:shadow-outline transition duration-200 text-3xl" 
             type="button"
             onClick={handleLogin}
             disabled={loading}

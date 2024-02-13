@@ -38,7 +38,7 @@ const Navbar = () => {
           onClick={goToHome}
           onMouseEnter={(e) => {
             e.target.style.color = '#FFD700'; 
-            e.target.style.transform = 'scale(1.5)'; 
+            e.target.style.transform = 'scale(1.2)'; 
           }}
           onMouseLeave={(e) => {
             e.target.style.color = '#F7D56A'; 
