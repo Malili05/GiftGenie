@@ -34,28 +34,29 @@ const GiftCard = ({ savedGift }) => {
 
   return (
     <div className="max-w-xs w-30 h-60 bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden">
-    <div className="h-2/3 w-full">
-    <img src={gift.image} alt={gift.name} className="w-full h-full object-scale-down" />
-
-    </div>
-
-      <div className="h-1/3 w-full flex justify-between items-center p-2">
-        <button 
-          onClick={handleDelete} 
-          className={`text-lg ${isChecked ? 'text-gray-400 cursor-not-allowed' : 'text-red-600 hover:text-red-500'}`}
-          disabled={isChecked}
-        >
-          <FontAwesomeIcon icon={faTrash} />
-        </button>
-        <button 
-          onClick={handlePriorityChange} 
-          className={`text-lg ${isChecked ? 'text-red-600' : 'text-gray-400'}`}
-        >
-          <FontAwesomeIcon icon={isChecked ? faHeart : faHeartBroken} />
-        </button>
-        <a href={gift.buyUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
-          <FontAwesomeIcon icon={faShoppingCart} className="text-lg" />
-        </a>
+      <div className="h-2/3 w-full">
+        <img src={gift.image} alt={gift.name} className="w-full h-full object-scale-down" />
+      </div>
+      <div className="h-1/3 w-full flex flex-col justify-between items-center p-2">
+        <div className="flex justify-between items-center w-full">
+          <button 
+            onClick={handleDelete} 
+            className={`text-lg ${isChecked ? 'text-gray-400 cursor-not-allowed' : 'text-red-600 hover:text-red-500'}`}
+            disabled={isChecked}
+          >
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+          <button 
+            onClick={handlePriorityChange} 
+            className={`text-lg ${isChecked ? 'text-red-600' : 'text-gray-400'}`}
+          >
+            <FontAwesomeIcon icon={isChecked ? faHeart : faHeartBroken} />
+          </button>
+          <a href={gift.buyUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+            <FontAwesomeIcon icon={faShoppingCart} className="text-lg" />
+          </a>
+        </div>
+        <p className="text-lg text-gray-600 mt-2">${gift.price}</p>
       </div>
     </div>
   );

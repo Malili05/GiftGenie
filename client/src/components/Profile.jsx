@@ -32,47 +32,51 @@ const Profile = () => {
     }
   }, [navigate, data, refetch]);
 
-
   const logout = () => {
     AuthService.logout();
     navigate("/Login");
   };
+
   const goToSearchPage = () => navigate("/search");
 
   const profileImageUrl = randomImgUrl();
   const savedGifts = data?.user?.savedGifts;
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen text-center">
+    <div className="main-container flex flex-col items-center justify-center min-h-screen text-center bg-blue-100 rounded-lg shadow-lg p-6">
+      {/* Navbar component */}
+      <Navbar />
       
-      <div className="main-container bg-blue-100 rounded-lg shadow-lg p-6">
-        <Navbar />
-        <div>
-          <img
-            src={profileImageUrl}
-            alt="Profile"
-            className="max-w-48 max-h-48 object-cover rounded-full mx-auto mb-8"
-          />
-        </div>
+      {/* Profile image */}
+      <div className="max-w-48 max-h-48 w-full">
+        <img
+          src={profileImageUrl}
+          alt="Profile"
+          className="w-full h-auto object-cover rounded-full mx-auto mb-8"
+        />
+      </div>
 
-        <h1 className="text-4xl font-bold text-blue-800 mb-4">
-          {profileName}&rsquo;s Profile
-        </h1>
+      {/* Profile name */}
+      <h1 className="text-4xl font-bold text-blue-800 mb-4">
+        {profileName}&rsquo;s Profile
+      </h1>
 
-        <h2
-          className="text-2xl font-bold text-yellow-400 mb-4"
-          style={{ WebkitTextStroke: ".1px black" }}
-        >
-          Saved Gifts
-        </h2>
-        <div
-        className="max-w-[800px] w-full mx-auto border-2 border-gray-800 rounded-lg shadow-lg p-4 overflow-y-auto"
-        style={{ maxHeight: "calc(1.5 * (300px + 1rem))" }}
+      {/* Title for saved gifts */}
+      <h2
+        className="text-2xl font-bold text-yellow-400 mb-4"
+        style={{ WebkitTextStroke: ".1px black" }}
       >
-        <div className="flex justify-center">
+        Saved Gifts
+      </h2>
+      
+      {/* Container for saved gifts */}
+      <div className="max-w-screen-md w-full mx-auto border-2 border-gray-800 rounded-lg shadow-lg p-4 overflow-y-auto" style={{ minHeight: "300px", maxHeight: "400px" }}>
+        {/* Display saved gifts */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {savedGifts && savedGifts.length > 0 ? (
             savedGifts.map((savedGift) => (
               <div key={savedGift._id} className="m-2">
+                {/* Gift card component */}
                 <GiftCard savedGift={savedGift} />
               </div>
             ))
@@ -84,19 +88,20 @@ const Profile = () => {
         </div>
       </div>
 
-        <div
-          onClick={goToSearchPage}
-          className="px-4 py-2 text-purple-500 font-semibold rounded-lg cursor-pointer hover:text-yellow-400 transition duration-300 transform hover:scale-110 mt-4 text-3xl"
-        >
-          <span>Search For More Gifts</span>
-        </div>
+      {/* Button to search for more gifts */}
+      <div
+        onClick={goToSearchPage}
+        className="px-4 py-2 text-purple-500 font-semibold rounded-lg cursor-pointer hover:text-yellow-400 transition duration-300 transform hover:scale-110 mt-4 text-3xl"
+      >
+        <span>Search For More Gifts</span>
+      </div>
 
-        <div
-          onClick={logout}
-          className="px-4 py-2 text-red-500 font-semibold rounded-lg cursor-pointer hover:text-yellow-400 transition duration-300 transform hover:scale-110 mt-4 text-xl"
-        >
-          <span>LOGOUT</span>
-        </div>
+      {/* Logout button */}
+      <div
+        onClick={logout}
+        className="px-4 py-2 text-red-500 font-semibold rounded-lg cursor-pointer hover:text-yellow-400 transition duration-300 transform hover:scale-110 mt-4 text-xl"
+      >
+        <span>LOGOUT</span>
       </div>
     </div>
   );

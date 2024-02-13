@@ -9,12 +9,23 @@ const Results = () => {
     navigate("/search");
   };
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center">
       <div className="main-container bg-blue-100 rounded-lg shadow-lg p-6">
         <Navbar />
         <h1 className="text-4xl font-bold text-blue-800 mb-0">
-          Is This The Perfect Gift?
+          Is This The Perfect Gift
+          <span
+            className="text-blue-400 cursor-pointer inline-block transform hover:text-yellow-400 hover:scale-110 transition duration-300"
+            onClick={refreshPage}
+            style={{ marginLeft: "0.5rem" }}
+          >
+            ?
+          </span>
         </h1>
         <GiftDisplay />
 

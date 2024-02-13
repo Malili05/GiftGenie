@@ -49,7 +49,7 @@ const Navbar = () => {
       {AuthService.loggedIn() && shouldShowButtons() && (
         <button
           onClick={goToProfile}
-          className="px-4 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105" 
+          className="px-4 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105 text-2xl" 
           style={{ borderRadius: "20px", marginTop: "-5px" }}
         >
           <span style={{ lineHeight: "1.5", letterSpacing: "1px", position: "relative"}}>PROFILE</span>
@@ -58,7 +58,7 @@ const Navbar = () => {
       {!AuthService.loggedIn() && shouldShowButtons() && (
         <button
           onClick={goToLogin}
-          className="px-5 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105" 
+          className="px-5 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105 text-2xl" 
           style={{ borderRadius: "20px", marginTop: "-5px" }}
         >
           <span style={{ lineHeight: "1.5", letterSpacing: "1px", position: "relative"}}>LOG IN</span>
