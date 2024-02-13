@@ -83,20 +83,23 @@ const Signup = () => {
   return (
     <div className="flex flex-col items-center justify-center text-center">
       <div
-        className="main-container bg-blue-100 rounded-lg shadow-lg p-6"
+        className={`main-container bg-blue-100 rounded-lg shadow-lg p-6 ${
+          window.innerWidth <= 768 ? "w-full" : "max-w-md"
+        }`}
         style={{ marginTop, marginBottom }}
       >
         <Navbar showLoginButton={false} />
         <h1 className="text-4xl font-bold text-blue-800 mb-6">
           Make an account!
         </h1>
-        <form className="w-full max-w-md" onSubmit={handleSubmit}>
+        <form className="w-full" onSubmit={handleSubmit}>
           <div className="mb-2">
             <label className="form-label" htmlFor="username">
               Name
             </label>
+            <br />
             <input
-              className={`form-input ${
+              className={`form-input text-center ${
                 !formState.username && error ? "border-red-500" : ""
               }`}
               id="username"
@@ -113,8 +116,9 @@ const Signup = () => {
             <label className="form-label" htmlFor="email">
               Email
             </label>
+            <br />
             <input
-              className={`form-input ${
+              className={`form-input text-center ${
                 !formState.email && error ? "border-red-500" : ""
               }`}
               id="email"
@@ -134,8 +138,9 @@ const Signup = () => {
             <label className="form-label" htmlFor="password">
               Password
             </label>
+            <br />
             <input
-              className={`form-input ${
+              className={`form-input text-center ${
                 !formState.password && error ? "border-red-500" : ""
               }`}
               id="password"
@@ -157,8 +162,9 @@ const Signup = () => {
             <label className="form-label" htmlFor="confirmPassword">
               Confirm Password
             </label>
+            <br />
             <input
-              className={`form-input ${
+              className={`form-input text-center ${
                 (!formState.confirmPassword || !passwordsMatch) && error
                   ? "border-red-500"
                   : ""
@@ -170,7 +176,7 @@ const Signup = () => {
               onChange={handleChange}
             />
             {!passwordsMatch && (
-              <p className="error-msg">Passwords do not match.</p>
+              <p className="mt-3 error-msg text-red-500">Passwords do not match.</p>
             )}
             {error && !formState.confirmPassword && (
               <p className="error-msg">Please confirm your password.</p>
@@ -185,7 +191,13 @@ const Signup = () => {
             </p>
           )}
           <div className="flex items-center justify-center">
-            <button className="btn-submit" type="submit" disabled={loading}>
+            <button
+              className={`mt-5 text-3xl text-green-500 hover:text-red-400 transform hover:scale-105 transition-transform bg-transparent btn-submit ${
+                loading ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
+              type="submit"
+              disabled={loading}
+            >
               {loading ? "Signing up..." : "Submit"}
             </button>
           </div>
@@ -194,7 +206,7 @@ const Signup = () => {
           Already have an account?{" "}
           <button
             onClick={() => navigate("/Login")}
-            className="text-blue-800 hover:text-yellow-500 pl-2"
+            className="text-lg text-blue-800 hover:text-yellow-500 font-bold pl-2"
           >
             Log in
           </button>
@@ -203,7 +215,7 @@ const Signup = () => {
           Want a gift without an account?{" "}
           <button
             onClick={() => navigate("/")}
-            className="text-blue-800 hover:text-yellow-500 pl-2"
+            className="text-lg text-blue-800 hover:text-yellow-500 font-bold pl-2"
           >
             Check it out!
           </button>

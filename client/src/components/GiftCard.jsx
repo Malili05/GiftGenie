@@ -39,8 +39,10 @@ const GiftCard = ({ savedGift }) => {
     setIsChecked(newPriority);
   };
 
+  
+
   return (
-    <div className="w-60 h-60 bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden">
+    <div className="w-60 h-60 bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
       <div className="h-2/3">
         <img
           src={gift.image}

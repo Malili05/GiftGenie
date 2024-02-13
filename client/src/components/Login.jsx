@@ -18,10 +18,6 @@ const Login = () => {
     });
   };
 
-  const handleCreateAccountClick = () => {
-    navigate("/SignUp");
-  };
-
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
@@ -41,8 +37,6 @@ const Login = () => {
 
   const [marginTop, setMarginTop] = useState("5rem");
   const [marginBottom, setMarginBottom] = useState("5rem");
-  const [marginLeft, setMarginLeft] = useState("auto"); // Initially set to "auto" for mobile
-  const [marginRight, setMarginRight] = useState("auto"); // Initially set to "auto" for mobile
 
   useEffect(() => {
     const handleResize = () => {
@@ -50,13 +44,9 @@ const Login = () => {
       if (screenWidth <= 768) {
         setMarginTop("0");
         setMarginBottom("0");
-        setMarginLeft("auto"); // Reset to "auto" for mobile
-        setMarginRight("auto"); // Reset to "auto" for mobile
       } else {
         setMarginTop("5rem");
         setMarginBottom("5rem");
-        setMarginLeft("0");
-        setMarginRight("0");
       }
     };
 
@@ -70,16 +60,17 @@ const Login = () => {
     <div className="flex flex-col items-center justify-center text-center">
       <div
         className="main-container bg-blue-100 rounded-lg shadow-lg p-6"
-        style={{ marginTop, marginBottom, marginLeft, marginRight }}
+        style={{ marginTop, marginBottom}}
       >
         <Navbar />
         <h1 className="text-4xl font-bold text-blue-800 mb-8">Log in</h1>
-        <div className="mb-4">
-          <label className="form-label" htmlFor="email">
+
+        <div className="flex flex-col mb-4">
+          <label className="form-label w-64 mx-auto" htmlFor="email">
             Email
           </label>
           <input
-            className="form-input"
+            className="form-input w-64 mx-auto text-center "
             id="email"
             type="text"
             name="email"
@@ -87,12 +78,13 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="mb-6">
-          <label className="form-label" htmlFor="password">
+
+        <div className="flex flex-col mb-6">
+          <label className="form-label w-64 mx-auto" htmlFor="password">
             Password
           </label>
           <input
-            className="form-input"
+            className="form-input w-64 mx-auto text-center"
             id="password"
             type="password"
             name="password"
@@ -100,28 +92,33 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
+
         {error && <p className="error-msg">Invalid email or password.</p>}
+       
         <button
-          className="btn-submit"
-          type="button"
           onClick={handleLogin}
           disabled={loading}
+          className={`text-3xl text-green-500 hover:text-red-400 transform hover:scale-105 transition-transform bg-transparent ${
+            loading ? "cursor-not-allowed" : "cursor-pointer"
+          }`}
         >
           {loading ? "Logging in..." : "Submit"}
         </button>
+
         <div className="mt-4">
           <button
-            className="btn-create-account"
-            onClick={handleCreateAccountClick}
+            onClick={() => navigate("/SignUp")}
+            className="text-lg text-blue-800 hover:text-yellow-500 font-bold pl-2"
           >
             Make an Account
           </button>
         </div>
+
         <p className="mt-4">
           Want to try it before you make an account?
           <button
             onClick={() => navigate("/")}
-            className="text-blue-800 hover:text-yellow-500 font-bold pl-2"
+            className="text-lg text-blue-800 hover:text-yellow-500 font-bold pl-2"
           >
             Back to home
           </button>

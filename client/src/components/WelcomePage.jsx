@@ -1,22 +1,22 @@
 import { useNavigate } from "react-router-dom";
-import lampImage from "/Lamp.webp"; // Assuming Lamp.webp is in the same directory
+import lampImage from "/Lamp.webp";
 import AuthService from "../utils/auth";
 import { useEffect, useState } from "react";
 
 const WelcomePage = () => {
   const navigate = useNavigate();
   const [marginTop, setMarginTop] = useState("5rem");
-  const [marginBottom, setMarginBottom] = useState("5rem"); // New state for bottom margin
+  const [marginBottom, setMarginBottom] = useState("5rem");
 
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
       if (screenWidth <= 768) {
         setMarginTop("0");
-        setMarginBottom("0"); // Remove bottom margin for small screens
+        setMarginBottom("0");
       } else {
         setMarginTop("5rem");
-        setMarginBottom("5rem"); // Add bottom margin for larger screens
+        setMarginBottom("5rem");
       }
     };
 
@@ -38,7 +38,7 @@ const WelcomePage = () => {
       >
         <header className="mb-8">
           <h2 className="text-3xl font-bold text-blue-800 mb-2">Welcome To</h2>
-          <h1 className="text-6xl font-bold text-blue-800 mb-4 text-shadow-yellow">
+          <h1 className="text-6xl font-bold text-yellow-400 mb-4 text-shadow-black">
             Gift Genie
           </h1>
         </header>
@@ -61,19 +61,25 @@ const WelcomePage = () => {
         <div className="text-center mt-4">
           {AuthService.loggedIn() ? (
             <>
-              <button onClick={() => goTo("/Profile")} className="btn-profile">
+              <button
+                onClick={() => goTo("/Profile")}
+                className="text-3xl text-blue-600 hover:text-blue-800 transform hover:scale-105 transition-transform bg-transparent"
+              >
                 PROFILE
               </button>
-              <p className="text-lg text-gray-600 mt-6">
+              <p className="text-lg text-gray-800 mt-6">
                 Check your saved gifts.
               </p>
             </>
           ) : (
             <>
-              <button onClick={() => goTo("/Login")} className="btn-login">
-                LOG IN
+              <button
+                onClick={() => goTo("/Login")}
+                className="text-3xl text-blue-500 hover:text-blue-800 transform hover:scale-105 transition-transform bg-transparent"
+              >
+                LOGIN
               </button>
-              <p className="text-lg text-gray-600 mt-6">
+              <p className="text-lg text-gray-800 mt-6">
                 Log in to save gifts.
               </p>
             </>

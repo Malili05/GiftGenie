@@ -33,23 +33,26 @@ const Navbar = () => {
   return (
     <div className="flex justify-between items-center w-full mt-0 mb-10">
       <h1
-        className="cursor-pointer text-3xl text-blue-800 font-bold transition duration-300 ease-in-out hover:text-yellow-500"
+        className="cursor-pointer text-4xl text-yellow-400 font-bold transition duration-300 ease-in-out hover:text-red-500 hover:transform hover:scale-125"
+
+
         onClick={goToHome}
       >
         Gift Genie
       </h1>
       {AuthService.loggedIn() && shouldShowButtons() && (
-        <button onClick={goToProfile} className="button-style">
+        <button onClick={goToProfile} className="text-xl text-blue-600 hover:text-purple-800 transform hover:scale-110 transition-transform bg-transparent">
+          
           PROFILE
         </button>
       )}
       {!AuthService.loggedIn() && shouldShowButtons() && (
-        <button onClick={goToLogin} className="button-style">
+        <button onClick={goToLogin} className="text-xl text-blue-600 hover:text-purple-800 transform hover:scale-110 transition-transform bg-transparent">
           LOG IN
         </button>
       )}
       {AuthService.loggedIn() && shouldShowButtons() && (
-        <button onClick={handleLogout} className="button-style">
+        <button onClick={handleLogout} className="text-xl text-blue-600 hover:text-purple-800 transform hover:scale-110 transition-transform bg-transparent">
           LOG OUT
         </button>
       )}

@@ -12,17 +12,7 @@ const Profile = () => {
   const [profileName, setProfileName] = useState("");
   const [marginTop, setMarginTop] = useState("5rem");
   const [marginBottom, setMarginBottom] = useState("5rem");
-
-  const randomImgUrl = () => {
-    const images = [
-      "/clippygenie1.webp",
-      "/clippygenie2.webp",
-      "/clippygenie3.webp",
-      "/clippygenie4.webp",
-      "/clippygenie5.webp",
-    ];
-    return images[Math.floor(Math.random() * images.length)];
-  };
+  const [profileImageUrl, setProfileImageUrl] = useState("");
 
   useEffect(() => {
     if (!AuthService.loggedIn()) {
@@ -32,15 +22,6 @@ const Profile = () => {
       refetch();
     }
   }, [navigate, data, refetch]);
-
-  const logout = () => {
-    AuthService.logout();
-    navigate("/Login");
-  };
-
-  const goToSearchPage = () => navigate("/search");
-  const profileImageUrl = randomImgUrl();
-  const savedGifts = data?.user?.savedGifts;
 
   useEffect(() => {
     const handleResize = () => {
@@ -59,6 +40,29 @@ const Profile = () => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    const randomImgUrl = () => {
+      const images = [
+        "/clippygenie1.webp",
+        "/clippygenie2.webp",
+        "/clippygenie3.webp",
+        "/clippygenie4.webp",
+        "/clippygenie5.webp",
+      ];
+      return images[Math.floor(Math.random() * images.length)];
+    };
+    setProfileImageUrl(randomImgUrl());
+  }, []);
+
+  const logout = () => {
+    AuthService.logout();
+    navigate("/Login");
+  };
+
+  const goToSearchPage = () => navigate("/search");
+
+  const savedGifts = data?.user?.savedGifts;
 
   return (
     <div className="flex flex-col items-center justify-center text-center">
@@ -92,9 +96,16 @@ const Profile = () => {
           Explore, Manage, and Favorite Your Saved Gifts
         </h2>
         <div
+          onClick={goToSearchPage}
+          className="action-btn text-xl text-green-500 hover:text-yellow-500 transform hover:scale-105 cursor-pointer"
+        >
+          Search For More Gifts
+        </div>
+
+        <div
           className="flex justify-center items-center"
           style={{
-            minHeight: "300px",
+            minHeight: "100px",
             width: "100%",
             overflowY: "auto",
             maxWidth: "800px",
@@ -113,15 +124,16 @@ const Profile = () => {
               ))}
             </div>
           ) : (
-            <p className="text-lg text-gray-700">
+            <p className="text-xl text-purple-500">
               You don&rsquo;t have any saved gifts yet.
             </p>
           )}
         </div>
-        <div onClick={goToSearchPage} className="action-btn">
-          Search For More Gifts
-        </div>
-        <div onClick={logout} className="action-btn">
+
+        <div
+          onClick={logout}
+          className="mt-5 action-btn text-md text-red-500 transform hover:scale-105 hover:text-yellow-500 cursor-pointer"
+        >
           LOGOUT
         </div>
       </div>
