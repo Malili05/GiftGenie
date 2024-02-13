@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const shouldShowButtons = () => {
     
-    return location.pathname !== '/Login' && location.pathname !== '/SignUp';
+    return location.pathname !== '/Login' && location.pathname !== '/SignUp' && location.pathname !== '/Profile';
   };
 
   return (
