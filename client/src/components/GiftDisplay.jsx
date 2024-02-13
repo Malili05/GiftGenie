@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_GIFTS_QUERY } from "../utils/queries";
@@ -32,6 +32,7 @@ const GiftDisplay = () => {
       console.error("Error saving gift:", error);
     }
   };
+  
 
   const handleBuyThis = () => {
     if (displayedGift && displayedGift.buyUrl) {
@@ -104,7 +105,7 @@ const GiftDisplay = () => {
 
 GiftDisplay.propTypes = {
   handleBackToQueries: PropTypes.func.isRequired,
-  handleBuyThis: PropTypes.func.isRequired,
+
 };
 
 export default GiftDisplay;

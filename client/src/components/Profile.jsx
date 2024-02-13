@@ -32,7 +32,7 @@ const Profile = () => {
     }
   }, [navigate, data, refetch]);
 
-  const goToWelcomePage = () => navigate("/");
+
   const logout = () => {
     AuthService.logout();
     navigate("/Login");
@@ -66,23 +66,23 @@ const Profile = () => {
           Saved Gifts
         </h2>
         <div
-          className="max-w-[800px] w-full mx-auto border-2 border-gray-800 rounded-lg shadow-lg p-4 overflow-y-auto"
-          style={{ maxHeight: "calc(1.5 * (300px + 1rem))" }}
-        >
-          <div className="flex justify-center">
-            {savedGifts && savedGifts.length > 0 ? (
-              savedGifts.map((savedGift) => (
-                <div key={savedGift.gift._id} className="m-2">
-                  <GiftCard gift={savedGift.gift} />
-                </div>
-              ))
-            ) : (
-              <p className="text-lg text-gray-700">
-                You don&rsquo;t have any saved gifts yet.
-              </p>
-            )}
-          </div>
+        className="max-w-[800px] w-full mx-auto border-2 border-gray-800 rounded-lg shadow-lg p-4 overflow-y-auto"
+        style={{ maxHeight: "calc(1.5 * (300px + 1rem))" }}
+      >
+        <div className="flex justify-center">
+          {savedGifts && savedGifts.length > 0 ? (
+            savedGifts.map((savedGift) => (
+              <div key={savedGift._id} className="m-2">
+                <GiftCard savedGift={savedGift} />
+              </div>
+            ))
+          ) : (
+            <p className="text-lg text-gray-700">
+              You don&rsquo;t have any saved gifts yet.
+            </p>
+          )}
         </div>
+      </div>
 
         <div
           onClick={goToSearchPage}

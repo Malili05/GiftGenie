@@ -71,13 +71,6 @@ function Search() {
     }
   };
 
-  const startOver = () => {
-    setCurrentIndex(0);
-    setShowOtherInput(false);
-    setQuestions(shuffleArray(questionsData).slice(0, 3));
-    setSelectedAnswers({});
-  };
-
   const currentQuestion = questions[currentIndex];
 
   return (

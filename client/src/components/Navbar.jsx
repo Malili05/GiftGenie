@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AuthService from '../utils/auth';
 
@@ -26,7 +25,7 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between items-center w-full mt-0 mb-10">
-      {/* Clickable Logo */}
+     
       <h1 className="cursor-pointer"
           style={{ 
             textShadow: "0 0 5px black",
