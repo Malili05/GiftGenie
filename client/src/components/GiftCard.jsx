@@ -28,22 +28,18 @@ const GiftCard = ({ gift }) => {
     setIsChecked(newPriority);
   };
 
-  const cardStyle = {
-    backgroundColor: isChecked ? 'purple' : 'white',
-    boxShadow: isChecked ? '0 0 10px purple' : 'none'
-  };
-
   return (
-    <div className="gift-card flex flex-col items-center justify-center border border-gray-300 rounded p-4 mb-4 transition-transform duration-300 hover:scale-105 bg-white" style={cardStyle}>
-      <div className="image-container w-40 h-40 mb-2">
-        <img src={gift.image} alt={gift.name} className="gift-image object-contain h-full w-full" />
+    <div className="gift-card border border-gray-300 rounded p-4 mb-4">
+      <div className="image-container mb-2">
+        <img src={gift.image} alt={gift.name} className="object-contain" />
       </div>
-      <div className="details-container text-center">
-        <div className="price-container mb-1">
-          <p className="price">${gift.price}</p>
+      <div className="details-container">
+        <div className="mb-1">
+          <p>Name: {gift.name}</p>
+          <p>Price: ${gift.price}</p>
         </div>
-        <div className="flex justify-between items-center px-4">
-          <button onClick={handleDelete} className="delete-button border border-gray-300 rounded p-2 mr-">
+        <div className="flex justify-between items-center">
+          <button onClick={handleDelete} className="mr-2">
             <FontAwesomeIcon icon={faTrash} className="text-red-600" />
           </button>
           <div className="flex flex-col items-center">
@@ -55,7 +51,7 @@ const GiftCard = ({ gift }) => {
             />
             <label htmlFor={`priority-checkbox-${gift._id}`} className="mb-2">Must Have</label>
           </div>
-          <a href={gift.buyUrl} target="_blank" rel="noopener noreferrer" className="buy-button text-blue-600 font-bold py-2 px-4 border border-blue-600 rounded">Buy</a>
+          <a href={gift.buyUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600">Buy</a>
         </div>
       </div>
     </div>
