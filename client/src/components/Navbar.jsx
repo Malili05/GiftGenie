@@ -17,9 +17,13 @@ const Navbar = () => {
     navigate('/');
   };
 
+  const handleLogout = () => {
+    // Handle logout logic here
+    AuthService.logout();
+    navigate('/'); // Redirect to the home page after logout
+  };
 
   const shouldShowButtons = () => {
-    
     return location.pathname !== '/Login' && location.pathname !== '/SignUp' && location.pathname !== '/Profile';
   };
 
@@ -49,23 +53,37 @@ const Navbar = () => {
       {AuthService.loggedIn() && shouldShowButtons() && (
         <button
           onClick={goToProfile}
-          className="px-4 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105 text-2xl" 
-          style={{ borderRadius: "20px", marginTop: "-5px" }}
+          className="px-4 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105 text-2xl"
+          style={{ borderRadius: "20px", marginTop: "-5px", marginRight: "10px" }}
         >
-          <span style={{ lineHeight: "1.5", letterSpacing: "1px", position: "relative"}}>PROFILE</span>
+          <span style={{ lineHeight: "1.5", letterSpacing: "1px", position: "relative" }}>PROFILE</span>
         </button>
       )}
-      {!AuthService.loggedIn() && shouldShowButtons() && (
+
+       {!AuthService.loggedIn() && shouldShowButtons() && (
         <button
           onClick={goToLogin}
-          className="px-5 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105 text-2xl" 
-          style={{ borderRadius: "20px", marginTop: "-5px" }}
+          className="px-5 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105 text-2xl"
+          style={{ borderRadius: "20px", marginTop: "-5px", marginRight: "10px" }}
         >
-          <span style={{ lineHeight: "1.5", letterSpacing: "1px", position: "relative"}}>LOG IN</span>
+          <span style={{ lineHeight: "1.5", letterSpacing: "1px", position: "relative" }}>LOG IN</span>
         </button>
       )}
+
+      {AuthService.loggedIn() && shouldShowButtons() && (
+        <button
+          onClick={handleLogout}
+          className="px-4 py-2 rounded text-blue-800 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50 hover:text-yellow-500 transform hover:scale-105 text-2xl"
+          style={{ borderRadius: "20px", marginTop: "-5px", marginRight: "10px" }}
+        >
+          <span style={{ lineHeight: "1.5", letterSpacing: "1px", position: "relative" }}>LOG OUT</span>
+        </button>
+      )}
+     
+      
     </div>
   );
 };
 
 export default Navbar;
+

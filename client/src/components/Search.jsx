@@ -116,7 +116,7 @@ function Search() {
             >
               <div
                 className={`${
-                  currentQuestion.answers.length >= 4
+                  currentQuestion.answers.length >= 6
                     ? "grid grid-cols-2 gap-4"
                     : "flex flex-col items-center"
                 } w-full`}

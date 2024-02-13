@@ -34,7 +34,7 @@ const Login = () => {
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
-      navigate('/profile');
+      navigate('/Profile');
     } catch (e) {
       console.error('Login error:', e);
     }
