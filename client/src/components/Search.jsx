@@ -73,29 +73,38 @@ function Search() {
 
   const currentQuestion = questions[currentIndex];
 
+  const [marginTop, setMarginTop] = useState("5rem");
+  const [marginBottom, setMarginBottom] = useState("5rem");
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth <= 768) {
+        setMarginTop("0");
+        setMarginBottom("0");
+      } else {
+        setMarginTop("5rem");
+        setMarginBottom("5rem");
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div>
-      {/* Main Content */}
+    <div className="flex flex-col items-center justify-center text-center">
       <div
-        className="relative flex flex-col items-center justify-center py-6 px-4 bg-blue-100 rounded-lg shadow-lg"
-        style={{ margin: "auto", minWidth: "80%" }}
+        className="main-container bg-blue-100 rounded-lg shadow-lg p-6"
+        style={{ marginTop, marginBottom }}
       >
-        {/* Navbar */}
         <Navbar />
-        {/* Header */}
         <h1 className="text-3xl font-bold text-blue-800 mb-0">
           Answer for Me These Questions Three!
         </h1>
-        {/* Question Container */}
-        <h2
-          className="text-2xl font-bold text-blue-800 mb-4"
-          style={{
-            textShadow: "0 0 5px black",
-            color: "#F7D56A",
-            marginBottom: "5px",
-            marginTop: "35px",
-          }}
-        >
+        <h2 className="text-2xl font-bold text-blue-800 mb-4">
           Question {currentIndex + 1}
         </h2>
         {currentQuestion && (
@@ -109,10 +118,7 @@ function Search() {
                   ? "flex justify-center items-center"
                   : ""
               }`}
-              style={{
-                minWidth: "300px",
-                maxWidth: "80%",
-              }}
+              style={{ minWidth: "300px", maxWidth: "80%" }}
             >
               <div
                 className={`${
@@ -129,26 +135,14 @@ function Search() {
                         ? "text-pink-600"
                         : "text-blue-600"
                     } hover:text-yellow-500 transition-colors duration-300 transform hover:scale-110`}
+                    style={{ transition: "transform 0.3s" }}
                     onClick={() =>
                       selectAnswer(currentQuestion.id, answer.keyword)
                     }
-                    style={{
-                      transition: "transform 0.3s",
-                    }}
                   >
-                    <span
-                      style={{
-                        borderRadius: "20px",
-                        lineHeight: "1.5",
-                        marginTop: "5px",
-                        letterSpacing: "2px",
-                      }}
-                    >
-                      {answer.displayText}
-                    </span>
+                    <span className="answer-text">{answer.displayText}</span>
                   </div>
                 ))}
-
                 {showOtherInput && (
                   <input
                     type="text"
@@ -162,25 +156,12 @@ function Search() {
             </div>
           </>
         )}
-        {/* Action Buttons */}
         <div className="flex justify-center mt-4">
-          <div
-            onClick={swapQuestion}
-            className="px-4 py-2 text-purple-500 font-semibold rounded-lg cursor-pointer hover:text-purple-700 transition duration-300 mr-3 transform hover:scale-110"
-            style={{
-              marginTop: "5px",
-            }}
-          >
-            <span>Swap Question</span>
+          <div onClick={swapQuestion} className="action-btn">
+            Swap Question
           </div>
-          <div
-            onClick={handleNextQuestion}
-            className="px-4 py-2 text-green-500 font-semibold rounded-lg cursor-pointer hover:text-green-700 transition duration-300 transform hover:scale-110"
-            style={{
-              marginTop: "5px",
-            }}
-          >
-            <span>Next</span>
+          <div onClick={handleNextQuestion} className="action-btn">
+            Next
           </div>
         </div>
       </div>

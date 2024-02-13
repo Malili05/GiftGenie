@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ADD_USER } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
-import Navbar from "./Navbar"; 
+import Navbar from "./Navbar";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -24,11 +24,7 @@ const Signup = () => {
     });
 
     if (name === "confirmPassword") {
-      if (formState.password !== value) {
-        setPasswordsMatch(false);
-      } else {
-        setPasswordsMatch(true);
-      }
+      setPasswordsMatch(formState.password === value);
     }
   };
 
@@ -63,153 +59,155 @@ const Signup = () => {
     }
   };
 
+  const [marginTop, setMarginTop] = useState("5rem");
+  const [marginBottom, setMarginBottom] = useState("5rem");
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth <= 768) {
+        setMarginTop("0");
+        setMarginBottom("0");
+      } else {
+        setMarginTop("5rem");
+        setMarginBottom("5rem");
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="container mx-auto flex items-center justify-center min-h-screen">
-      <div className="relative">
-        <div className="bg-blue-100 py-8 px-4 rounded-lg shadow-lg flex flex-col items-center justify-center">
-          <Navbar showLoginButton={false} />
-          <h1 className="text-4xl font-bold text-blue-800 mb-6">
-            Make an account!
-          </h1>
-          <form className="w-full max-w-md" onSubmit={handleSubmit}>
-            <div className="mb-2">
-              <label
-                className="block text-blue-800 text-sm font-bold mb-2"
-                htmlFor="username"
-              >
-                Name
-              </label>
-              <input
-                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none ${
-                  !formState.username && error ? "border-red-500" : ""
-                }`}
-                id="username"
-                type="text"
-                placeholder="Your Name"
-                name="username"
-                onChange={handleChange}
-              />
-              {error && !formState.username && (
-                <p className="text-red-500 text-sm">Username is required.</p>
-              )}
-            </div>
-            <div className="mb-2">
-              <label
-                className="block text-blue-800 text-sm font-bold mb-2"
-                htmlFor="email"
-              >
-                Email
-              </label>
-              <input
-                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none ${
-                  !formState.email && error ? "border-red-500" : ""
-                }`}
-                id="email"
-                type="email"
-                placeholder="Email"
-                name="email"
-                onChange={handleChange}
-              />
-              {error && !formState.email && (
-                <p className="text-red-500 text-sm">Email is required.</p>
-              )}
-              {error && error.message.includes("duplicate key error") && (
-                <p className="text-red-500 text-sm">
-                  Email is already registered.
-                </p>
-              )}
-            </div>
-            <div className="mb-0">
-              <label
-                className="block text-blue-800 text-sm font-bold mb-2"
-                htmlFor="password"
-              >
-                Password
-              </label>
-              <input
-                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none ${
-                  !formState.password && error ? "border-red-500" : ""
-                }`}
-                id="password"
-                type="password"
-                placeholder="******************"
-                name="password"
-                onChange={handleChange}
-              />
-              {error && !formState.password && (
-                <p className="text-red-500 text-sm">Password is required.</p>
-              )}
-              {error && error.message.includes("password") && (
-                <p className="text-red-500 text-sm">
-                  Password must be at least 6 characters long.
-                </p>
-              )}
-            </div>
-            <div className="mb-2">
-              <label
-                className="block text-blue-800 text-sm font-bold mb-2"
-                htmlFor="confirmPassword"
-              >
-                Confirm Password
-              </label>
-              <input
-                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none ${
-                  (!formState.confirmPassword || !passwordsMatch) && error
-                    ? "border-red-500"
-                    : ""
-                }`}
-                id="confirmPassword"
-                type="password"
-                placeholder="******************"
-                name="confirmPassword"
-                onChange={handleChange}
-              />
-              {!passwordsMatch && (
-                <p className="text-red-500 text-sm">Passwords do not match.</p>
-              )}
-              {error && !formState.confirmPassword && (
-                <p className="text-red-500 text-sm">
-                  Please confirm your password.
-                </p>
-              )}
-              {error && error.message.includes("password") && (
-                <p className="text-red-500 text-sm">Passwords must match.</p>
-              )}
-            </div>
-            {error && !error.message.includes("duplicate key error") && (
-              <p className="text-red-500 text-sm mb-4">
-                Error occurred during sign-up. Please try again.
+    <div className="flex flex-col items-center justify-center text-center">
+      <div
+        className="main-container bg-blue-100 rounded-lg shadow-lg p-6"
+        style={{ marginTop, marginBottom }}
+      >
+        <Navbar showLoginButton={false} />
+        <h1 className="text-4xl font-bold text-blue-800 mb-6">
+          Make an account!
+        </h1>
+        <form className="w-full max-w-md" onSubmit={handleSubmit}>
+          <div className="mb-2">
+            <label className="form-label" htmlFor="username">
+              Name
+            </label>
+            <input
+              className={`form-input ${
+                !formState.username && error ? "border-red-500" : ""
+              }`}
+              id="username"
+              type="text"
+              placeholder="Your Name"
+              name="username"
+              onChange={handleChange}
+            />
+            {error && !formState.username && (
+              <p className="error-msg">Username is required.</p>
+            )}
+          </div>
+          <div className="mb-2">
+            <label className="form-label" htmlFor="email">
+              Email
+            </label>
+            <input
+              className={`form-input ${
+                !formState.email && error ? "border-red-500" : ""
+              }`}
+              id="email"
+              type="email"
+              placeholder="Email"
+              name="email"
+              onChange={handleChange}
+            />
+            {error && !formState.email && (
+              <p className="error-msg">Email is required.</p>
+            )}
+            {error && error.message.includes("duplicate key error") && (
+              <p className="error-msg">Email is already registered.</p>
+            )}
+          </div>
+          <div className="mb-2">
+            <label className="form-label" htmlFor="password">
+              Password
+            </label>
+            <input
+              className={`form-input ${
+                !formState.password && error ? "border-red-500" : ""
+              }`}
+              id="password"
+              type="password"
+              placeholder="******************"
+              name="password"
+              onChange={handleChange}
+            />
+            {error && !formState.password && (
+              <p className="error-msg">Password is required.</p>
+            )}
+            {error && error.message.includes("password") && (
+              <p className="error-msg">
+                Password must be at least 6 characters long.
               </p>
             )}
-            <div className="flex items-center justify-center">
-              <button
-                className="text-green-800 hover:text-yellow-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200 transform hover:scale-110 text-3xl"
-                type="submit"
-                disabled={loading}
-              >
-                {loading ? "Signing up..." : "Submit"}
-              </button>
-            </div>
-          </form>
-          <p className="mt-4">
-            Already have an account?{" "}
-            <button
-              onClick={() => navigate("/Login")}
-              className="text-blue-800 hover:text-yellow-500 pl-2"
-            >
-              Log in
+          </div>
+          <div className="mb-2">
+            <label className="form-label" htmlFor="confirmPassword">
+              Confirm Password
+            </label>
+            <input
+              className={`form-input ${
+                (!formState.confirmPassword || !passwordsMatch) && error
+                  ? "border-red-500"
+                  : ""
+              }`}
+              id="confirmPassword"
+              type="password"
+              placeholder="******************"
+              name="confirmPassword"
+              onChange={handleChange}
+            />
+            {!passwordsMatch && (
+              <p className="error-msg">Passwords do not match.</p>
+            )}
+            {error && !formState.confirmPassword && (
+              <p className="error-msg">Please confirm your password.</p>
+            )}
+            {error && error.message.includes("password") && (
+              <p className="error-msg">Passwords must match.</p>
+            )}
+          </div>
+          {error && !error.message.includes("duplicate key error") && (
+            <p className="error-msg">
+              Error occurred during sign-up. Please try again.
+            </p>
+          )}
+          <div className="flex items-center justify-center">
+            <button className="btn-submit" type="submit" disabled={loading}>
+              {loading ? "Signing up..." : "Submit"}
             </button>
-          </p>
-          <p className="mt-4">
-            Want a gift without an account?{" "}
-            <button
-              onClick={() => navigate("/")}
-              className="text-blue-800 hover:text-yellow-500 pl-2"
-            >
-              Check it out!
-            </button>
-          </p>
-        </div>
+          </div>
+        </form>
+        <p className="mt-4">
+          Already have an account?{" "}
+          <button
+            onClick={() => navigate("/Login")}
+            className="text-blue-800 hover:text-yellow-500 pl-2"
+          >
+            Log in
+          </button>
+        </p>
+        <p className="mt-4">
+          Want a gift without an account?{" "}
+          <button
+            onClick={() => navigate("/")}
+            className="text-blue-800 hover:text-yellow-500 pl-2"
+          >
+            Check it out!
+          </button>
+        </p>
       </div>
     </div>
   );

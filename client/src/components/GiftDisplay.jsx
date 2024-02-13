@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_GIFTS_QUERY } from "../utils/queries";
 import { SAVE_GIFT } from "../utils/mutations";
-import AuthService from '../utils/auth'; // Import AuthService
+import AuthService from "../utils/auth";
 
 const GiftDisplay = () => {
   const { loading, error, data } = useQuery(GET_GIFTS_QUERY);
   const [displayedGift, setDisplayedGift] = useState(null);
   const [giftSaved, setGiftSaved] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
-  const isLoggedIn = AuthService.loggedIn(); // Check if user is logged in
+  const isLoggedIn = AuthService.loggedIn();
 
   useEffect(() => {
     if (!loading && !error && data && data.gifts.length > 0) {
@@ -25,9 +24,7 @@ const GiftDisplay = () => {
   const handleSaveAndNotify = async () => {
     try {
       if (displayedGift) {
-        await saveGift({
-          variables: { giftId: displayedGift._id },
-        });
+        await saveGift({ variables: { giftId: displayedGift._id } });
         setGiftSaved(true);
       }
     } catch (error) {
@@ -51,7 +48,15 @@ const GiftDisplay = () => {
       {error && <p>Error: {error.message}</p>}
       {displayedGift && (
         <>
-          <h2 className="font-semibold text-xl text-yellow-400 mb-4" style={{ textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>{displayedGift.name}</h2>
+          <h2
+            className="font-semibold text-xl text-yellow-400 mb-4"
+            style={{
+              textShadow:
+                "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+            }}
+          >
+            {displayedGift.name}
+          </h2>
           <div className="image-container w-full h-60 mb-4 flex items-center justify-center">
             <img
               src={displayedGift.image}
@@ -79,20 +84,14 @@ const GiftDisplay = () => {
               Price: ${displayedGift.price}
             </p>
           </div>
-          <div className="button-container flex justify-center w-full"> {/* Centered button container */}
+          <div className="button-container flex justify-center w-full">
             {isLoggedIn && (
-              <button
-                onClick={handleSaveAndNotify}
-                className="px-4 py-2 text-red-500 font-semibold rounded-lg cursor-pointer hover:text-yellow-400 transition duration-300 transform hover:scale-110 text-3xl"
-              >
-                <span>Save Gift</span>
+              <button onClick={handleSaveAndNotify} className="button-style">
+                Save Gift
               </button>
             )}
-            <button
-              onClick={handleBuyThis}
-              className="px-4 py-2 text-green-500 font-semibold rounded-lg cursor-pointer hover:text-yellow-400 transition duration-300 transform hover:scale-110 text-3xl"
-            >
-              <span>Buy This</span>
+            <button onClick={handleBuyThis} className="button-style">
+              Buy This
             </button>
           </div>
           {giftSaved && (
@@ -104,10 +103,6 @@ const GiftDisplay = () => {
       )}
     </div>
   );
-};
-
-GiftDisplay.propTypes = {
-  handleBackToQueries: PropTypes.func.isRequired,
 };
 
 export default GiftDisplay;

@@ -5,8 +5,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* Add any additional styles here */
+
+
+body {
+  font-family: 'Lakki Reddy', sans-serif; 
+  background-color: #475B63;
+  text-shadow: 0 0 0px black; 
+  }
+
+
+
 /* CSS Reset */
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -41,7 +53,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-}
+} */
 
 /* Custom styles */
 /* #2E2C2F
