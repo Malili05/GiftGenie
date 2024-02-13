@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { HiQuestionMarkCircle } from "react-icons/hi";
+// import { HiQuestionMarkCircle } from "react-icons/hi";
 import lampImage from "/Lamp.webp";
 import AuthService from "../utils/auth";
 
@@ -29,7 +29,7 @@ const WelcomePage = () => {
           className="max-w-xs w-full h-auto mb-4 cursor-pointer"
           onClick={goToQuestion}
         />
-        <div className="absolute top-0 right-0 m-4">
+        {/* <div className="absolute top-0 right-0 m-4">
           <HiQuestionMarkCircle
             className="text-4xl cursor-pointer"
             color="#1E40AF"
@@ -58,7 +58,7 @@ const WelcomePage = () => {
               </p>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
       <h1 className="text-4xl font-bold text-blue-800 mb-4">
         WELCOME TO GIFT GENIE
