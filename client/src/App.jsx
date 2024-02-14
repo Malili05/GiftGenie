@@ -1,15 +1,12 @@
+
+
 import { Outlet } from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
-
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
 import { StoreProvider } from './utils/GlobalState';
+import './App.css'; // Import the global CSS
 
+// Configure Apollo Client
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -43,14 +40,22 @@ const client = new ApolloClient({
   cache: cache, 
 });
 
-const App = () => {
+function App() {
   return (
     <ApolloProvider client={client}>
       <StoreProvider>
-        <Outlet />
+        <div className="app-container">
+          <video autoPlay loop muted className="background-video">
+            <source src="/VideoBackground.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
+          {/* Child routes will be rendered here */}
+          <Outlet />
+        </div>
       </StoreProvider>
     </ApolloProvider>
   );
-};
+}
 
 export default App;

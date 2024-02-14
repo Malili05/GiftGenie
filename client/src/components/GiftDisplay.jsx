@@ -75,7 +75,7 @@ const GiftDisplay = () => {
                 Description
               </span>
               {showDescription && (
-                <span className="absolute bg-white shadow-md p-2 rounded-lg z-10">
+                <span className="description-popup">
                   {displayedGift.description}
                 </span>
               )}
