@@ -36,6 +36,16 @@ body {
     }
   }
 
+  .description-popup {
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute; 
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    z-index: 10; 
+  }
 
 
 /* CSS Reset */
