@@ -157,13 +157,19 @@ function Search() {
           </>
         )}
         <div className="flex justify-center mt-4">
-          <div onClick={swapQuestion} className="action-btn">
-            Swap Question
-          </div>
-          <div onClick={handleNextQuestion} className="action-btn">
-            Next
-          </div>
-        </div>
+  <div
+    onClick={swapQuestion}
+    className="action-btn mr-20 text-xl text-purple-600 hover:text-yellow-500 transform hover:scale-110 cursor-pointer"
+  >
+    Swap Question
+  </div>
+  <div
+    onClick={handleNextQuestion}
+    className="action-btn text-xl text-green-600 hover:text-yellow-500 transform hover:scale-110 cursor-pointer"
+  >
+    Next
+  </div>
+</div>
       </div>
     </div>
   );

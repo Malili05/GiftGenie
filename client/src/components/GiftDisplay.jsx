@@ -85,15 +85,21 @@ const GiftDisplay = () => {
             </p>
           </div>
           <div className="button-container flex justify-center w-full">
-            {isLoggedIn && (
-              <button onClick={handleSaveAndNotify} className="button-style">
-                Save Gift
-              </button>
-            )}
-            <button onClick={handleBuyThis} className="button-style">
-              Buy This
-            </button>
-          </div>
+  {isLoggedIn && (
+    <button
+      onClick={handleSaveAndNotify}
+      className="mr-10 text-xl text-purple-600 hover:text-yellow-500 transform hover:scale-110 cursor-pointer"
+    >
+      Save Gift
+    </button>
+  )}
+  <button
+    onClick={handleBuyThis}
+    className="ml-10 text-xl text-green-600 hover:text-yellow-500 transform hover:scale-110 cursor-pointer"
+  >
+    Buy This
+  </button>
+</div>
           {giftSaved && (
             <p className="text-center mt-4 text-green-600">
               Your gift has been saved!

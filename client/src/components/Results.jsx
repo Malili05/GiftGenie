@@ -43,7 +43,7 @@ const Results = () => {
       >
         <Navbar />
         <h1 className="text-4xl font-bold text-blue-800 mb-0">
-          Is This The Perfect Gift
+          Is This The Perfect Gift...
           <span
             className="refresh-icon text-blue-400 cursor-pointer inline-block transform hover:text-yellow-400 hover:scale-110 transition duration-300"
             onClick={refreshPage}
@@ -52,8 +52,13 @@ const Results = () => {
           </span>
         </h1>
         <GiftDisplay />
-        <div onClick={handleStartOver} className="action-btn">
-          Start Over
+        <div className="flex justify-center mt-4">
+          <div
+            onClick={handleStartOver}
+            className="action-btn mr-4 text-xl text-red-600 hover:text-yellow-500 transform hover:scale-110 cursor-pointer"
+          >
+            Start Over
+          </div>
         </div>
       </div>
     </div>
