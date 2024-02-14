@@ -95,7 +95,7 @@ const GiftDisplay = () => {
   )}
   <button
     onClick={handleBuyThis}
-    className="ml-10 text-xl text-green-600 hover:text-yellow-500 transform hover:scale-110 cursor-pointer"
+    className=" text-xl text-green-600 hover:text-yellow-500 transform hover:scale-110 cursor-pointer"
   >
     Buy This
   </button>

@@ -55,7 +55,7 @@ const Results = () => {
         <div className="flex justify-center mt-4">
           <div
             onClick={handleStartOver}
-            className="action-btn mr-4 text-xl text-red-600 hover:text-yellow-500 transform hover:scale-110 cursor-pointer"
+            className="action-btn text-xl text-red-600 hover:text-yellow-500 transform hover:scale-110 cursor-pointer"
           >
             Start Over
           </div>

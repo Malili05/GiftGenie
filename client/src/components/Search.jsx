@@ -130,7 +130,7 @@ function Search() {
                 {currentQuestion.answers.map((answer, index) => (
                   <div
                     key={index}
-                    className={`p-2 my-2 cursor-pointer text-center ${
+                    className={`text-xl p-2 my-2 cursor-pointer text-center ${
                       selectedAnswers[currentQuestion.id] === answer.keyword
                         ? "text-pink-600"
                         : "text-blue-600"
