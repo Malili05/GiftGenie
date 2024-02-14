@@ -40,7 +40,7 @@ const cache = new InMemoryCache({
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: cache, // Use the custom cache with the defined merge function
+  cache: cache, 
 });
 
 const App = () => {

@@ -1,8 +1,9 @@
-import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
+import Navbar from "./Navbar";
+import { useEffect, useState } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,10 +18,6 @@ const Login = () => {
     });
   };
 
-  const handleCreateAccountClick = () => {
-    navigate("/SignUp");
-  };
-
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
@@ -32,27 +29,48 @@ const Login = () => {
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
-      navigate("/profile");
+      navigate("/Profile");
     } catch (e) {
       console.error("Login error:", e);
     }
   };
 
+  const [marginTop, setMarginTop] = useState("5rem");
+  const [marginBottom, setMarginBottom] = useState("5rem");
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth <= 768) {
+        setMarginTop("0");
+        setMarginBottom("0");
+      } else {
+        setMarginTop("5rem");
+        setMarginBottom("5rem");
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-blue-100 px-40">
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
-        <h1 className="mb-8 text-3xl text-center text-blue-800 font-bold">
-          Log in
-        </h1>
-        <div className="mb-4">
-          <label
-            className="block text-blue-800 text-sm font-bold mb-2"
-            htmlFor="email"
-          >
+    <div className="flex flex-col items-center justify-center text-center">
+      <div
+        className="main-container bg-blue-100 rounded-lg shadow-lg p-6"
+        style={{ marginTop, marginBottom}}
+      >
+        <Navbar />
+        <h1 className="text-4xl font-bold text-blue-800 mb-8">Log in</h1>
+
+        <div className="flex flex-col mb-4">
+          <label className="form-label w-64 mx-auto" htmlFor="email">
             Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="form-input w-64 mx-auto text-center "
             id="email"
             type="text"
             name="email"
@@ -60,15 +78,13 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="mb-6">
-          <label
-            className="block text-blue-800 text-sm font-bold mb-2"
-            htmlFor="password"
-          >
+
+        <div className="flex flex-col mb-6">
+          <label className="form-label w-64 mx-auto" htmlFor="password">
             Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="form-input w-64 mx-auto text-center"
             id="password"
             type="password"
             name="password"
@@ -76,38 +92,38 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
-        {error && (
-          <p className="text-red-500 text-sm mb-4">Invalid email or password.</p>
-        )}
-        <div className="flex items-center justify-between">
-          <button
-            className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            onClick={handleLogin}
-            disabled={loading} 
-          >
-            {loading ? "Logging in..." : "Login"}
-          </button>
-          <div className="flex items-center justify-between mx-4">
-            <button
-              className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-              onClick={handleCreateAccountClick}
-            >
-              Make an Account
-            </button>
-          </div>
-        </div>
-      </div>
-      <p className="mt-4">
-        Want to try it before you make an account?
+
+        {error && <p className="error-msg">Invalid email or password.</p>}
+       
         <button
-          onClick={() => navigate("/")}
-          className="text-blue-800 hover:text-blue-600 underline pl-2"
+          onClick={handleLogin}
+          disabled={loading}
+          className={`text-3xl text-green-500 hover:text-red-400 transform hover:scale-105 transition-transform bg-transparent ${
+            loading ? "cursor-not-allowed" : "cursor-pointer"
+          }`}
         >
-          Back to home
+          {loading ? "Logging in..." : "Submit"}
         </button>
-      </p>
+
+        <div className="mt-4">
+          <button
+            onClick={() => navigate("/SignUp")}
+            className="text-lg text-blue-800 hover:text-yellow-500 font-bold pl-2"
+          >
+            Make an Account
+          </button>
+        </div>
+
+        <p className="mt-4">
+          Want to try it before you make an account?
+          <button
+            onClick={() => navigate("/")}
+            className="text-lg text-blue-800 hover:text-yellow-500 font-bold pl-2"
+          >
+            Back to home
+          </button>
+        </p>
+      </div>
     </div>
   );
 };

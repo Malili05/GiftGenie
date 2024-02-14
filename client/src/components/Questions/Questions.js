@@ -55,6 +55,9 @@ const questionsData = [
             { "displayText": "Purple", "keyword": "purple" },
             { "displayText": "Red", "keyword": "red" },
             { "displayText": "Orange", "keyword": "orange" },
+            { "displayText": "Black", "keyword": "black" },
+            { "displayText": "White", "keyword": "white" },
+            { "displayText": "Brown", "keyword": "brown" },
             
         ]
     },
@@ -82,7 +85,7 @@ const questionsData = [
     },
     {
         "id": 8,
-        "question": "Does the recipient enjoy any of the following genres?",
+        "question": "What is their favorite genre?",
         "answers": [
             { "displayText": "Fantasy", "keyword": "fantasy" },
             { "displayText": "Sci Fi", "keyword": "scifi" },
@@ -98,7 +101,7 @@ const questionsData = [
     },
     {
         "id": 9,
-        "question": "Which of these hobbies or interests best describes the gift recipient?",
+        "question": "Which of these things do they enjoy most?",
         "answers": [
             { "displayText": "Gardening", "keyword": "gardening" },
             { "displayText": "Technology", "keyword": "tech" },

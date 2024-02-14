@@ -1,10 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap');
+
+/* Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
+/* Add any additional styles here */
+
+
+body {
+  font-family: 'Lakki Reddy', sans-serif; 
+  background-color: #475B63;
+  text-shadow: 0 0 1px black; 
+  }
+
+
+
 /* CSS Reset */
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,14 +35,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Lakki Reddy', sans-serif; 
+  background-color: #475B63;
 }
 
+
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
-  background-color: #475B63;
+  text-shadow: 0 0 0px black; 
+
 }
 
 .app {
@@ -39,10 +53,9 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  text-align: center;
-}
+} */
 
-
+/* Custom styles */
 /* #2E2C2F
 #475B63
 #729B79

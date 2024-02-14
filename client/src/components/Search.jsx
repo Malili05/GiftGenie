@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import questionsData from "./Questions/Questions";
-import AuthService from '../utils/auth'; 
+import Navbar from "./Navbar";
 
 function Search() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -15,7 +15,10 @@ function Search() {
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
     }
     return shuffledArray;
   };
@@ -68,92 +71,106 @@ function Search() {
     }
   };
 
-  const startOver = () => {
-    navigate("/"); 
-  };
-
-  const goToProfile = () => {
-    navigate('/Profile');
-  };
-
-  const goToLogin = () => {
-    navigate('/Login');
-  };
-
   const currentQuestion = questions[currentIndex];
 
+  const [marginTop, setMarginTop] = useState("5rem");
+  const [marginBottom, setMarginBottom] = useState("5rem");
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth <= 768) {
+        setMarginTop("0");
+        setMarginBottom("0");
+      } else {
+        setMarginTop("5rem");
+        setMarginBottom("5rem");
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="search-container flex flex-col items-center justify-center h-screen text-center">
-      <h1 className="text-2xl font-bold mb-4 text-yellow-400">
-        Answer for Me These Questions Three!
-      </h1>
-      {currentQuestion && (
-        <div className="question-box bg-gray-100 p-5 rounded-lg shadow-md w-full max-w-md mx-auto">
-          <h2 className="text-lg font-semibold text-blue-500">
-            Question {currentIndex + 1}
-          </h2>
-          <p className="mb-3 text-gray-700">{currentQuestion.question}</p>
-          <div>
-            {currentQuestion.answers.map((answer, index) => (
+    <div className="flex flex-col items-center justify-center text-center">
+      <div
+        className="main-container bg-blue-100 rounded-lg shadow-lg p-6"
+        style={{ marginTop, marginBottom }}
+      >
+        <Navbar />
+        <h1 className="text-3xl font-bold text-blue-800 mb-0">
+          Answer for Me These Questions Three!
+        </h1>
+        <h2 className="text-2xl font-bold text-blue-800 mb-4">
+          Question {currentIndex + 1}
+        </h2>
+        {currentQuestion && (
+          <>
+            <p className="text-xl font-semibold text-purple-600 mb-4">
+              {currentQuestion.question}
+            </p>
+            <div
+              className={`bg-white p-6 rounded-lg shadow-md max-w-md mx-auto ${
+                currentQuestion.answers.length <= 3
+                  ? "flex justify-center items-center"
+                  : ""
+              }`}
+              style={{ minWidth: "300px", maxWidth: "80%" }}
+            >
               <div
-                key={index}
-                className={`p-2 my-2 cursor-pointer hover:bg-yellow-200 ${
-                  selectedAnswers[currentQuestion.id] === answer.keyword
-                    ? "text-pink-500 text-lg"
-                    : "text-gray-600"
-                }`}
-                onClick={() => selectAnswer(currentQuestion.id, answer.keyword)}
+                className={`${
+                  currentQuestion.answers.length >= 6
+                    ? "grid grid-cols-2 gap-4"
+                    : "flex flex-col items-center"
+                } w-full`}
               >
-                {answer.displayText}
+                {currentQuestion.answers.map((answer, index) => (
+                  <div
+                    key={index}
+                    className={`text-xl p-2 my-2 cursor-pointer text-center ${
+                      selectedAnswers[currentQuestion.id] === answer.keyword
+                        ? "text-pink-600"
+                        : "text-blue-600"
+                    } hover:text-yellow-500 transition-colors duration-300 transform hover:scale-110`}
+                    style={{ transition: "transform 0.3s" }}
+                    onClick={() =>
+                      selectAnswer(currentQuestion.id, answer.keyword)
+                    }
+                  >
+                    <span className="answer-text">{answer.displayText}</span>
+                  </div>
+                ))}
+                {showOtherInput && (
+                  <input
+                    type="text"
+                    placeholder="Enter one keyword"
+                    value={selectedAnswers[currentQuestion.id] || ""}
+                    onChange={handleOtherInputChange}
+                    className="mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-full transform hover:scale-110"
+                  />
+                )}
               </div>
-            ))}
-            {showOtherInput && (
-              <input
-                type="text"
-                placeholder="Enter one keyword"
-                value={selectedAnswers[currentQuestion.id] || ""}
-                onChange={handleOtherInputChange}
-                className="mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-full"
-              />
-            )}
-          </div>
-          <div className="flex justify-center mt-4">
-            <button
-              onClick={startOver}
-              className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-700 transition duration-300 mr-3"
-            >
-              Start Over
-            </button>
-            <button
-              onClick={swapQuestion}
-              className="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300 mr-3"
-            >
-              Swap Question
-            </button>
-            <button
-              onClick={handleNextQuestion}
-              className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      )}
-      {AuthService.loggedIn() ? (
-        <button
-          onClick={goToProfile}
-          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-        >
-          Profile
-        </button>
-      ) : (
-        <button
-          onClick={goToLogin}
-          className="mt-4 px-6 py-2 bg-blue-900 text-white font-bold rounded hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-        >
-          Login
-        </button>
-      )}
+            </div>
+          </>
+        )}
+        <div className="flex justify-center mt-4">
+  <div
+    onClick={swapQuestion}
+    className="action-btn mr-20 text-xl text-purple-600 hover:text-yellow-500 transform hover:scale-110 cursor-pointer"
+  >
+    Swap Question
+  </div>
+  <div
+    onClick={handleNextQuestion}
+    className="action-btn text-xl text-green-600 hover:text-yellow-500 transform hover:scale-110 cursor-pointer"
+  >
+    Next
+  </div>
+</div>
+      </div>
     </div>
   );
 }
