@@ -75,17 +75,17 @@ const Navbar = () => {
           )}
           {AuthService.loggedIn() && (
             <button onClick={goToProfile} className="text-xl text-blue-600 hover:text-purple-800 transform hover:scale-110 transition-transform bg-transparent mr-4">
-              PROFILE
+              Profile
             </button>
           )}
           {!AuthService.loggedIn() && !isLoginPage() && (
             <button onClick={goToLogin} className="text-xl text-blue-600 hover:text-purple-800 transform hover:scale-110 transition-transform bg-transparent mr-4">
-              LOG IN
+              Log In
             </button>
           )}
           {AuthService.loggedIn() && (
             <button onClick={handleLogout} className="text-xl text-blue-600 hover:text-purple-800 transform hover:scale-110 transition-transform bg-transparent mr-4">
-              LOG OUT
+              Log Out
             </button>
           )}
         </div>
