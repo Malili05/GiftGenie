@@ -45,16 +45,16 @@ const Navbar = () => {
       {/* Hamburger Menu for Mobile */}
       <div className="md:hidden sticky top-0 z-50 bg-transparent">
         <div className="flex justify-between items-center p-4">
-          <h1 className="text-4xl font-bold cursor-pointer text-yellow-400" onClick={goToHome}>Gift Genie</h1>
+        <h1 className="text-4xl font-bold cursor-pointer text-yellow-400 hover:text-red-600 transform hover:scale-105 transition-transform" onClick={goToHome}>Gift Genie</h1>
           <div className="text-3xl cursor-pointer" onClick={toggleMenu}>☰</div>
         </div>
 
         {isMenuOpen && (
-          <div className="flex flex-col items-start bg-purple-100 p-4">
-            {!isSearchPage() && <button className="py-2 text-left" onClick={goToSearch}>Search</button>}
-            {AuthService.loggedIn() && <button className="py-2 text-left" onClick={goToProfile}>Profile</button>}
-            {!AuthService.loggedIn() &&<button className="py-2 text-left" onClick={goToLogin}>Log In</button>}
-            {AuthService.loggedIn() && <button className="py-2 text-left" onClick={handleLogout}>Log Out</button>}
+          <div className="flex flex-col items-start rounded bg-gray-300 bg-opacity-75 p-4 text-blue-400">
+            {!isSearchPage() && <button className="py-2 text-left hover:text-red-600 transform hover:scale-105 transition-transform" onClick={goToSearch}>Search</button>}
+            {AuthService.loggedIn() && <button className="py-2 text-left hover:text-red-600 transform hover:scale-105 transition-transform" onClick={goToProfile}>Profile</button>}
+            {!AuthService.loggedIn() &&<button className="py-2 text-left hover:text-red-600 transform hover:scale-105 transition-transform" onClick={goToLogin}>Log In</button>}
+            {AuthService.loggedIn() && <button className="py-2 text-left hover:text-red-600 transform hover:scale-105 transition-transform" onClick={handleLogout}>Log Out</button>}
           </div>
         )}
       </div>
