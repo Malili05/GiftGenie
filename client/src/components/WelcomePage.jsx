@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+// import { HiQuestionMarkCircle } from "react-icons/hi";
 import lampImage from "/Lamp.webp";
 import AuthService from "../utils/auth";
 import { useEffect, useState } from "react";
@@ -84,7 +85,7 @@ const WelcomePage = () => {
               </p>
             </>
           )}
-        </div>
+        </div> 
       </div>
     </div>
   );
