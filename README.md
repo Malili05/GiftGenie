@@ -17,12 +17,11 @@ Need help finding a gift? GiftGenie helps you find a gift for someone special. S
 
 ## Features
 ![React](https://img.shields.io/badge/-React-20232A?style=flat-square&logo=react)
-![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
-![Apollo GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=flat-square&logo=apollo-graphql)
-![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?style=flat-square&logo=graphql&logoColor=white)
-![Express.js](https://img.shields.io/badge/-Express.js-000000?style=flat-square&logo=express)
-![JWT](https://img.shields.io/badge/-JWT-000000?style=flat-square&logo=json-web-tokens&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-06B6D4?style=flat-square&logo=tailwind-css)
+![Express](https://img.shields.io/badge/-Express-000000?style=flat-square&logo=express)
+![ApolloGraphQL](https://img.shields.io/badge/-Apollo%20GraphQL-311C87?style=flat-square&logo=apollo-graphql)
+![JWT](https://img.shields.io/badge/-JWT-000000?style=flat-square&logo=json-web-tokens)
+
 
 ## Usage
 Click on the Lamp to be asked some questions, after answering three questions you will be presented with an item that matches your answers.  Either click the buy now button to be taken to that items amazon page, or sign into your account to save the item for a future purchase! If you are signed into your account click the heart on an item to lock it from being deleted so you don't accidently lose the perfect gift!
