@@ -45,10 +45,10 @@ function App() {
     <ApolloProvider client={client}>
       <StoreProvider>
         <div className="app-container">
-          {/* <video autoPlay loop muted className="background-video">
+           <video autoPlay loop muted className="background-video">
             <source src="/VideoBackground.mp4" type="video/mp4" />
             Your browser does not support the video tag.
-          </video> */}
+          </video>
 
           {/* Child routes will be rendered here */}
           <Outlet />
