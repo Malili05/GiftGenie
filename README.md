@@ -16,14 +16,15 @@ Need help finding a gift? GiftGenie helps you find a gift for someone special. S
 3. npm run setup
 
 ## Features
-![React Badge](https://img.shields.io/badge/-React-blue?style=flat-square&logo=react)
-![Node.js Badge](https://img.shields.io/badge/-Node.js-green?style=flat-square&logo=node.js)
-![MongoDB Badge](https://img.shields.io/badge/-MongoDB-brightgreen?style=flat-square&logo=mongodb)
-![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+![React](https://img.shields.io/badge/-React-20232A?style=flat-square&logo=react)
+![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-06B6D4?style=flat-square&logo=tailwind-css)
+![Express](https://img.shields.io/badge/-Express-000000?style=flat-square&logo=express)
+![ApolloGraphQL](https://img.shields.io/badge/-Apollo%20GraphQL-311C87?style=flat-square&logo=apollo-graphql)
+![JWT](https://img.shields.io/badge/-JWT-000000?style=flat-square&logo=json-web-tokens)
 
 
 ## Usage
-Click on the Lamp to be asked some questions, after answering three questions you will be presented with an item that matches your answers.  Either click the buy now button to be taken to that items amazon page, or sign into your account to save the item for a future purchase!
+Click on the Lamp to be asked some questions, after answering three questions you will be presented with an item that matches your answers.  Either click the buy now button to be taken to that items amazon page, or sign into your account to save the item for a future purchase! If you are signed into your account click the heart on an item to lock it from being deleted so you don't accidently lose the perfect gift!
 
 ## Credits
 * [Joshua Slem](https://github.com/SlemJosh)
@@ -37,7 +38,13 @@ MIT
 
 ## Screenshots
 
-![image](https://github.com/Malili05/GiftGenie/assets/141981157/cf60170f-bf12-4db5-b5f9-98cf6ed3821f)
+![image](https://github.com/Malili05/GiftGenie/assets/141693593/5416c210-6f37-4103-86ef-727b7fc86288)
+![image](https://github.com/Malili05/GiftGenie/assets/141693593/86d48aff-3883-4fcc-aeb0-72d6dfcb90d0)
+![image](https://github.com/Malili05/GiftGenie/assets/141693593/856b5709-6048-4b38-ba77-0167ec99858b)
+![image](https://github.com/Malili05/GiftGenie/assets/141693593/f2d4bd1f-531c-43d6-8477-c653455fd38a)
+![image](https://github.com/Malili05/GiftGenie/assets/141693593/bcd47597-5c38-43bd-9e2a-eb9109d372e9)
+![image](https://github.com/Malili05/GiftGenie/assets/141693593/3e9226a5-5bc8-4aae-b55f-e1643c1bc0df)
+
 
 
 
