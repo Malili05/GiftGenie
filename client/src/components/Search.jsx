@@ -104,7 +104,7 @@ function Search() {
         <h1 className="text-3xl font-bold text-blue-800 mb-0">
           Answer for Me These Questions Three!
         </h1>
-        <h2 className="text-2xl font-bold text-blue-800 mb-4">
+        <h2 className="text-2xl font-bold text-yellow-400 mb-4">
           Question {currentIndex + 1}
         </h2>
         {currentQuestion && (
