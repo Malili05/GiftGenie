@@ -1,13 +1,15 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { HiQuestionMarkCircle } from "react-icons/hi";
 import lampImage from "/Lamp.webp";
 import AuthService from "../utils/auth";
-import { useEffect, useState } from "react";
 
 const WelcomePage = () => {
   const navigate = useNavigate();
   const [marginTop, setMarginTop] = useState("5rem");
   const [marginBottom, setMarginBottom] = useState("5rem");
+  const [promptMessage, setPromptMessage] = useState("");
+  const [promptIndex, setPromptIndex] = useState(0);
+  const [showPrompt, setShowPrompt] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,8 +26,26 @@ const WelcomePage = () => {
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    const prompts = [
+      "Click the lamp",
+      "You know you want to",
+      "Come on, Do it!",
+      "Just click it!",
+      "No Gift For You!",
+      "Get to the choppa!"
+    ];
+
+    const promptInterval = setInterval(() => {
+      setPromptMessage(prompts[promptIndex]);
+      setShowPrompt(true);
+      setPromptIndex((prevIndex) => (prevIndex + 1) % prompts.length);
+    }, 10000); // Change prompt every 15 seconds
+
+    return () => {
+      clearInterval(promptInterval);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [promptIndex]);
 
   const goTo = (path) => {
     navigate(path);
@@ -47,6 +67,7 @@ const WelcomePage = () => {
           <p className="text-lg text-gray-800 mb-4">
             Click on the lamp to begin the search for the perfect gift.
           </p>
+          
         </div>
         <div className="flex justify-center mb-8">
           <div className="relative animate-bounce mb-8">
@@ -59,6 +80,11 @@ const WelcomePage = () => {
             />
           </div>
         </div>
+        {showPrompt && (
+            <p className="text-lg text-red-600 animate-bounce">
+              {promptMessage}
+            </p>
+          )}
         <div className="text-center mt-4">
           {AuthService.loggedIn() ? (
             <>
@@ -66,7 +92,7 @@ const WelcomePage = () => {
                 onClick={() => goTo("/Profile")}
                 className="text-3xl text-blue-600 hover:text-blue-800 transform hover:scale-105 transition-transform bg-transparent"
               >
-                PROFILE
+                Visit Your Profile
               </button>
               <p className="text-lg text-gray-800 mt-6">
                 Check your saved gifts.
@@ -78,14 +104,14 @@ const WelcomePage = () => {
                 onClick={() => goTo("/Login")}
                 className="text-3xl text-blue-500 hover:text-blue-800 transform hover:scale-105 transition-transform bg-transparent"
               >
-                LOGIN
+                Log In
               </button>
               <p className="text-lg text-gray-800 mt-6">
                 Log in to save gifts.
               </p>
             </>
           )}
-        </div> 
+        </div>
       </div>
     </div>
   );
